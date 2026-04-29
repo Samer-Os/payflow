@@ -185,7 +185,7 @@ const Pricing = () => {
               </div>
               <Link
                 href="#"
-                className="mt-8 block text-center py-3.5 text-16 font-semibold bg-[#22c55e] border-2 border-[#22c55e] hover:bg-transparent hover:text-[#22c55e] duration-300 text-white rounded-xl shadow-md hover:shadow-none"
+                className="mt-8 block text-center py-3.5 text-16 font-semibold bg-transparent border-2 border-primary text-primary hover:bg-primary hover:text-white duration-300 rounded-xl"
               >
                 {t("pricing.tryFree")}
               </Link>
@@ -200,12 +200,7 @@ const Pricing = () => {
                   <span className="lg:hidden font-bold text-midnight_text dark:text-white">
                     {t("pricing.directDebits")}:
                   </span>
-                  <div className="w-7 h-7 bg-red-500/10 rounded-full flex items-center justify-center">
-                    <Icon
-                      icon="solar:close-circle-bold"
-                      className="text-red-500 w-5 h-5"
-                    />
-                  </div>
+                  <span className="text-midnight_text/30 dark:text-white/30">&mdash;</span>
                 </div>
                 <p className="pb-6 border-b border-border dark:border-dark_border/50">
                   <span className="lg:hidden font-bold text-midnight_text dark:text-white">
@@ -223,34 +218,19 @@ const Pricing = () => {
                   <span className="lg:hidden font-bold text-midnight_text dark:text-white">
                     {t("pricing.atmWithdrawals")}:
                   </span>
-                  <div className="w-7 h-7 bg-red-500/10 rounded-full flex items-center justify-center">
-                    <Icon
-                      icon="solar:close-circle-bold"
-                      className="text-red-500 w-5 h-5"
-                    />
-                  </div>
+                  <span className="text-midnight_text/30 dark:text-white/30">&mdash;</span>
                 </div>
                 <div className="pb-6 border-b border-border dark:border-dark_border/50 flex lg:flex-col items-center justify-center gap-3 lg:gap-0">
                   <span className="lg:hidden font-bold text-midnight_text dark:text-white">
                     {t("pricing.internationalFees")}:
                   </span>
-                  <div className="w-7 h-7 bg-red-500/10 rounded-full flex items-center justify-center">
-                    <Icon
-                      icon="solar:close-circle-bold"
-                      className="text-red-500 w-5 h-5"
-                    />
-                  </div>
+                  <span className="text-midnight_text/30 dark:text-white/30">&mdash;</span>
                 </div>
                 <div className="pb-6 border-b border-border dark:border-dark_border/50 flex lg:flex-col items-center justify-center gap-3 lg:gap-0">
                   <span className="lg:hidden font-bold text-midnight_text dark:text-white">
                     {t("pricing.internationalAtm")}:
                   </span>
-                  <div className="w-7 h-7 bg-red-500/10 rounded-full flex items-center justify-center">
-                    <Icon
-                      icon="solar:close-circle-bold"
-                      className="text-red-500 w-5 h-5"
-                    />
-                  </div>
+                  <span className="text-midnight_text/30 dark:text-white/30">&mdash;</span>
                 </div>
                 <p className="pb-6">
                   <span className="lg:hidden font-bold text-midnight_text dark:text-white">
@@ -386,10 +366,10 @@ const Pricing = () => {
                   <span className="lg:hidden font-bold text-midnight_text dark:text-white">
                     {t("pricing.directDebits")}:
                   </span>
-                  <div className="w-7 h-7 bg-[#22c55e]/10 rounded-full flex items-center justify-center">
+                  <div className="w-7 h-7 bg-primary/10 rounded-full flex items-center justify-center">
                     <Icon
                       icon="solar:check-circle-bold"
-                      className="text-[#22c55e] w-5 h-5"
+                      className="text-primary w-5 h-5"
                     />
                   </div>
                 </div>
@@ -409,10 +389,10 @@ const Pricing = () => {
                   <span className="lg:hidden font-bold text-midnight_text dark:text-white">
                     {t("pricing.atmWithdrawals")}:
                   </span>
-                  <div className="w-7 h-7 bg-[#22c55e]/10 rounded-full flex items-center justify-center">
+                  <div className="w-7 h-7 bg-primary/10 rounded-full flex items-center justify-center">
                     <Icon
                       icon="solar:check-circle-bold"
-                      className="text-[#22c55e] w-5 h-5"
+                      className="text-primary w-5 h-5"
                     />
                   </div>
                 </div>
@@ -426,10 +406,10 @@ const Pricing = () => {
                   <span className="lg:hidden font-bold text-midnight_text dark:text-white">
                     {t("pricing.internationalAtm")}:
                   </span>
-                  <div className="w-7 h-7 bg-[#22c55e]/10 rounded-full flex items-center justify-center">
+                  <div className="w-7 h-7 bg-primary/10 rounded-full flex items-center justify-center">
                     <Icon
                       icon="solar:check-circle-bold"
-                      className="text-[#22c55e] w-5 h-5"
+                      className="text-primary w-5 h-5"
                     />
                   </div>
                 </div>
