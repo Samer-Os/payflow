@@ -93,9 +93,9 @@ const Benefit = () => {
                   <motion.div
                     key={index}
                     variants={itemVariants}
-                    className="flex flex-col sm:flex-row items-start group"
+                    className="flex flex-row items-start gap-4 group"
                   >
-                    <div className="bg-white dark:bg-search p-2 rounded-lg sm:mr-4 sm:mb-0 mb-3 shadow-xs shrink-0 w-fit transition-all duration-300 group-hover:scale-110 group-hover:rotate-3 group-hover:shadow-md">
+                    <div className="bg-white dark:bg-search p-2 rounded-lg shadow-xs shrink-0 w-fit transition-all duration-300 group-hover:scale-110 group-hover:rotate-3 group-hover:shadow-md">
                       <Image
                         src={item.image}
                         alt={item.alt || "Trusted brand"}

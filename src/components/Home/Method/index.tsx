@@ -52,136 +52,37 @@ const Method = () => {
             </p>
           </motion.div>
           
-          <div className="grid grid-cols-2 gap-6 mt-16">
-            <motion.div variants={itemVariants} className="col-span-2">
-              <div className="bg-white dark:bg-search rounded-3xl overflow-hidden shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl dark:border dark:border-white/5 dark:hover:border-white/10 group">
-                <div className="grid lg:grid-cols-2 items-center gap-10">
-                  <div className="lg:py-14 py-8 lg:pl-14 px-5 sm:px-8">
-                    <h3 className="md:text-25 text-22 font-bold mb-4 dark:text-white text-midnight_text">
-                      {dictionary.method.cards[0]?.title}
-                    </h3>
-                    <p className="text-muted dark:text-white/70 md:text-18 text-16 mb-8 leading-relaxed">
-                      {dictionary.method.cards[0]?.details}
-                    </p>
-                    <Link
-                      href="#"
-                      className="text-17 flex w-fit gap-2 items-center hover:text-primary/80 transition-colors text-primary font-medium"
-                    >
-                      {t("method.getStarted")}
-                      <Icon
-                        icon="solar:alt-arrow-right-linear"
-                        width="18"
-                        height="18"
-                      />
-                    </Link>
-                  </div>
-                  <div className="flex justify-end lg:pr-10 p-6 lg:p-0">
-                    <Image
-                      src="/images/method/card.png"
-                      alt="credit cards"
-                      width={459}
-                      height={289}
-                      className="w-[85%] lg:w-full object-contain mx-auto"
-                    />
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-
-            <div className="flex flex-col gap-6 lg:col-span-1 col-span-2">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-16">
+            {[
+              { img: "/images/method/card.png", alt: "credit cards" },
+              { img: "/images/method/method1.jpg", alt: "banking app" },
+              { img: "/images/method/method3.jpg", alt: "payments app" },
+              { img: "/images/method/method2.png", alt: "partner rewards dashboard" },
+            ].map((card, index) => (
               <motion.div
-                variants={itemVariants}
-                className="bg-white dark:bg-search flex flex-col sm:flex-row sm:gap-6 items-stretch rounded-3xl overflow-hidden shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl dark:border dark:border-white/5 dark:hover:border-white/10 group"
-              >
-                <div className="flex-1 sm:pl-8 p-5 sm:p-0 sm:pb-8">
-                  <h3 className="md:text-25 text-22 font-bold mb-4 dark:text-white text-midnight_text">
-                    {dictionary.method.cards[1]?.title}
-                  </h3>
-                  <p className="text-muted dark:text-white/70 text-16 mb-6 leading-relaxed">
-                    {dictionary.method.cards[1]?.details}
-                  </p>
-                  <Link
-                    href="#"
-                    className="text-16 flex w-fit gap-2 items-center hover:text-primary/80 transition-colors font-medium text-primary"
-                  >
-                    {t("method.getStarted")}
-                    <Icon
-                      icon="solar:alt-arrow-right-linear"
-                      width="18"
-                      height="18"
-                    />
-                  </Link>
-                </div>
-                <div className="w-full h-56 sm:h-auto sm:flex-1 overflow-hidden">
-                  <Image
-                    src="/images/method/method1.jpg"
-                    alt="banking app"
-                    width={232}
-                    height={375}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                </div>
-              </motion.div>
-
-              <motion.div
-                variants={itemVariants}
-                className="bg-white dark:bg-search flex flex-col sm:flex-row sm:gap-6 items-stretch rounded-3xl overflow-hidden shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl dark:border dark:border-white/5 dark:hover:border-white/10 group"
-              >
-                <div className="flex-1 sm:pl-8 p-5 sm:p-0 sm:pb-8">
-                  <h3 className="md:text-25 text-22 font-bold mb-4 dark:text-white text-midnight_text">
-                    {dictionary.method.cards[2]?.title}
-                  </h3>
-                  <p className="text-muted dark:text-white/70 text-16 mb-6 leading-relaxed">
-                    {dictionary.method.cards[2]?.details}
-                  </p>
-                  <Link
-                    href="#"
-                    className="text-16 flex w-fit gap-2 items-center hover:text-primary/80 transition-colors font-medium text-primary"
-                  >
-                    {t("method.getStarted")}
-                    <Icon
-                      icon="solar:alt-arrow-right-linear"
-                      width="18"
-                      height="18"
-                    />
-                  </Link>
-                </div>
-                <div className="w-full h-56 sm:h-auto sm:flex-1 overflow-hidden">
-                  <Image
-                    src="/images/method/method3.jpg"
-                    alt="payments app"
-                    width={232}
-                    height={375}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                </div>
-              </motion.div>
-            </div>
-
-            <div className="flex flex-col gap-6 lg:col-span-1 col-span-2">
-              <motion.div
+                key={index}
                 variants={itemVariants}
                 className="bg-white dark:bg-search rounded-3xl overflow-hidden shadow-md flex flex-col h-full hover:-translate-y-2 hover:shadow-2xl transition-all duration-300 dark:border dark:border-white/5 dark:hover:border-white/10 group"
               >
-                <div className="flex-1 overflow-hidden overflow-hidden">
+                <div className="w-full h-56 overflow-hidden">
                   <Image
-                    src="/images/method/method2.png"
-                    alt="partner rewards dashboard"
+                    src={card.img}
+                    alt={card.alt}
                     width={500}
                     height={375}
-                    className="w-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                 </div>
-                <div className="flex-1 px-10 flex justify-center flex-col py-10">
+                <div className="flex flex-col flex-1 p-8">
                   <h3 className="md:text-25 text-22 font-bold mb-4 dark:text-white text-midnight_text">
-                    {dictionary.method.cards[3]?.title}
+                    {(dictionary.method.cards as any)[index]?.title}
                   </h3>
-                  <p className="text-muted dark:text-white/70 text-16 mb-8 leading-relaxed">
-                    {dictionary.method.cards[3]?.details}
+                  <p className="text-muted dark:text-white/70 text-16 mb-8 leading-relaxed flex-1">
+                    {(dictionary.method.cards as any)[index]?.details}
                   </p>
                   <Link
                     href="#"
-                    className="text-17 flex w-fit gap-2 items-center hover:text-primary/80 transition-colors font-medium text-primary"
+                    className="text-17 flex w-fit gap-2 items-center hover:text-primary/80 transition-colors font-medium text-primary mt-auto"
                   >
                     {t("method.getStarted")}
                     <Icon
@@ -192,7 +93,7 @@ const Method = () => {
                   </Link>
                 </div>
               </motion.div>
-            </div>
+            ))}
           </div>
         </motion.div>
       </div>

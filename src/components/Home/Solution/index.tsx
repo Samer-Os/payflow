@@ -35,10 +35,10 @@ const Solution = () => {
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
           variants={containerVariants}
-          className="bg-heroBg dark:bg-midnight_text rounded-3xl lg:px-16 px-4 py-12"
+          className="bg-heroBg dark:bg-midnight_text rounded-3xl lg:px-16 sm:px-10 px-6 lg:py-16 py-12"
         >
           <div className="grid lg:grid-cols-2 items-center gap-12">
-            <motion.div variants={itemVariants}>
+            <motion.div variants={itemVariants} className="order-2 lg:order-1">
               <h2 className="md:text-35 sm:text-28 text-24 font-semibold text-midnight_text dark:text-white">
                 {t("solution.title1")}
                 <span className="text-primary max-w-max ml-2">{t("solution.highlight")}</span>
@@ -58,7 +58,7 @@ const Solution = () => {
                 />
               </Link>
             </motion.div>
-            <motion.div variants={itemVariants} className="flex justify-center">
+            <motion.div variants={itemVariants} className="flex justify-center order-1 lg:order-2">
               <Image
                 src="/images/solution/solution.png"
                 alt="Enterprise Grade Solutions"

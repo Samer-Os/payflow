@@ -41,14 +41,14 @@ const Mobile = () => {
 
   return (
     <section className="dark:bg-darkmode overflow-x-hidden py-14">
-      <div className="container mx-auto lg:max-w-(--breakpoint-xl) md:max-w-(--breakpoint-md) px-4">
+      <div className="container mx-auto lg:max-w-(--breakpoint-xl) md:max-w-(--breakpoint-md) px-4 sm:px-6">
         <div className="grid md:grid-cols-12 items-center lg:gap-12 gap-8">
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-50px" }}
             variants={containerVariants}
-            className="lg:col-span-6 col-span-12"
+            className="lg:col-span-6 col-span-12 order-2 lg:order-1"
           >
             <motion.h2
               variants={itemVariants}
@@ -109,7 +109,7 @@ const Mobile = () => {
             whileInView="visible"
             viewport={{ once: true, margin: "-50px" }}
             variants={imageVariants}
-            className="lg:col-span-6 col-span-12 mt-10 lg:mt-0"
+            className="lg:col-span-6 col-span-12 order-1 lg:order-2"
           >
             <div className="max-w-[60%] sm:max-w-[55%] lg:max-w-[85%] mx-auto relative drop-shadow-2xl">
               <Image
