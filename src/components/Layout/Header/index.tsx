@@ -10,10 +10,12 @@ import Signin from "@/components/Auth/SignIn";
 import SignUp from "@/components/Auth/SignUp";
 import { Icon } from "@iconify/react";
 import { useTheme } from "next-themes";
+import { useTranslation } from "@/context/LanguageContext";
 
 const Header: React.FC = () => {
   const pathUrl = usePathname();
   const { theme, setTheme } = useTheme();
+  const { t, language, setLanguage } = useTranslation();
 
   const [navbarOpen, setNavbarOpen] = useState(false);
   const [sticky, setSticky] = useState(false);
@@ -73,8 +75,8 @@ const Header: React.FC = () => {
 
   return (
     <header
-      className={`fixed h-24 top-0 py-1 z-50 w-full bg-transparent transition-all ${
-        sticky ? "shadow-lg bg-white dark:bg-darkheader" : "shadow-none"
+      className={`fixed h-24 top-0 py-1 z-50 w-full bg-transparent transition-all duration-300 ${
+        sticky ? "shadow-lg bg-white/80 dark:bg-darkheader/80 backdrop-blur-md" : "shadow-none"
       }`}
     >
       <div className="container mx-auto lg:max-w-(--breakpoint-xl) md:max-w-(--breakpoint-md) flex justify-between lg:items-center xl:gap-16 lg:gap-8 px-4 py-6">
@@ -85,6 +87,12 @@ const Header: React.FC = () => {
           ))}
         </nav>
         <div className="flex items-center gap-4">
+          <button
+            onClick={() => setLanguage(language === "en" ? "tr" : "en")}
+            className="text-15 font-bold uppercase transition-colors hover:text-primary text-midnight_text dark:text-white"
+          >
+            {language === "en" ? "TR" : "EN"}
+          </button>
           <button
             aria-label="Toggle theme"
             onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
@@ -112,12 +120,12 @@ const Header: React.FC = () => {
           </button>
           <Link
             href="#"
-            className="hidden lg:flex items-center bg-primary border border-primary hover:border-primary dark:text-white text-white px-4 py-2  gap-2 rounded-lg text-16 font-semibold hover:bg-transparent hover:text-primary dark:hover:text-primary"
+            className="hidden lg:flex items-center bg-primary border border-primary hover:border-primary dark:text-white text-white px-4 py-2 gap-2 rounded-lg text-16 font-semibold hover:bg-transparent hover:text-primary dark:hover:text-primary transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/30"
             onClick={() => {
               setIsSignInOpen(true);
             }}
           >
-            Sign In
+            {t("header.signIn")}
             <Icon icon="solar:arrow-right-linear" width="24" height="24" />
           </Link>
           {isSignInOpen && (
@@ -137,12 +145,12 @@ const Header: React.FC = () => {
           )}
           <Link
             href="#"
-            className="hidden lg:flex items-center border border-primary dark:hover:border-primary bg-transparent dark:text-primary text-primary  px-4 py-2  gap-2 rounded-lg text-16 font-semibold hover:bg-primary hover:text-white dark:hover:text-white"
+            className="hidden lg:flex items-center border border-primary dark:hover:border-primary bg-transparent dark:text-primary text-primary px-4 py-2 gap-2 rounded-lg text-16 font-semibold hover:bg-primary hover:text-white dark:hover:text-white transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/30"
             onClick={() => {
               setIsSignUpOpen(true);
             }}
           >
-            Sign Up
+            {t("header.signUp")}
             <Icon icon="solar:arrow-right-linear" width="24" height="24" />
           </Link>
           {isSignUpOpen && (
@@ -173,7 +181,7 @@ const Header: React.FC = () => {
       </div>
       <div
         ref={mobileMenuRef}
-        className={`lg:hidden fixed top-0 right-0  h-full w-full bg-white shadow-lg transform transition-transform duration-300 max-w-xs ${
+        className={`lg:hidden fixed top-0 right-0 h-full w-full bg-white dark:bg-darkheader shadow-lg transform transition-transform duration-300 max-w-xs ${
           navbarOpen ? "-translate-x-0" : "translate-x-full"
         }`}
       >
@@ -216,7 +224,7 @@ const Header: React.FC = () => {
                 setNavbarOpen(false); // Close the mobile menu
               }}
             >
-              Sign In
+              {t("header.signIn")}
             </Link>
             <Link
               href="#"
@@ -226,7 +234,7 @@ const Header: React.FC = () => {
                 setNavbarOpen(false); // Close the mobile menu
               }}
             >
-              Sign Up
+              {t("header.signUp")}
             </Link>
           </div>
         </nav>

@@ -4,6 +4,7 @@ import { motion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
 import { Icon } from "@iconify/react";
+import { useTranslation } from "@/context/LanguageContext";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -27,6 +28,7 @@ const itemVariants = {
 };
 
 const Method = () => {
+  const { t, dictionary } = useTranslation();
   return (
     <section className="dark:bg-darkmode overflow-hidden py-14">
       <div className="container mx-auto lg:max-w-(--breakpoint-xl) md:max-w-(--breakpoint-md) px-4">
@@ -39,34 +41,33 @@ const Method = () => {
         >
           <motion.div variants={itemVariants} className="text-center">
             <h2 className="md:text-35 sm:text-28 text-24 text-midnight_text font-bold mb-5 dark:text-white lg:max-w-full sm:max-w-[75%] mx-auto leading-tight">
-              Many ways to manage your
-              <span className="text-primary max-w-max ml-2">
-                online payment
+              {t("method.title1")}
+              <span className="text-primary max-w-max ml-2 mr-2">
+                {t("method.highlight")}
               </span>
+              {t("method.title2")}
             </h2>
             <p className="font-medium xl:max-w-[45%] lg:max-w-[50%] md:max-w-[75%] text-17 mx-auto text-muted dark:text-white/70">
-              Embed powerful financial features into your product. Build in
-              minutes, launch in weeks.
+              {t("method.subtitle")}
             </p>
           </motion.div>
           
           <div className="grid grid-cols-2 gap-6 mt-16">
             <motion.div variants={itemVariants} className="col-span-2">
-              <div className="bg-white dark:bg-search rounded-3xl overflow-hidden shadow-xs transition-transform duration-300 hover:-translate-y-1">
+              <div className="bg-white dark:bg-search rounded-3xl overflow-hidden shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl dark:border dark:border-white/5 dark:hover:border-white/10 group">
                 <div className="grid lg:grid-cols-2 items-center gap-10">
-                  <div className="lg:py-14 py-10 lg:pl-14 px-8">
+                  <div className="lg:py-14 py-8 lg:pl-14 px-5 sm:px-8">
                     <h3 className="md:text-25 text-22 font-bold mb-4 dark:text-white text-midnight_text">
-                      Physical & Virtual Cards
+                      {dictionary.method.cards[0]?.title}
                     </h3>
                     <p className="text-muted dark:text-white/70 md:text-18 text-16 mb-8 leading-relaxed">
-                      Fully programmable, debit and credit physical & virtual
-                      cards for individuals and businesses. Let your users access their money instantly.
+                      {dictionary.method.cards[0]?.details}
                     </p>
                     <Link
                       href="#"
                       className="text-17 flex w-fit gap-2 items-center hover:text-primary/80 transition-colors text-primary font-medium"
                     >
-                      Get Started
+                      {t("method.getStarted")}
                       <Icon
                         icon="solar:alt-arrow-right-linear"
                         width="18"
@@ -90,20 +91,20 @@ const Method = () => {
             <div className="flex flex-col gap-6 lg:col-span-1 col-span-2">
               <motion.div
                 variants={itemVariants}
-                className="bg-white dark:bg-search flex flex-col sm:flex-row gap-6 items-center rounded-3xl overflow-hidden shadow-xs transition-transform duration-300 hover:-translate-y-1 group"
+                className="bg-white dark:bg-search flex flex-col sm:flex-row sm:gap-6 items-stretch rounded-3xl overflow-hidden shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl dark:border dark:border-white/5 dark:hover:border-white/10 group"
               >
-                <div className="flex-1 sm:pl-10 p-8 sm:pr-0 pb-0 sm:pb-8">
+                <div className="flex-1 sm:pl-8 p-5 sm:p-0 sm:pb-8">
                   <h3 className="md:text-25 text-22 font-bold mb-4 dark:text-white text-midnight_text">
-                    Banking
+                    {dictionary.method.cards[1]?.title}
                   </h3>
                   <p className="text-muted dark:text-white/70 text-16 mb-6 leading-relaxed">
-                    Offer full checking and savings accounts alongside your product seamlessly.
+                    {dictionary.method.cards[1]?.details}
                   </p>
                   <Link
                     href="#"
                     className="text-16 flex w-fit gap-2 items-center hover:text-primary/80 transition-colors font-medium text-primary"
                   >
-                    Get Started
+                    {t("method.getStarted")}
                     <Icon
                       icon="solar:alt-arrow-right-linear"
                       width="18"
@@ -111,7 +112,7 @@ const Method = () => {
                     />
                   </Link>
                 </div>
-                <div className="flex-1 w-full h-full overflow-hidden">
+                <div className="w-full h-56 sm:h-auto sm:flex-1 overflow-hidden">
                   <Image
                     src="/images/method/method1.jpg"
                     alt="banking app"
@@ -124,20 +125,20 @@ const Method = () => {
 
               <motion.div
                 variants={itemVariants}
-                className="bg-white dark:bg-search flex flex-col sm:flex-row gap-6 items-center rounded-3xl overflow-hidden shadow-xs transition-transform duration-300 hover:-translate-y-1 group"
+                className="bg-white dark:bg-search flex flex-col sm:flex-row sm:gap-6 items-stretch rounded-3xl overflow-hidden shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl dark:border dark:border-white/5 dark:hover:border-white/10 group"
               >
-                <div className="flex-1 sm:pl-10 p-8 sm:pr-0 pb-0 sm:pb-8">
+                <div className="flex-1 sm:pl-8 p-5 sm:p-0 sm:pb-8">
                   <h3 className="md:text-25 text-22 font-bold mb-4 dark:text-white text-midnight_text">
-                    Payments
+                    {dictionary.method.cards[2]?.title}
                   </h3>
                   <p className="text-muted dark:text-white/70 text-16 mb-6 leading-relaxed">
-                    Accept global payments with our unified API and intelligent routing engine.
+                    {dictionary.method.cards[2]?.details}
                   </p>
                   <Link
                     href="#"
                     className="text-16 flex w-fit gap-2 items-center hover:text-primary/80 transition-colors font-medium text-primary"
                   >
-                    Get Started
+                    {t("method.getStarted")}
                     <Icon
                       icon="solar:alt-arrow-right-linear"
                       width="18"
@@ -145,7 +146,7 @@ const Method = () => {
                     />
                   </Link>
                 </div>
-                <div className="flex-1 w-full h-full overflow-hidden">
+                <div className="w-full h-56 sm:h-auto sm:flex-1 overflow-hidden">
                   <Image
                     src="/images/method/method3.jpg"
                     alt="payments app"
@@ -160,7 +161,7 @@ const Method = () => {
             <div className="flex flex-col gap-6 lg:col-span-1 col-span-2">
               <motion.div
                 variants={itemVariants}
-                className="bg-white dark:bg-search rounded-3xl overflow-hidden shadow-xs flex flex-col h-full hover:-translate-y-1 transition-transform duration-300 group"
+                className="bg-white dark:bg-search rounded-3xl overflow-hidden shadow-md flex flex-col h-full hover:-translate-y-2 hover:shadow-2xl transition-all duration-300 dark:border dark:border-white/5 dark:hover:border-white/10 group"
               >
                 <div className="flex-1 overflow-hidden overflow-hidden">
                   <Image
@@ -173,16 +174,16 @@ const Method = () => {
                 </div>
                 <div className="flex-1 px-10 flex justify-center flex-col py-10">
                   <h3 className="md:text-25 text-22 font-bold mb-4 dark:text-white text-midnight_text">
-                    Access $175,000 in partner rewards
+                    {dictionary.method.cards[3]?.title}
                   </h3>
                   <p className="text-muted dark:text-white/70 text-16 mb-8 leading-relaxed">
-                    Unlock exclusive offers and credits from our built-in partners like AWS, Stripe, and Hubspot.
+                    {dictionary.method.cards[3]?.details}
                   </p>
                   <Link
                     href="#"
                     className="text-17 flex w-fit gap-2 items-center hover:text-primary/80 transition-colors font-medium text-primary"
                   >
-                    Get Started
+                    {t("method.getStarted")}
                     <Icon
                       icon="solar:alt-arrow-right-linear"
                       width="18"

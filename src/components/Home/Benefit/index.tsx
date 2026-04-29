@@ -4,6 +4,7 @@ import Image from "next/image";
 import { motion } from "motion/react";
 import { Icon } from "@iconify/react";
 import { BeneifitImage } from "@/app/api/data";
+import { useTranslation } from "@/context/LanguageContext";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -27,16 +28,17 @@ const itemVariants = {
 };
 
 const imageVariants = {
-  hidden: { x: -30, opacity: 0, scale: 0.96 },
+  hidden: { x: -50, opacity: 0, scale: 0.9 },
   visible: {
     x: 0,
     opacity: 1,
     scale: 1,
-    transition: { duration: 0.8, ease },
+    transition: { duration: 1, ease },
   },
 };
 
 const Benefit = () => {
+  const { t, dictionary } = useTranslation();
   return (
     <section className="dark:bg-darkmode py-14 overflow-x-hidden">
       <div className="container lg:max-w-(--breakpoint-xl) md:max-w-(--breakpoint-md) px-4 mx-auto">
@@ -49,12 +51,12 @@ const Benefit = () => {
         >
           <motion.div variants={itemVariants} className="items-start mb-12">
             <h2 className="font-bold md:text-35 sm:text-28 text-24 text-midnight_text dark:text-white">
-              Why developers choose
+              {t("benefit.title1")}
               <span className="bg-border dark:bg-darkHeroBg rounded-lg text-primary max-w-max ml-2 px-2 pb-1">
-                Payflow
+                {t("benefit.highlight")}
               </span>
               <br />
-              for their payment stack.
+              {t("benefit.title2")}
             </h2>
           </motion.div>
 
@@ -70,7 +72,7 @@ const Benefit = () => {
                   width={435}
                   height={304}
                   style={{ width: "100%", height: "100%" }}
-                  className="rounded-xl drop-shadow-sm"
+                  className="rounded-xl drop-shadow-xl hover:scale-105 transition-transform duration-700"
                 />
               </div>
             </motion.div>
@@ -83,8 +85,7 @@ const Benefit = () => {
                 variants={itemVariants}
                 className="sm:text-25 text-18 text-midnight_text font-medium dark:text-white/90 mb-8"
               >
-                Grow revenues and delight your customers by building financial
-                features.
+                {t("benefit.subtitle")}
               </motion.p>
 
               <div className="space-y-6">
@@ -92,9 +93,9 @@ const Benefit = () => {
                   <motion.div
                     key={index}
                     variants={itemVariants}
-                    className="sm:flex items-start group"
+                    className="flex flex-col sm:flex-row items-start group"
                   >
-                    <div className="bg-white dark:bg-search p-2 rounded-lg sm:mr-4 sm:mb-0 mb-3 shadow-xs shrink-0 transition-transform duration-300 group-hover:scale-105">
+                    <div className="bg-white dark:bg-search p-2 rounded-lg sm:mr-4 sm:mb-0 mb-3 shadow-xs shrink-0 w-fit transition-all duration-300 group-hover:scale-110 group-hover:rotate-3 group-hover:shadow-md">
                       <Image
                         src={item.image}
                         alt={item.alt || "Trusted brand"}
@@ -104,7 +105,7 @@ const Benefit = () => {
                       />
                     </div>
                     <p className="text-17 text-muted dark:text-white/70 pt-1 leading-snug">
-                      {item.details}
+                      {(dictionary.benefit.items as any)[index]}
                     </p>
                   </motion.div>
                 ))}
@@ -116,9 +117,9 @@ const Benefit = () => {
               >
                 <Link
                   href="#"
-                  className="text-17 flex gap-3 items-center bg-primary text-white py-3 px-8 rounded-lg border border-primary hover:text-primary hover:bg-transparent transition-colors duration-200"
+                  className="text-17 flex gap-3 items-center bg-primary text-white py-3 px-8 rounded-lg border border-primary hover:text-primary hover:bg-transparent transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/30"
                 >
-                  Get Started
+                  {t("benefit.getStarted")}
                   <Icon
                     icon="solar:alt-arrow-right-linear"
                     width="13"

@@ -3,6 +3,7 @@ import React, { FC, useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "motion/react";
 import { Icon } from "@iconify/react";
+import { useTranslation } from "@/context/LanguageContext";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -26,6 +27,7 @@ const itemVariants = {
 };
 
 const Spend: FC = () => {
+  const { t } = useTranslation();
   const [isModalOpen, setIsVideoOpen] = useState<boolean>(false);
 
   const openModal = (): void => {
@@ -58,11 +60,11 @@ const Spend: FC = () => {
       >
         <motion.div variants={itemVariants} className="text-center">
           <h2 className="md:text-35 sm:text-28 text-24 text-midnight_text font-bold mb-5 dark:text-white leading-tight">
-            The best way to
-            <span className="text-primary ml-2">spend and save</span>
+            {t("spend.title1")}
+            <span className="text-primary ml-2">{t("spend.highlight")}</span>
           </h2>
-          <p className="text-17 text-muted dark:text-white/70 lg:font-medium mx-1 lg:max-w-[60%] lg:mx-auto mb-3 leading-relaxed">
-            Gain full visibility into your company's expenses. Track real-time transactions, set intelligent budgets, and eliminate unnecessary spending effortlessly.
+          <p className="text-17 text-muted dark:text-white/70 lg:font-medium lg:max-w-[60%] lg:mx-auto mb-3 leading-relaxed">
+            {t("spend.subtitle")}
           </p>
         </motion.div>
         
@@ -88,20 +90,20 @@ const Spend: FC = () => {
         <AnimatePresence>
           {isModalOpen && (
             <div 
-              className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4 cursor-default"
+              className="fixed inset-0 bg-black/60 backdrop-blur-md z-50 flex items-center justify-center p-4 cursor-default"
               onClick={closeModal}
             >
               <motion.div 
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.95 }}
-                transition={{ duration: 0.2 }}
+                initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.9, y: 20 }}
+                transition={{ type: "spring", damping: 25, stiffness: 300 }}
                 className="bg-white dark:bg-darkmode rounded-2xl w-full max-w-4xl overflow-hidden shadow-2xl"
                 onClick={(e) => e.stopPropagation()}
               >
                 <div className="flex items-center justify-between border-b border-border dark:border-dark_border p-5">
                   <h3 className="text-18 font-semibold text-midnight_text dark:text-white">
-                    Product Overview
+                    {t("spend.productOverview")}
                   </h3>
                   <button
                     onClick={closeModal}

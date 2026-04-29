@@ -1,0 +1,167 @@
+{
+  "header": {
+    "home": "Home",
+    "services": "Services",
+    "pricing": "Pricing",
+    "blog": "Blog",
+    "bloglist": "Blog List",
+    "blogdetails": "Blog Details",
+    "contact": "Contact",
+    "signIn": "Sign In",
+    "signUp": "Sign Up"
+  },
+  "hero": {
+    "title1": "The fastest way to",
+    "highlight": "embed payments",
+    "title2": "into your product.",
+    "subtitle": "Powerful payment APIs built for developers. Go live in days, not months.",
+    "getStarted": "Get Started",
+    "seeFeatures": "See Features",
+    "trustedBy": "Trusted by"
+  },
+  "payment": {
+    "title1": "Easy and affordable for your personal and",
+    "highlight": "payment infrastructure",
+    "title2": "needs.",
+    "items": ["APIs", "Routing", "Payouts", "Ledger", "Analytics"],
+    "cards": {
+      "0": {
+        "title": "Create an account",
+        "details": "Sign up in minutes with securely encrypted credentials. Your dashboard is ready instantly to start managing transactions."
+      },
+      "1": {
+        "title": "Verify your identity",
+        "details": "Quick and seamless KYC process to ensure your account meets compliance standards without delaying your launch."
+      },
+      "2": {
+        "title": "Link your bank account",
+        "details": "Connect your preferred payout methods instantly through our secure banking integrations to receive your funds."
+      }
+    }
+  },
+  "benefit": {
+    "title1": "Why developers choose",
+    "highlight": "Payflow",
+    "title2": "for their payment stack.",
+    "subtitle": "Grow revenues and delight your customers by building financial features.",
+    "items": {
+      "0": "Stop wasteful spend and save thousands with unlimited points and insights that maximize savings.",
+      "1": "See where the company money is going in real time.",
+      "2": "Powered by the free app that helps you run your whole business.",
+      "3": "No more lost receipts and tedious paperwork.",
+      "4": "It's an all-digital card designed for online, and even in-store shopping."
+    },
+    "getStarted": "Get Started"
+  },
+  "spend": {
+    "title1": "The best way to",
+    "highlight": "spend and save",
+    "subtitle": "Gain full visibility into your company's expenses. Track real-time transactions, set intelligent budgets, and eliminate unnecessary spending effortlessly.",
+    "productOverview": "Product Overview"
+  },
+  "method": {
+    "title1": "Many ways to manage your",
+    "highlight": "online payment",
+    "title2": "",
+    "subtitle": "Embed powerful financial features into your product. Build in minutes, launch in weeks.",
+    "getStarted": "Get Started",
+    "cards": {
+      "0": {
+        "title": "Physical & Virtual Cards",
+        "details": "Fully programmable, debit and credit physical & virtual cards for individuals and businesses. Let your users access their money instantly."
+      },
+      "1": {
+        "title": "Banking",
+        "details": "Offer full checking and savings accounts alongside your product seamlessly."
+      },
+      "2": {
+        "title": "Payments",
+        "details": "Accept global payments with our unified API and intelligent routing engine."
+      },
+      "3": {
+        "title": "Access $175,000 in partner rewards",
+        "details": "Unlock exclusive offers and credits from our built-in partners like AWS, Stripe, and Hubspot."
+      }
+    }
+  },
+  "pricing": {
+    "title1": "Simple,",
+    "highlight": "transparent pricing",
+    "subtitle": "No hidden fees. No surprises. Pick the plan that fits your volume and scale as you grow.",
+    "monthly": "Monthly",
+    "annually": "Annually",
+    "free": "Free",
+    "monthlyServiceFee": "Monthly service fee",
+    "directDebits": "Direct debits",
+    "onlinePayments": "Online payments",
+    "depositsToSavers": "Deposits to Savers",
+    "atmWithdrawals": "ATM withdrawals",
+    "internationalFees": "International transaction fees",
+    "internationalAtm": "International ATM withdrawal",
+    "overdrawnInterest": "Overdrawn interest rate",
+    "freeUnlimited": "Free & unlimited",
+    "starter": "Starter",
+    "growth": "Growth",
+    "scale": "Scale",
+    "mostPopular": "Most Popular",
+    "tryFree": "Try for free",
+    "tryFree14": "Try free for 14 days"
+  },
+  "search": {
+    "title1": "Start accepting payments in under",
+    "highlight": "15 minutes",
+    "title2": "",
+    "placeholder": "Enter your email address",
+    "getDemo": "Get Demo",
+    "noFees": "No setup fees, no monthly minimums. Pay only for what you use.",
+    "review": "Payflow cut our integration time from weeks to days. The API is clean, the docs are excellent, and the support team actually responds. It's the payment layer we always wanted.",
+    "ratings": "/5 • 1800+ ratings"
+  },
+  "mobile": {
+    "title1": "Mobile wallets made for",
+    "highlight": "any situation",
+    "subtitle": "Cards issued through us can easily be added to mobile wallets to be used to buy online, in-store, and in-app instantly.",
+    "getStarted": "Get Started",
+    "perks": {
+      "0": "When you pay with a debit or credit card, Mobile App doesn't keep transaction information that can be tied back to you.",
+      "1": "Digital wallets are becoming more popular than ever before.",
+      "2": "You can also add your student ID card to Wallet to access places like your dorm and the library."
+    }
+  },
+  "solution": {
+    "title1": "Enterprise",
+    "highlight": "Grade",
+    "subtitle": "Custom contracts, dedicated support, and SLA guarantees for teams processing high volumes.",
+    "getStarted": "Get Started"
+  },
+  "footer": {
+    "address": "1 Fintech Plaza, London EC2V 8RT,",
+    "country": "United Kingdom",
+    "features": "Features",
+    "resources": "Resources",
+    "platform": "Platform",
+    "signUpUpdates": "Sign up for updates",
+    "emailPlaceholder": "Enter your email address",
+    "getApp": "Get App",
+    "copyright": "© Copyright 2025. All rights reserved by Payflow.",
+    "links": {
+      "0": "Payment APIs",
+      "1": "Smart Routing",
+      "2": "Multi-currency",
+      "3": "Instant Payouts",
+      "4": "Documentation",
+      "5": "Integrations",
+      "6": "API Reference",
+      "7": "Support",
+      "8": "Help",
+      "9": "Infrastructure",
+      "10": "Compliance",
+      "11": "Certifications",
+      "12": "Licenses",
+      "13": "Terms and conditions",
+      "14": "Privacy",
+      "15": "Cookies",
+      "16": "Disclaimer"
+    }
+  }
+}

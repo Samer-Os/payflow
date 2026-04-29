@@ -1,8 +1,10 @@
 import { useState } from "react";
 import Link from "next/link";
 import { HeaderItem } from "../../../../types/menu";
+import { useTranslation } from "@/context/LanguageContext";
 
 const MobileHeaderLink: React.FC<{ item: HeaderItem }> = ({ item }) => {
+  const { t } = useTranslation();
   const [submenuOpen, setSubmenuOpen] = useState(false);
 
   const handleToggle = () => {
@@ -16,7 +18,7 @@ const MobileHeaderLink: React.FC<{ item: HeaderItem }> = ({ item }) => {
         onClick={item.submenu ? handleToggle : undefined}
         className="flex items-center justify-between w-full py-2 text-black focus:outline-hidden"
       >
-        {item.label}
+        {t(`header.${item.label.toLowerCase().trim().replace(" ", "")}`)}
         {item.submenu && (
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -43,7 +45,7 @@ const MobileHeaderLink: React.FC<{ item: HeaderItem }> = ({ item }) => {
               href={subItem.href}
               className="block py-2 text-midnight_text hover:bg-primary hover:text-white "
             >
-              {subItem.label}
+              {t(`header.${subItem.label.toLowerCase().trim().replace(" ", "")}`)}
             </Link>
           ))}
         </div>

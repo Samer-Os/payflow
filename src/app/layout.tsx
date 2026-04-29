@@ -5,6 +5,7 @@ import Footer from "@/components/Layout/Footer";
 import { ThemeProvider } from "next-themes";
 import SessionProviderComp from "@/components/nextauth/SessionProvider";
 import { AuthDialogProvider } from "./context/AuthDialogContext";
+import { LanguageProvider } from "@/context/LanguageContext";
 import ScrollToTop from "@/components/ScrollToTop";
 const dmsans = DM_Sans({ subsets: ["latin"] });
 
@@ -15,27 +16,27 @@ export const metadata = {
 
 export default function RootLayout({
   children,
-  session,
 }: Readonly<{
   children: React.ReactNode;
-  session: any;
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${dmsans.className}`}>
         <AuthDialogProvider>
-          <SessionProviderComp session={session}>
-            <ThemeProvider
-              attribute="class"
-              enableSystem={false}
-              defaultTheme="light"
-            >
-              <Header />
-              {children}
-              <Footer />
-              <ScrollToTop />
-            </ThemeProvider>
-          </SessionProviderComp>
+          <LanguageProvider>
+            <SessionProviderComp>
+              <ThemeProvider
+                attribute="class"
+                enableSystem={false}
+                defaultTheme="light"
+              >
+                <Header />
+                {children}
+                <Footer />
+                <ScrollToTop />
+              </ThemeProvider>
+            </SessionProviderComp>
+          </LanguageProvider>
         </AuthDialogProvider>
       </body>
     </html>

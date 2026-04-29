@@ -5,6 +5,7 @@ import { motion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
 import { review } from "@/app/api/data";
+import { useTranslation } from "@/context/LanguageContext";
 
 const containerVariants = {
   hidden: {},
@@ -26,6 +27,7 @@ const itemVariants = {
 };
 
 const Search = () => {
+  const { t } = useTranslation();
   const renderStars = (rating: number) => {
     const fullStars = Math.floor(rating);
     const halfStars = rating % 1 >= 0.5 ? 1 : 0;
@@ -86,27 +88,28 @@ const Search = () => {
               </div>
             </div>
             <h2 className="text-midnight_text font-bold dark:text-white md:text-50 sm:text-40 text-28 leading-tight mb-8">
-              Start accepting payments in under
+              {t("search.title1")}
               <br />
-              <span className="text-primary mt-2 inline-block">
-                15 minutes
+              <span className="text-primary mt-2 mr-2 inline-block">
+                {t("search.highlight")}
               </span>
+              {t("search.title2")}
             </h2>
             
             <div className="md:max-w-[75%] lg:max-w-[50%] mx-auto mt-10">
-              <div className="flex flex-col sm:flex-row items-center bg-white dark:bg-search shadow-lg rounded-[1.25rem] overflow-hidden border border-border dark:border-dark_border transition-all p-2 gap-2">
+              <div className="flex flex-row items-center bg-white dark:bg-search shadow-lg rounded-[1.25rem] overflow-hidden border border-border dark:border-dark_border transition-all p-1.5 sm:p-2 gap-1.5 sm:gap-2">
                 <div className="hidden sm:flex pl-4 items-center text-muted">
                     <Icon icon="solar:letter-linear" width="24" height="24" />
                 </div>
                 <input
                   type="email"
-                  placeholder="Enter your email address"
-                  className="grow px-4 py-4 font-medium text-midnight_text dark:text-white bg-transparent border-none focus:ring-0 w-full placeholder:text-muted/60 dark:placeholder:text-white/40 outline-none"
+                  placeholder={t("search.placeholder")}
+                  className="grow min-w-0 px-3 sm:px-4 py-3 sm:py-4 font-medium text-midnight_text dark:text-white bg-transparent border-none focus:ring-0 w-full placeholder:text-muted/60 dark:placeholder:text-white/40 outline-none text-14 sm:text-16"
                 />
                 <button
-                  className="text-17 flex items-center justify-center bg-primary text-white py-3.5 px-8 rounded-xl w-full sm:w-auto border border-primary hover:text-primary hover:bg-transparent transition-colors font-medium whitespace-nowrap"
+                  className="text-14 sm:text-17 flex items-center justify-center bg-primary text-white py-2.5 sm:py-3.5 px-4 sm:px-8 rounded-xl border border-primary hover:text-primary hover:bg-transparent transition-colors font-medium whitespace-nowrap shrink-0"
                 >
-                  Get Demo
+                  {t("search.getDemo")}
                 </button>
               </div>
               <div className="flex items-center justify-center mt-8 mb-16">
@@ -119,7 +122,7 @@ const Search = () => {
                   />
                 </div>
                 <p className="ml-3 text-16 text-midnight_text/70 dark:text-white/70 font-medium text-left">
-                  No setup fees, no monthly minimums. Pay only for what you use.
+                  {t("search.noFees")}
                 </p>
               </div>
             </div>
@@ -134,7 +137,7 @@ const Search = () => {
                 <div className="grid lg:grid-cols-2 lg:gap-14 gap-10 relative z-10 w-full">
                   <div className="flex flex-col h-full justify-between pr-0 lg:pr-6">
                     <p className="text-midnight_text/90 dark:text-white/90 text-18 lg:text-20 leading-relaxed font-medium mb-10 italic">
-                      "{item.text}"
+                      "{t("search.review")}"
                     </p>
                     <div className="flex items-center gap-5 p-4 rounded-2xl w-full sm:w-max">
                       <Image
@@ -156,7 +159,7 @@ const Search = () => {
                   </div>
                   
                   <div className="flex sm:items-center items-start lg:justify-end sm:flex-row flex-col gap-6 lg:gap-8 pt-8 lg:pt-0 lg:pl-10 lg:border-l border-border dark:border-dark_border dark:border-dashed">
-                    <div className="flex flex-col items-center sm:items-start bg-heroBg dark:bg-search/80 p-6 rounded-[1.5rem] hover:-translate-y-1 transition-transform duration-300 w-full sm:w-auto shadow-sm border border-transparent dark:border-white/5">
+                    <div className="flex flex-col items-center sm:items-start bg-heroBg dark:bg-search/80 p-6 rounded-[1.5rem] hover:-translate-y-2 transition-all duration-300 w-full sm:w-auto shadow-sm hover:shadow-lg hover:shadow-primary/20 border border-transparent dark:border-white/5">
                       <div className="mb-5 flex flex-col items-center sm:items-start w-full">
                         <div className="flex gap-1.5 mb-3">
                           {renderStars(parseFloat(item.appstorerating))}
@@ -165,7 +168,7 @@ const Search = () => {
                           <span className="text-midnight_text dark:text-white font-bold text-24 mr-2">
                             {item.appstorerating}
                           </span>
-                          /5 • 1800+ ratings
+                          {t("search.ratings")}
                         </p>
                       </div>
                       <Link href="#" className="block hover:opacity-80 transition-opacity w-full">
@@ -179,7 +182,7 @@ const Search = () => {
                       </Link>
                     </div>
                     
-                    <div className="flex flex-col items-center sm:items-start bg-heroBg dark:bg-search/80 p-6 rounded-[1.5rem] hover:-translate-y-1 transition-transform duration-300 w-full sm:w-auto shadow-sm border border-transparent dark:border-white/5">
+                    <div className="flex flex-col items-center sm:items-start bg-heroBg dark:bg-search/80 p-6 rounded-[1.5rem] hover:-translate-y-2 transition-all duration-300 w-full sm:w-auto shadow-sm hover:shadow-lg hover:shadow-primary/20 border border-transparent dark:border-white/5">
                       <div className="mb-5 flex flex-col items-center sm:items-start w-full">
                         <div className="flex gap-1.5 mb-3">
                           {renderStars(parseFloat(item.gplayrating))}
@@ -188,7 +191,7 @@ const Search = () => {
                           <span className="text-midnight_text dark:text-white font-bold text-24 mr-2">
                             {item.gplayrating}
                           </span>
-                          /5 • 1800+ ratings
+                          {t("search.ratings")}
                         </p>
                       </div>
                       <Link href="#" className="block hover:opacity-80 transition-opacity w-full">

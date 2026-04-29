@@ -1,0 +1,167 @@
+{
+  "header": {
+    "home": "Ana Sayfa",
+    "services": "Hizmetler",
+    "pricing": "Fiyatlandırma",
+    "blog": "Blog",
+    "bloglist": "Blog Listesi",
+    "blogdetails": "Blog Detayı",
+    "contact": "İletişim",
+    "signIn": "Giriş Yap",
+    "signUp": "Kayıt Ol"
+  },
+  "hero": {
+    "title1": "Ürününüze",
+    "highlight": "ödeme altyapısı",
+    "title2": "eklemenin en hızlı yolu.",
+    "subtitle": "Geliştiriciler için oluşturulmuş güçlü ödeme API'leri. Aylar değil, günler içinde canlıya alın.",
+    "getStarted": "Hemen Başla",
+    "seeFeatures": "Özellikleri Gör",
+    "trustedBy": "Güvenenler:"
+  },
+  "payment": {
+    "title1": "Kişisel ve",
+    "highlight": "ödeme altyapısı",
+    "title2": "ihtiyaçlarınız için kolay ve uygun fiyatlı.",
+    "items": ["API'ler", "Yönlendirme", "Ödemeler", "Defter", "Analitik"],
+    "cards": {
+      "0": {
+        "title": "Hesap oluşturun",
+        "details": "Güvenli bir şekilde şifrelenmiş kimlik bilgileriyle dakikalar içinde kaydolun. İşlemleri yönetmeye başlamak için kontrol paneliniz anında hazır."
+      },
+      "1": {
+        "title": "Kimliğinizi doğrulayın",
+        "details": "Hesabınızın lansmanınızı geciktirmeden uyumluluk standartlarını karşıladığından emin olmak için hızlı ve sorunsuz KYC süreci."
+      },
+      "2": {
+        "title": "Banka hesabınızı bağlayın",
+        "details": "Fonlarınızı almak için tercih ettiğiniz ödeme yöntemlerini güvenli bankacılık entegrasyonlarımız aracılığıyla anında bağlayın."
+      }
+    }
+  },
+  "benefit": {
+    "title1": "Geliştiriciler ödeme altyapıları için neden",
+    "highlight": "Payflow'u",
+    "title2": "tercih ediyor?",
+    "subtitle": "Finansal özellikler geliştirerek gelirinizi artırın ve müşterilerinizi memnun edin.",
+    "items": {
+      "0": "Gereksiz harcamaları durdurun ve tasarrufları en üst düzeye çıkaran sınırsız puan ve içgörülerle binlerce tasarruf edin.",
+      "1": "Şirket parasının nereye gittiğini gerçek zamanlı olarak görün.",
+      "2": "Tüm işinizi yönetmenize yardımcı olan ücretsiz uygulama tarafından desteklenmektedir.",
+      "3": "Artık kayıp makbuzlar ve sıkıcı evrak işleri yok.",
+      "4": "Çevrimiçi ve hatta mağaza içi alışveriş için tasarlanmış tamamen dijital bir karttır."
+    },
+    "getStarted": "Hemen Başla"
+  },
+  "spend": {
+    "title1": "Harcama ve birikim yapmanın",
+    "highlight": "en iyi yolu",
+    "subtitle": "Şirketinizin harcamalarına tam görünürlük kazandırın. Gerçek zamanlı işlemleri takip edin, akıllı bütçeler belirleyin ve gereksiz harcamaları zahmetsizce ortadan kaldırın.",
+    "productOverview": "Ürüne Genel Bakış"
+  },
+  "method": {
+    "title1": "",
+    "highlight": "Çevrimiçi ödemelerinizi",
+    "subtitle": "Ürününüze güçlü finansal özellikler entegre edin. Dakikalar içinde geliştirin, haftalar içinde canlıya alın.",
+    "title2": "yönetmenin birçok yolu",
+    "getStarted": "Hemen Başla",
+    "cards": {
+      "0": {
+        "title": "Fiziksel ve Sanal Kartlar",
+        "details": "Bireyler ve işletmeler için tamamen programlanabilir, banka ve kredi fiziksel ve sanal kartları. Kullanıcılarınızın paralarına anında erişmesine izin verin."
+      },
+      "1": {
+        "title": "Bankacılık",
+        "details": "Ürününüzün yanı sıra eksiksiz vadesiz ve tasarruf hesapları sunun."
+      },
+      "2": {
+        "title": "Ödemeler",
+        "details": "Birleşik API'miz ve akıllı yönlendirme motorumuzla küresel ödemeleri kabul edin."
+      },
+      "3": {
+        "title": "175.000$ partner ödüllerine erişin",
+        "details": "AWS, Stripe ve Hubspot gibi yerleşik ortaklarımızdan özel tekliflerin ve kredilerin kilidini açın."
+      }
+    }
+  },
+  "pricing": {
+    "title1": "Basit,",
+    "highlight": "şeffaf fiyatlandırma",
+    "subtitle": "Gizli ücret yok. Sürpriz yok. Hacminize uyan planı seçin ve büyüdükçe ölçeklendirin.",
+    "monthly": "Aylık",
+    "annually": "Yıllık",
+    "free": "Ücretsiz",
+    "monthlyServiceFee": "Aylık hizmet ücreti",
+    "directDebits": "Otomatik ödemeler",
+    "onlinePayments": "Çevrimiçi ödemeler",
+    "depositsToSavers": "Tasarruf hesaplarına mevduat",
+    "atmWithdrawals": "ATM para çekme işlemleri",
+    "internationalFees": "Uluslararası işlem ücretleri",
+    "internationalAtm": "Uluslararası ATM para çekme",
+    "overdrawnInterest": "Kredili mevduat faiz oranı",
+    "freeUnlimited": "Ücretsiz & Sınırsız",
+    "starter": "Başlangıç",
+    "growth": "Büyüme",
+    "scale": "Ölçek",
+    "mostPopular": "En Popüler",
+    "tryFree": "Ücretsiz dene",
+    "tryFree14": "14 gün ücretsiz dene"
+  },
+  "search": {
+    "title1": "Ödeme almaya 15",
+    "highlight": "dakikadan kısa",
+    "title2": "sürede başlayın",
+    "placeholder": "E-posta adresinizi girin",
+    "getDemo": "Demo Al",
+    "noFees": "Kurulum ücreti yok, aylık minimum yok. Sadece kullandığınız kadar ödeyin.",
+    "review": "Payflow entegrasyon süremizi haftalardan günlere indirdi. API temiz, dokümanlar mükemmel ve destek ekibi gerçekten yanıt veriyor. Her zaman istediğimiz ödeme katmanı bu.",
+    "ratings": "/5 • 1800+ değerlendirme"
+  },
+  "mobile": {
+    "title1": "Her duruma uygun",
+    "highlight": "mobil cüzdanlar",
+    "subtitle": "Bizim aracılığımızla çıkarılan kartlar; çevrimiçi, mağazada ve uygulama içi anlık alışverişlerde kullanmak için mobil cüzdanlara kolayca eklenebilir.",
+    "getStarted": "Hemen Başla",
+    "perks": {
+      "0": "Banka veya kredi kartıyla ödeme yaptığınızda, Mobil Uygulama sizi tanımlamaya yarayacak işlem bilgilerini saklamaz.",
+      "1": "Dijital cüzdanlar her zamankinden daha popüler hale geliyor.",
+      "2": "Öğrenci kimlik kartınızı Cüzdan'a ekleyerek yurt ve kütüphane gibi yerlere de erişebilirsiniz."
+    }
+  },
+  "solution": {
+    "title1": "Kurumsal",
+    "highlight": "Düzeyde",
+    "subtitle": "Yüksek hacimli işlemler gerçekleştiren ekipler için özel sözleşmeler, özel destek ve SLA garantileri.",
+    "getStarted": "Hemen Başla"
+  },
+  "footer": {
+    "address": "1 Fintech Plaza, London EC2V 8RT,",
+    "country": "Birleşik Krallık",
+    "features": "Özellikler",
+    "resources": "Kaynaklar",
+    "platform": "Platform",
+    "signUpUpdates": "Güncellemeler için kaydolun",
+    "emailPlaceholder": "E-posta adresinizi girin",
+    "getApp": "Uygulamayı İndir",
+    "copyright": "© Telif Hakkı 2025. Tüm hakları Payflow'a aittir.",
+    "links": {
+      "0": "Ödeme API'leri",
+      "1": "Akıllı Yönlendirme",
+      "2": "Çoklu para birimi",
+      "3": "Anında Ödemeler",
+      "4": "Dokümantasyon",
+      "5": "Entegrasyonlar",
+      "6": "API Referansı",
+      "7": "Destek",
+      "8": "Yardım",
+      "9": "Altyapı",
+      "10": "Uyumluluk",
+      "11": "Sertifikalar",
+      "12": "Lisanslar",
+      "13": "Şartlar ve koşullar",
+      "14": "Gizlilik",
+      "15": "Çerezler",
+      "16": "Sorumluluk Reddi"
+    }
+  }
+}

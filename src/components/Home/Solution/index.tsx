@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Icon } from "@iconify/react";
 import Image from "next/image";
 import { motion } from "motion/react";
+import { useTranslation } from "@/context/LanguageContext";
 
 const containerVariants = {
   hidden: {},
@@ -24,6 +25,8 @@ const itemVariants = {
 };
 
 const Solution = () => {
+  const { t } = useTranslation();
+
   return (
     <section className="dark:bg-darkmode overflow-x-hidden py-14">
       <div className="container mx-auto lg:max-w-(--breakpoint-xl) md:max-w-(--breakpoint-md) px-4">
@@ -37,18 +40,17 @@ const Solution = () => {
           <div className="grid lg:grid-cols-2 items-center gap-12">
             <motion.div variants={itemVariants}>
               <h2 className="md:text-35 sm:text-28 text-24 font-semibold text-midnight_text dark:text-white">
-                Enterprise
-                <span className="text-primary max-w-max ml-2">Grade</span>
+                {t("solution.title1")}
+                <span className="text-primary max-w-max ml-2">{t("solution.highlight")}</span>
               </h2>
               <p className="mt-6 text-base text-muted dark:text-white/70 lg:max-w-full sm:max-w-[75%]">
-                Custom contracts, dedicated support, and SLA guarantees for
-                teams processing high volumes.
+                {t("solution.subtitle")}
               </p>
               <Link
                 href="/contact"
                 className="lg:text-17 flex gap-4 w-fit items-center bg-primary text-white py-2 px-4 lg:py-3 lg:px-8 rounded-lg mt-12 border border-primary hover:text-primary hover:bg-transparent duration-300 transition-colors"
               >
-                Get Started
+                {t("solution.getStarted")}
                 <Icon
                   icon="solar:alt-arrow-right-linear"
                   width="20"
@@ -62,7 +64,7 @@ const Solution = () => {
                 alt="Enterprise Grade Solutions"
                 width={531}
                 height={200}
-                className="hover:scale-105 transition-transform duration-500"
+                className="w-full max-w-xs sm:max-w-md lg:max-w-full h-auto hover:scale-105 transition-transform duration-500"
               />
             </motion.div>
           </div>

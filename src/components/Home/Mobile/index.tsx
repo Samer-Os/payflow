@@ -3,7 +3,7 @@ import { motion } from "motion/react";
 import Link from "next/link";
 import { Icon } from "@iconify/react";
 import Image from "next/image";
-import { perks } from "@/app/api/data";
+import { useTranslation } from "@/context/LanguageContext";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -37,39 +37,40 @@ const imageVariants = {
 };
 
 const Mobile = () => {
+  const { t } = useTranslation();
+
   return (
     <section className="dark:bg-darkmode overflow-x-hidden py-14">
       <div className="container mx-auto lg:max-w-(--breakpoint-xl) md:max-w-(--breakpoint-md) px-4">
         <div className="grid md:grid-cols-12 items-center lg:gap-12 gap-8">
-          <motion.div 
+          <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-50px" }}
             variants={containerVariants}
             className="lg:col-span-6 col-span-12"
           >
-            <motion.h2 
+            <motion.h2
               variants={itemVariants}
               className="lg:text-40 text-28 text-midnight_text font-bold dark:text-white leading-tight"
             >
-              Mobile wallets made for
+              {t("mobile.title1")}
               <br />
               <span className="text-primary font-bold">
-                any situation
+                {t("mobile.highlight")}
               </span>
             </motion.h2>
-            <motion.p 
+            <motion.p
               variants={itemVariants}
               className="mt-6 text-muted dark:text-white/70 lg:text-18 text-16 lg:max-w-[90%] leading-relaxed"
             >
-              Cards issued through us can easily be added to mobile wallets to
-              be used to buy online, in-store, and in-app instantly.
+              {t("mobile.subtitle")}
             </motion.p>
-            
+
             <motion.div variants={containerVariants} className="flex flex-col gap-6 mt-12">
-              {perks.map((item, index) => (
-                <motion.div 
-                  key={index} 
+              {[0, 1, 2].map((index) => (
+                <motion.div
+                  key={index}
                   variants={itemVariants}
                   className="flex items-start gap-5 group"
                 >
@@ -82,18 +83,18 @@ const Mobile = () => {
                     />
                   </div>
                   <p className="text-16 pt-1 text-midnight_text/80 dark:text-white/80 leading-snug">
-                    {item.text}
+                    {t(`mobile.perks.${index}`)}
                   </p>
                 </motion.div>
               ))}
             </motion.div>
-            
+
             <motion.div variants={itemVariants} className="flex items-center justify-start">
               <Link
                 href="#"
                 className="lg:text-17 flex gap-3 items-center bg-primary text-white py-3 px-8 rounded-lg mt-12 border border-primary hover:text-primary hover:bg-transparent transition-colors duration-200"
               >
-                Get Started
+                {t("mobile.getStarted")}
                 <Icon
                   icon="solar:alt-arrow-right-linear"
                   width="13"
@@ -102,15 +103,15 @@ const Mobile = () => {
               </Link>
             </motion.div>
           </motion.div>
-          
-          <motion.div 
+
+          <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-50px" }}
-            variants={imageVariants} 
+            variants={imageVariants}
             className="lg:col-span-6 col-span-12 mt-10 lg:mt-0"
           >
-            <div className="lg:max-w-[85%] max-w-[75%] mx-auto relative drop-shadow-2xl">
+            <div className="max-w-[60%] sm:max-w-[55%] lg:max-w-[85%] mx-auto relative drop-shadow-2xl">
               <Image
                 src="/images/mobile/mobile.png"
                 alt="Mobile wallets display"

@@ -3,6 +3,7 @@ import { useReducer } from "react";
 import Link from "next/link";
 import { motion } from "motion/react";
 import { Icon } from "@iconify/react";
+import { useTranslation } from "@/context/LanguageContext";
 
 const containerVariants = {
   hidden: {},
@@ -42,6 +43,7 @@ interface Action {
 }
 
 const Pricing = () => {
+  const { t } = useTranslation();
   const initialTabConfig: State = {
     planType: "Monthly",
     personalPrice: "Free",
@@ -80,12 +82,11 @@ const Pricing = () => {
         >
           <motion.div variants={itemVariants} className="text-center mb-12">
             <h2 className="dark:text-white text-midnight_text md:text-50 sm:text-40 text-28 font-bold leading-tight">
-              Simple,
-              <span className="text-primary ml-2">transparent pricing</span>
+              {t("pricing.title1")}
+              <span className="text-primary ml-2">{t("pricing.highlight")}</span>
             </h2>
             <p className="text-18 font-medium text-midnight_text/70 dark:text-white/70 mx-auto mt-6 lg:max-w-[50%] sm:max-w-[75%]">
-              No hidden fees. No surprises. Pick the plan that fits your volume
-              and scale as you grow.
+              {t("pricing.subtitle")}
             </p>
           </motion.div>
 
@@ -109,7 +110,7 @@ const Pricing = () => {
                   })
                 }
               >
-                Monthly
+                {t("pricing.monthly")}
               </button>
               <button
                 className={`text-16 font-semibold py-3 px-8 rounded-xl transition-all duration-300 ${
@@ -129,7 +130,7 @@ const Pricing = () => {
                   })
                 }
               >
-                Annually
+                {t("pricing.annually")}
               </button>
             </div>
           </motion.div>
@@ -141,40 +142,42 @@ const Pricing = () => {
             <div className="hidden lg:block pb-4">
               <div className="space-y-6 text-midnight_text/80 dark:text-white/80 font-medium text-16">
                 <p className="pb-6 border-b border-border dark:border-dark_border/50">
-                  Monthly service fee
+                  {t("pricing.monthlyServiceFee")}
                 </p>
                 <p className="pb-6 border-b border-border dark:border-dark_border/50">
-                  Direct debits
+                  {t("pricing.directDebits")}
                 </p>
                 <p className="pb-6 border-b border-border dark:border-dark_border/50">
-                  Online payments
+                  {t("pricing.onlinePayments")}
                 </p>
                 <p className="pb-6 border-b border-border dark:border-dark_border/50">
-                  Deposits to Savers
+                  {t("pricing.depositsToSavers")}
                 </p>
                 <p className="pb-6 border-b border-border dark:border-dark_border/50">
-                  ATM withdrawals
+                  {t("pricing.atmWithdrawals")}
                 </p>
                 <p className="pb-6 border-b border-border dark:border-dark_border/50">
-                  International transaction fees
+                  {t("pricing.internationalFees")}
                 </p>
                 <p className="pb-6 border-b border-border dark:border-dark_border/50">
-                  International ATM withdrawal
+                  {t("pricing.internationalAtm")}
                 </p>
                 <p className="pb-6 border-b border-border dark:border-dark_border/50">
-                  Overdrawn interest rate
+                  {t("pricing.overdrawnInterest")}
                 </p>
               </div>
             </div>
 
             {/* Starter Plan */}
-            <div className="bg-white dark:bg-midnight_text pt-10 px-8 pb-8 rounded-[2rem] border border-border/50 dark:border-dark_border/50 shadow-lg relative transition-transform hover:-translate-y-2 duration-300">
+            <div className="bg-white dark:bg-midnight_text pt-10 px-5 sm:px-8 pb-8 rounded-[2rem] border border-border/50 dark:border-dark_border/50 shadow-lg relative transition-transform hover:-translate-y-2 duration-300">
               <h3 className="text-24 font-bold text-midnight_text text-center dark:text-white">
-                Starter
+                {t("pricing.starter")}
               </h3>
               <div className="mt-6 flex flex-col items-center">
-                <p className="text-50 font-bold text-midnight_text dark:text-white leading-none">
-                  {tabConfig.personalPrice}
+                <p className="text-50 font-bold text-midnight_text dark:text-white leading-none flex items-center justify-center">
+                  <motion.span key={tabConfig.personalPrice} initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3 }}>
+                    {tabConfig.personalPrice}
+                  </motion.span>
                 </p>
                 <p className="text-15 font-medium text-midnight_text/60 dark:text-white/60 mt-2">
                   {tabConfig.duration}
@@ -184,18 +187,18 @@ const Pricing = () => {
                 href="#"
                 className="mt-8 block text-center py-3.5 text-16 font-semibold bg-[#22c55e] border-2 border-[#22c55e] hover:bg-transparent hover:text-[#22c55e] duration-300 text-white rounded-xl shadow-md hover:shadow-none"
               >
-                Try for free
+                {t("pricing.tryFree")}
               </Link>
               <div className="mt-10 space-y-6 text-center text-15 font-medium text-midnight_text/70 dark:text-white/70">
                 <p className="pb-6 border-b border-border dark:border-dark_border/50">
-                  <span className="lg:hidden font-bold block mb-2 text-midnight_text dark:text-white">
-                    Monthly service fee:
+                  <span className="lg:hidden font-bold text-midnight_text dark:text-white">
+                    {t("pricing.monthlyServiceFee")}:
                   </span>{" "}
-                  Free
+                  {t("pricing.free")}
                 </p>
-                <div className="pb-6 border-b border-border dark:border-dark_border/50 flex flex-col items-center">
-                  <span className="lg:hidden font-bold block mb-2 text-midnight_text dark:text-white">
-                    Direct debits:
+                <div className="pb-6 border-b border-border dark:border-dark_border/50 flex lg:flex-col items-center justify-center gap-3 lg:gap-0">
+                  <span className="lg:hidden font-bold text-midnight_text dark:text-white">
+                    {t("pricing.directDebits")}:
                   </span>
                   <div className="w-7 h-7 bg-red-500/10 rounded-full flex items-center justify-center">
                     <Icon
@@ -205,20 +208,20 @@ const Pricing = () => {
                   </div>
                 </div>
                 <p className="pb-6 border-b border-border dark:border-dark_border/50">
-                  <span className="lg:hidden font-bold block mb-2 text-midnight_text dark:text-white">
-                    Online payments:
+                  <span className="lg:hidden font-bold text-midnight_text dark:text-white">
+                    {t("pricing.onlinePayments")}:
                   </span>{" "}
-                  *Free
+                  *{t("pricing.free")}
                 </p>
                 <p className="pb-6 border-b border-border dark:border-dark_border/50">
-                  <span className="lg:hidden font-bold block mb-2 text-midnight_text dark:text-white">
-                    Deposits to Savers:
+                  <span className="lg:hidden font-bold text-midnight_text dark:text-white">
+                    {t("pricing.depositsToSavers")}:
                   </span>{" "}
-                  *Free
+                  *{t("pricing.free")}
                 </p>
-                <div className="pb-6 border-b border-border dark:border-dark_border/50 flex flex-col items-center">
-                  <span className="lg:hidden font-bold block mb-2 text-midnight_text dark:text-white">
-                    ATM withdrawals:
+                <div className="pb-6 border-b border-border dark:border-dark_border/50 flex lg:flex-col items-center justify-center gap-3 lg:gap-0">
+                  <span className="lg:hidden font-bold text-midnight_text dark:text-white">
+                    {t("pricing.atmWithdrawals")}:
                   </span>
                   <div className="w-7 h-7 bg-red-500/10 rounded-full flex items-center justify-center">
                     <Icon
@@ -227,9 +230,9 @@ const Pricing = () => {
                     />
                   </div>
                 </div>
-                <div className="pb-6 border-b border-border dark:border-dark_border/50 flex flex-col items-center">
-                  <span className="lg:hidden font-bold block mb-2 text-midnight_text dark:text-white">
-                    International fees:
+                <div className="pb-6 border-b border-border dark:border-dark_border/50 flex lg:flex-col items-center justify-center gap-3 lg:gap-0">
+                  <span className="lg:hidden font-bold text-midnight_text dark:text-white">
+                    {t("pricing.internationalFees")}:
                   </span>
                   <div className="w-7 h-7 bg-red-500/10 rounded-full flex items-center justify-center">
                     <Icon
@@ -238,9 +241,9 @@ const Pricing = () => {
                     />
                   </div>
                 </div>
-                <div className="pb-6 border-b border-border dark:border-dark_border/50 flex flex-col items-center">
-                  <span className="lg:hidden font-bold block mb-2 text-midnight_text dark:text-white">
-                    International ATM:
+                <div className="pb-6 border-b border-border dark:border-dark_border/50 flex lg:flex-col items-center justify-center gap-3 lg:gap-0">
+                  <span className="lg:hidden font-bold text-midnight_text dark:text-white">
+                    {t("pricing.internationalAtm")}:
                   </span>
                   <div className="w-7 h-7 bg-red-500/10 rounded-full flex items-center justify-center">
                     <Icon
@@ -250,7 +253,7 @@ const Pricing = () => {
                   </div>
                 </div>
                 <p className="pb-6">
-                  <span className="lg:hidden font-bold block mb-2 text-midnight_text dark:text-white">
+                  <span className="lg:hidden font-bold text-midnight_text dark:text-white">
                     Overdrawn interest rate:
                   </span>{" "}
                   9.81% P.A.
@@ -259,17 +262,19 @@ const Pricing = () => {
             </div>
 
             {/* Growth Plan */}
-            <div className="bg-primary/5 dark:bg-primary/10 pt-10 px-8 pb-8 rounded-[2rem] border-2 border-primary shadow-xl relative transition-transform hover:-translate-y-2 duration-300 z-10">
+            <div className="bg-primary/5 dark:bg-primary/10 pt-10 px-5 sm:px-8 pb-8 rounded-[2rem] border-2 border-primary shadow-[0_0_30px_rgba(99,102,241,0.15)] hover:shadow-[0_0_50px_rgba(99,102,241,0.3)] relative transition-all duration-300 hover:-translate-y-2 z-10">
               <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-white px-4 py-1 rounded-full text-13 font-bold uppercase tracking-wider">
-                Most Popular
+                {t("pricing.mostPopular")}
               </div>
               <h3 className="text-24 font-bold text-midnight_text text-center dark:text-white">
-                Growth
+                {t("pricing.growth")}
               </h3>
               <div className="mt-6 flex flex-col items-center">
-                <p className="text-50 font-bold text-midnight_text dark:text-white leading-none">
+                <p className="text-50 font-bold text-midnight_text dark:text-white leading-none flex items-center justify-center">
                   <span className="text-24 align-super">$</span>
-                  {tabConfig.professionalPrice}
+                  <motion.span key={tabConfig.professionalPrice} initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3 }}>
+                    {tabConfig.professionalPrice}
+                  </motion.span>
                 </p>
                 <p className="text-15 font-medium text-midnight_text/60 dark:text-white/60 mt-2">
                   {tabConfig.duration}
@@ -279,18 +284,18 @@ const Pricing = () => {
                 href="#"
                 className="mt-8 text-16 font-semibold block text-center bg-primary border-2 border-primary hover:bg-transparent hover:text-primary duration-300 text-white py-3.5 rounded-xl shadow-md hover:shadow-none"
               >
-                Try free for 14 days
+                {t("pricing.tryFree14")}
               </Link>
               <div className="mt-10 space-y-6 text-center text-15 font-medium text-midnight_text/70 dark:text-white/70">
                 <p className="pb-6 border-b border-border/50 dark:border-dark_border/30">
-                  <span className="lg:hidden font-bold block mb-2 text-midnight_text dark:text-white">
-                    Monthly service fee:
+                  <span className="lg:hidden font-bold text-midnight_text dark:text-white">
+                    {t("pricing.monthlyServiceFee")}:
                   </span>{" "}
-                  Free
+                  {t("pricing.free")}
                 </p>
-                <div className="pb-6 border-b border-border/50 dark:border-dark_border/30 flex flex-col items-center">
-                  <span className="lg:hidden font-bold block mb-2 text-midnight_text dark:text-white">
-                    Direct debits:
+                <div className="pb-6 border-b border-border/50 dark:border-dark_border/30 flex lg:flex-col items-center justify-center gap-3 lg:gap-0">
+                  <span className="lg:hidden font-bold text-midnight_text dark:text-white">
+                    {t("pricing.directDebits")}:
                   </span>
                   <div className="w-7 h-7 bg-primary/10 rounded-full flex items-center justify-center">
                     <Icon
@@ -300,20 +305,20 @@ const Pricing = () => {
                   </div>
                 </div>
                 <p className="pb-6 border-b border-border/50 dark:border-dark_border/30">
-                  <span className="lg:hidden font-bold block mb-2 text-midnight_text dark:text-white">
-                    Online payments:
+                  <span className="lg:hidden font-bold text-midnight_text dark:text-white">
+                    {t("pricing.onlinePayments")}:
                   </span>{" "}
-                  Free & unlimited
+                  {t("pricing.freeUnlimited")}
                 </p>
                 <p className="pb-6 border-b border-border/50 dark:border-dark_border/30">
-                  <span className="lg:hidden font-bold block mb-2 text-midnight_text dark:text-white">
-                    Deposits to Savers:
+                  <span className="lg:hidden font-bold text-midnight_text dark:text-white">
+                    {t("pricing.depositsToSavers")}:
                   </span>{" "}
-                  Free & unlimited
+                  {t("pricing.freeUnlimited")}
                 </p>
-                <div className="pb-6 border-b border-border/50 dark:border-dark_border/30 flex flex-col items-center">
-                  <span className="lg:hidden font-bold block mb-2 text-midnight_text dark:text-white">
-                    ATM withdrawals:
+                <div className="pb-6 border-b border-border/50 dark:border-dark_border/30 flex lg:flex-col items-center justify-center gap-3 lg:gap-0">
+                  <span className="lg:hidden font-bold text-midnight_text dark:text-white">
+                    {t("pricing.atmWithdrawals")}:
                   </span>
                   <div className="w-7 h-7 bg-primary/10 rounded-full flex items-center justify-center">
                     <Icon
@@ -323,14 +328,14 @@ const Pricing = () => {
                   </div>
                 </div>
                 <p className="pb-6 border-b border-border/50 dark:border-dark_border/30">
-                  <span className="lg:hidden font-bold block mb-2 text-midnight_text dark:text-white">
-                    International fees:
+                  <span className="lg:hidden font-bold text-midnight_text dark:text-white">
+                    {t("pricing.internationalFees")}:
                   </span>{" "}
                   0.5%
                 </p>
-                <div className="pb-6 border-b border-border/50 dark:border-dark_border/30 flex flex-col items-center">
-                  <span className="lg:hidden font-bold block mb-2 text-midnight_text dark:text-white">
-                    International ATM:
+                <div className="pb-6 border-b border-border/50 dark:border-dark_border/30 flex lg:flex-col items-center justify-center gap-3 lg:gap-0">
+                  <span className="lg:hidden font-bold text-midnight_text dark:text-white">
+                    {t("pricing.internationalAtm")}:
                   </span>
                   <div className="w-7 h-7 bg-primary/10 rounded-full flex items-center justify-center">
                     <Icon
@@ -340,8 +345,8 @@ const Pricing = () => {
                   </div>
                 </div>
                 <p className="pb-6">
-                  <span className="lg:hidden font-bold block mb-2 text-midnight_text dark:text-white">
-                    Overdrawn interest rate:
+                  <span className="lg:hidden font-bold text-midnight_text dark:text-white">
+                    {t("pricing.overdrawnInterest")}:
                   </span>{" "}
                   9.81% P.A.
                 </p>
@@ -349,14 +354,16 @@ const Pricing = () => {
             </div>
 
             {/* Scale Plan */}
-            <div className="bg-white dark:bg-midnight_text pt-10 px-8 pb-8 rounded-[2rem] border border-border/50 dark:border-dark_border/50 shadow-lg relative transition-transform hover:-translate-y-2 duration-300">
+            <div className="bg-white dark:bg-midnight_text pt-10 px-5 sm:px-8 pb-8 rounded-[2rem] border border-border/50 dark:border-dark_border/50 shadow-lg relative transition-transform hover:-translate-y-2 duration-300">
               <h3 className="text-24 text-center font-bold text-midnight_text dark:text-white">
-                Scale
+                {t("pricing.scale")}
               </h3>
               <div className="mt-6 flex flex-col items-center">
-                <p className="text-50 font-bold text-midnight_text dark:text-white leading-none">
+                <p className="text-50 font-bold text-midnight_text dark:text-white leading-none flex items-center justify-center">
                   <span className="text-24 align-super">$</span>
-                  {tabConfig.organizationPrice}
+                  <motion.span key={tabConfig.organizationPrice} initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3 }}>
+                    {tabConfig.organizationPrice}
+                  </motion.span>
                 </p>
                 <p className="text-15 font-medium text-midnight_text/60 dark:text-white/60 mt-2">
                   {tabConfig.duration}
@@ -366,18 +373,18 @@ const Pricing = () => {
                 href="#"
                 className="mt-8 text-16 font-semibold block text-center bg-midnight_text dark:bg-white dark:text-midnight_text border-2 border-midnight_text dark:border-white hover:bg-transparent dark:hover:bg-transparent dark:hover:text-white hover:text-midnight_text duration-300 text-white py-3.5 rounded-xl shadow-md hover:shadow-none"
               >
-                Try free for 14 days
+                {t("pricing.tryFree14")}
               </Link>
               <div className="mt-10 space-y-6 text-center text-15 font-medium text-midnight_text/70 dark:text-white/70">
                 <p className="pb-6 border-b border-border dark:border-dark_border/50">
-                  <span className="lg:hidden font-bold block mb-2 text-midnight_text dark:text-white">
-                    Monthly service fee:
+                  <span className="lg:hidden font-bold text-midnight_text dark:text-white">
+                    {t("pricing.monthlyServiceFee")}:
                   </span>{" "}
-                  Free
+                  {t("pricing.free")}
                 </p>
-                <div className="pb-6 border-b border-border dark:border-dark_border/50 flex flex-col items-center">
-                  <span className="lg:hidden font-bold block mb-2 text-midnight_text dark:text-white">
-                    Direct debits:
+                <div className="pb-6 border-b border-border dark:border-dark_border/50 flex lg:flex-col items-center justify-center gap-3 lg:gap-0">
+                  <span className="lg:hidden font-bold text-midnight_text dark:text-white">
+                    {t("pricing.directDebits")}:
                   </span>
                   <div className="w-7 h-7 bg-[#22c55e]/10 rounded-full flex items-center justify-center">
                     <Icon
@@ -387,20 +394,20 @@ const Pricing = () => {
                   </div>
                 </div>
                 <p className="pb-6 border-b border-border dark:border-dark_border/50">
-                  <span className="lg:hidden font-bold block mb-2 text-midnight_text dark:text-white">
-                    Online payments:
+                  <span className="lg:hidden font-bold text-midnight_text dark:text-white">
+                    {t("pricing.onlinePayments")}:
                   </span>{" "}
-                  Free & unlimited
+                  {t("pricing.freeUnlimited")}
                 </p>
                 <p className="pb-6 border-b border-border dark:border-dark_border/50">
-                  <span className="lg:hidden font-bold block mb-2 text-midnight_text dark:text-white">
-                    Deposits to Savers:
+                  <span className="lg:hidden font-bold text-midnight_text dark:text-white">
+                    {t("pricing.depositsToSavers")}:
                   </span>{" "}
-                  Free & unlimited
+                  {t("pricing.freeUnlimited")}
                 </p>
-                <div className="pb-6 border-b border-border dark:border-dark_border/50 flex flex-col items-center">
-                  <span className="lg:hidden font-bold block mb-2 text-midnight_text dark:text-white">
-                    ATM withdrawals:
+                <div className="pb-6 border-b border-border dark:border-dark_border/50 flex lg:flex-col items-center justify-center gap-3 lg:gap-0">
+                  <span className="lg:hidden font-bold text-midnight_text dark:text-white">
+                    {t("pricing.atmWithdrawals")}:
                   </span>
                   <div className="w-7 h-7 bg-[#22c55e]/10 rounded-full flex items-center justify-center">
                     <Icon
@@ -410,14 +417,14 @@ const Pricing = () => {
                   </div>
                 </div>
                 <p className="pb-6 border-b border-border dark:border-dark_border/50">
-                  <span className="lg:hidden font-bold block mb-2 text-midnight_text dark:text-white">
-                    International fees:
+                  <span className="lg:hidden font-bold text-midnight_text dark:text-white">
+                    {t("pricing.internationalFees")}:
                   </span>{" "}
                   0.5%
                 </p>
-                <div className="pb-6 border-b border-border dark:border-dark_border/50 flex flex-col items-center">
-                  <span className="lg:hidden font-bold block mb-2 text-midnight_text dark:text-white">
-                    International ATM:
+                <div className="pb-6 border-b border-border dark:border-dark_border/50 flex lg:flex-col items-center justify-center gap-3 lg:gap-0">
+                  <span className="lg:hidden font-bold text-midnight_text dark:text-white">
+                    {t("pricing.internationalAtm")}:
                   </span>
                   <div className="w-7 h-7 bg-[#22c55e]/10 rounded-full flex items-center justify-center">
                     <Icon
@@ -427,8 +434,8 @@ const Pricing = () => {
                   </div>
                 </div>
                 <p className="pb-6">
-                  <span className="lg:hidden font-bold block mb-2 text-midnight_text dark:text-white">
-                    Overdrawn interest rate:
+                  <span className="lg:hidden font-bold text-midnight_text dark:text-white">
+                    {t("pricing.overdrawnInterest")}:
                   </span>{" "}
                   6% P.A.
                 </p>
