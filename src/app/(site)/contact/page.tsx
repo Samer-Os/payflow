@@ -5,7 +5,7 @@ import React from "react";
 import HeroSub from "@/components/SharedComponents/HeroSub";
 import { Metadata } from "next";
 export const metadata: Metadata = {
-  title: "Contact | Nicktio",
+  title: "Contact | Payflow",
 };
 
 const page = () => {
@@ -17,7 +17,7 @@ const page = () => {
     <>
       <HeroSub
         title="Contact Us"
-        description="Letraset sheets containing Lorem Ipsum passages and more recently with desktop publishing Variou"
+        description="Have questions about our APIs or pricing? Our team is ready to help you get started."
         breadcrumbLinks={breadcrumbLinks}
       />
       <ContactInfo />

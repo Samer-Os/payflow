@@ -21,22 +21,22 @@
   --z-index-1: 1;
   --z-index-999: 999;
 
-  --color-primary: #2f73f2;
+  --color-primary: #6366f1;
   --color-danger: #dc3545;
   --color-danger_text: #ff3c78;
   --color-green: #3cd278;
   --color-grey: #8e8e8e;
   --color-muted: #547593;
   --color-midnight_text: #102d47;
-  --color-border: #dfebfc;
-  --color-darkmode: #08162b;
-  --color-hero-bg: #f3f9fd;
-  --color-dark-hero-bg: #121c2e;
-  --color-darkheader: #141d2f;
+  --color-border: #ede9fe;
+  --color-darkmode: #0d0b1a;
+  --color-heroBg: #f5f3ff;
+  --color-darkHeroBg: #13111f;
+  --color-darkheader: #151220;
   --color-dark_border: #253c50;
   --color-foottext: #668199;
-  --color-search: #163858;
-  --color-dark_b: #1b2c44;
+  --color-search: #1e1a3a;
+  --color-dark_b: #1a1635;
 
   --text-13: 0.8125rem;
   --text-13--line-height: 1.2;

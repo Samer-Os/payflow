@@ -26,19 +26,19 @@ export const PaymentImage = [
     image: "/images/payment/user.svg",
     title: "Create an account",
     details:
-      "Mobile app made easy check out across the web and in apps without having to enter any payment information.",
+      "Sign up in minutes with securely encrypted credentials. Your dashboard is ready instantly to start managing transactions.",
   },
   {
     image: "/images/payment/user.svg",
     title: "Verify your identity",
     details:
-      "Mobile app made easy check out across the web and in apps without having to enter any payment information.",
+      "Quick and seamless KYC process to ensure your account meets compliance standards without delaying your launch.",
   },
   {
     image: "/images/payment/user.svg",
     title: "Link your bank account",
     details:
-      "Mobile app made easy check out across the web and in apps without having to enter any payment information.",
+      "Connect your preferred payout methods instantly through our secure banking integrations to receive your funds.",
   },
 ];
 
@@ -76,16 +76,16 @@ export const BeneifitImage = [
 // Footer Links
 export const footerLinks: { link: string }[] = [
   {
-    link: "Online Payments",
+    link: "Payment APIs",
   },
   {
-    link: "Financial Projections",
+    link: "Smart Routing",
   },
   {
-    link: "Bookkeeping",
+    link: "Multi-currency",
   },
   {
-    link: "Banking",
+    link: "Instant Payouts",
   },
   {
     link: "Documentation",
@@ -106,6 +106,9 @@ export const footerLinks: { link: string }[] = [
     link: "Infrastructure",
   },
   {
+    link: "Compliance",
+  },
+  {
     link: "Certifications",
   },
   {
@@ -113,9 +116,6 @@ export const footerLinks: { link: string }[] = [
   },
   {
     link: "Terms and conditions",
-  },
-  {
-    link: "Legal",
   },
   {
     link: "Privacy",
@@ -144,12 +144,11 @@ export const perks = [
 // review
 export const review = [
   {
-    text: "It's easy to set up and the support experience is unparalleled. every transaction the instant it happens and correct wasteful behavior. What a relief.",
-    name: "Nina B. Freeman",
-    post: "Founder at Litchi Care",
+    text: "Payflow cut our integration time from weeks to days. The API is clean, the docs are excellent, and the support team actually responds. It's the payment layer we always wanted.",
+    name: "Sarah K. Mitchell",
+    post: "CTO at Finbridge Labs",
     image: "/images/search/profile.png",
     appstorerating: "4.5",
     gplayrating: "4.5",
   },
 ];
-

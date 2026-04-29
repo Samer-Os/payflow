@@ -1,28 +1,31 @@
 "use client";
 import React from "react";
 import { Icon } from "@iconify/react";
-import { motion, useInView } from "motion/react";
-import { useRef } from "react";
+import { motion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
 import { review } from "@/app/api/data";
 
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.1,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { y: 20, opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: { duration: 0.6 },
+  },
+};
+
 const Search = () => {
-  const ref = useRef(null);
-  const inView = useInView(ref);
-
-  const TopAnimation = {
-    initial: { y: "-100%", opacity: 0 },
-    animate: inView ? { y: 0, opacity: 1 } : { y: "-100%", opacity: 0 },
-    transition: { duration: 1, delay: 0.4 },
-  };
-
-  const bottomAnimation = {
-    initial: { y: "100%", opacity: 0 },
-    animate: inView ? { y: 0, opacity: 1 } : { y: "100%", opacity: 0 },
-    transition: { duration: 1, delay: 0.4 },
-  };
-
   const renderStars = (rating: number) => {
     const fullStars = Math.floor(rating);
     const halfStars = rating % 1 >= 0.5 ? 1 : 0;
@@ -34,8 +37,8 @@ const Search = () => {
       stars.push(
         <Icon
           key={`full-${i}`}
-          icon="ph:star-fill"
-          className="w-5 h-5 text-yellow-500"
+          icon="solar:star-bold"
+          className="w-5 h-5 text-yellow-400"
         />
       );
     }
@@ -44,8 +47,8 @@ const Search = () => {
       stars.push(
         <Icon
           key="half"
-          icon="ph:star-half-fill"
-          className="w-5 h-5 text-yellow-500"
+          icon="solar:star-half-bold"
+          className="w-5 h-5 text-yellow-400"
         />
       );
     }
@@ -54,8 +57,8 @@ const Search = () => {
       stars.push(
         <Icon
           key={`empty-${i}`}
-          icon="ph:star-bold"
-          className="w-5 h-5 text-yellow-500"
+          icon="solar:star-linear"
+          className="w-5 h-5 text-yellow-400"
         />
       );
     }
@@ -66,154 +69,144 @@ const Search = () => {
   return (
     <section className="dark:bg-darkmode overflow-hidden py-14">
       <div className="container mx-auto lg:max-w-(--breakpoint-xl) md:max-w-(--breakpoint-md) px-4">
-        <div
-          ref={ref}
-          className="dark:bg-midnight_text bg-heroBg rounded-3xl p-2"
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+          variants={containerVariants}
+          className="dark:bg-midnight_text bg-heroBg rounded-[2rem] p-4 lg:p-6 shadow-xl"
         >
           <motion.div
-            {...TopAnimation}
-            className="text-center lg:px-20 px-4 pt-20"
+            variants={itemVariants}
+            className="text-center lg:px-20 px-4 pt-16"
           >
-            <div className="flex justify-center">
-              <Image
-                src="/images/search/free.png"
-                alt="image"
-                width={67}
-                height={38}
-              />
+            <div className="flex justify-center mb-6">
+              <div className="bg-primary/10 dark:bg-primary/20 p-4 rounded-2xl w-max">
+                <Icon icon="solar:rocket-bold-duotone" className="w-10 h-10 text-primary" />
+              </div>
             </div>
-            <h2 className="text-midnight_text font-bold dark:text-white md:text-35 sm:text-28 text-24">
-              Get started in under
-              <span className="lg:text-35 text-primary text-24">
+            <h2 className="text-midnight_text font-bold dark:text-white md:text-50 sm:text-40 text-28 leading-tight mb-8">
+              Start accepting payments in under
+              <br />
+              <span className="text-primary mt-2 inline-block">
                 15 minutes
               </span>
             </h2>
-            <div className="md:max-w-75% mx-auto mt-6">
-              <div className="flex lg:items-center md:items-start bg-white dark:bg-darkHeroBg shadow-md rounded-2xl overflow-hidden">
+            
+            <div className="md:max-w-[75%] lg:max-w-[50%] mx-auto mt-10">
+              <div className="flex flex-col sm:flex-row items-center bg-white dark:bg-search shadow-lg rounded-[1.25rem] overflow-hidden border border-border dark:border-dark_border transition-all p-2 gap-2">
+                <div className="hidden sm:flex pl-4 items-center text-muted">
+                    <Icon icon="solar:letter-linear" width="24" height="24" />
+                </div>
                 <input
                   type="email"
-                  placeholder="Enter your email address."
-                  className="grow px-4 py-5 pl-6 text-white dark:text-heroBg text-17 focus:outline-hidden bg-white dark:bg-darkHeroBg hidden md:block"
+                  placeholder="Enter your email address"
+                  className="grow px-4 py-4 font-medium text-midnight_text dark:text-white bg-transparent border-none focus:ring-0 w-full placeholder:text-muted/60 dark:placeholder:text-white/40 outline-none"
                 />
-                <div className="flex lg:items-center lg:justify-start justify-center mr-4">
-                  <Link
-                    href="#"
-                    className="text-17 flex items-center bg-primary text-white py-3 px-8 rounded-lg w-36  my-2 border border-primary hover:text-primary hover:bg-transparent"
-                  >
-                    Get Demo
-                  </Link>
-                </div>
+                <button
+                  className="text-17 flex items-center justify-center bg-primary text-white py-3.5 px-8 rounded-xl w-full sm:w-auto border border-primary hover:text-primary hover:bg-transparent transition-colors font-medium whitespace-nowrap"
+                >
+                  Get Demo
+                </button>
               </div>
-              <div className="flex items-center justify-center my-7">
-                <div className="w-5 h-5 bg-blue-500 rounded-full flex items-center justify-center">
+              <div className="flex items-center justify-center mt-8 mb-16">
+                <div className="w-6 h-6 bg-primary/10 dark:bg-white/10 rounded-full flex items-center justify-center shrink-0">
                   <Icon
-                    icon="solar:unread-outline"
-                    width="24"
-                    height="24"
-                    className="text-white"
+                    icon="solar:check-read-linear"
+                    width="16"
+                    height="16"
+                    className="text-primary dark:text-white"
                   />
                 </div>
-                <p className="ml-4 text-17 text-muted dark:text-white dark:text-opacity-50">
-                  No personal credit checks or guarantee, with 20x higher limits
+                <p className="ml-3 text-16 text-midnight_text/70 dark:text-white/70 font-medium text-left">
+                  No setup fees, no monthly minimums. Pay only for what you use.
                 </p>
               </div>
             </div>
           </motion.div>
-          <motion.div {...bottomAnimation}>
+          <motion.div variants={containerVariants}>
             {review.map((item, index) => (
-              <div
+              <motion.div
                 key={index}
-                className="bg-white rounded-3xl lg:py-16 sm:py-10 py-5 my-2 lg:px-24 sm:px-12 px-6 dark:bg-darkmode"
+                variants={itemVariants}
+                className="bg-white rounded-[2rem] lg:py-16 sm:py-10 py-8 lg:px-24 sm:px-12 px-6 dark:bg-darkmode border border-border/50 dark:border-dark_border/30 shadow-sm relative overflow-hidden mb-6"
               >
-                <div className="grid lg:grid-cols-2 lg:gap-0 gap-7">
-                  <div>
-                    <div className="mb-10">
-                      <Image
-                        src="/images/search/double.png"
-                        alt="image"
-                        width={52}
-                        height={39}
-                      />
-                    </div>
-                    <p className="text-midnight_text dark:text-white text-base mb-9">
-                      {item.text}
+                <div className="grid lg:grid-cols-2 lg:gap-14 gap-10 relative z-10 w-full">
+                  <div className="flex flex-col h-full justify-between pr-0 lg:pr-6">
+                    <p className="text-midnight_text/90 dark:text-white/90 text-18 lg:text-20 leading-relaxed font-medium mb-10 italic">
+                      "{item.text}"
                     </p>
-                    <div className="flex items-center gap-4">
-                      <div>
-                        <Image
-                          src={item.image}
-                          alt={item.name}
-                          width={64}
-                          height={64}
-                        />
-                      </div>
-                      <div className="flex sm:items-center sm:gap-2 sm:flex-row flex-col">
-                        <h3 className="font-medium text-base text-midnight_text dark:text-white">
+                    <div className="flex items-center gap-5 p-4 rounded-2xl w-full sm:w-max">
+                      <Image
+                        src={item.image}
+                        alt={item.name}
+                        width={64}
+                        height={64}
+                        className="rounded-full shadow-sm"
+                      />
+                      <div className="flex flex-col justify-center">
+                        <h3 className="font-bold text-18 text-midnight_text dark:text-white leading-tight">
                           {item.name}
                         </h3>
-                        <Icon
-                          icon="bytesize:minus"
-                          className="sm:block hidden"
-                        />
-                        <h5 className="text-muted dark:text-muted text-base">
+                        <h5 className="text-primary text-15 mt-1.5 font-medium">
                           {item.post}
                         </h5>
                       </div>
                     </div>
                   </div>
-                  <div className="flex sm:items-center items-start lg:justify-evenly sm:flex-row flex-col lg:gap-0 gap-10">
-                    <div>
-                      <div className="sm:mb-8 mb-5">
-                        <div className="flex gap-2 mb-3">
+                  
+                  <div className="flex sm:items-center items-start lg:justify-end sm:flex-row flex-col gap-6 lg:gap-8 pt-8 lg:pt-0 lg:pl-10 lg:border-l border-border dark:border-dark_border dark:border-dashed">
+                    <div className="flex flex-col items-center sm:items-start bg-heroBg dark:bg-search/80 p-6 rounded-[1.5rem] hover:-translate-y-1 transition-transform duration-300 w-full sm:w-auto shadow-sm border border-transparent dark:border-white/5">
+                      <div className="mb-5 flex flex-col items-center sm:items-start w-full">
+                        <div className="flex gap-1.5 mb-3">
                           {renderStars(parseFloat(item.appstorerating))}
                         </div>
-                        <p className="text-muted text-base">
-                          <span className="text-midnight_text dark:text-white font-bold">
+                        <p className="text-midnight_text/70 dark:text-white/70 text-14 mt-1 font-medium">
+                          <span className="text-midnight_text dark:text-white font-bold text-24 mr-2">
                             {item.appstorerating}
                           </span>
-                          /5 — From 1800+ ratings
+                          /5 • 1800+ ratings
                         </p>
                       </div>
-                      <div>
-                        <Link href="#">
-                          <Image
-                            src="/images/search/app.png"
-                            alt="app store"
-                            width={130}
-                            height={44}
-                          />
-                        </Link>
-                      </div>
+                      <Link href="#" className="block hover:opacity-80 transition-opacity w-full">
+                        <Image
+                          src="/images/search/app.png"
+                          alt="app store download"
+                          width={140}
+                          height={48}
+                          className="dark:contrast-125 dark:opacity-90 object-contain mx-auto sm:mx-0 w-auto"
+                        />
+                      </Link>
                     </div>
-                    <div>
-                      <div className="sm:mb-8 mb-5">
-                        <div className="flex gap-2 mb-3">
+                    
+                    <div className="flex flex-col items-center sm:items-start bg-heroBg dark:bg-search/80 p-6 rounded-[1.5rem] hover:-translate-y-1 transition-transform duration-300 w-full sm:w-auto shadow-sm border border-transparent dark:border-white/5">
+                      <div className="mb-5 flex flex-col items-center sm:items-start w-full">
+                        <div className="flex gap-1.5 mb-3">
                           {renderStars(parseFloat(item.gplayrating))}
                         </div>
-                        <p className="text-muted text-base">
-                          <span className="text-midnight_text dark:text-white font-bold">
+                        <p className="text-midnight_text/70 dark:text-white/70 text-14 mt-1 font-medium">
+                          <span className="text-midnight_text dark:text-white font-bold text-24 mr-2">
                             {item.gplayrating}
                           </span>
-                          /5 — From 1800+ ratings
+                          /5 • 1800+ ratings
                         </p>
                       </div>
-                      <div>
-                        <Link href="/">
-                          <Image
-                            src="/images/search/google.png"
-                            alt="google play"
-                            width={130}
-                            height={44}
-                          />
-                        </Link>
-                      </div>
+                      <Link href="#" className="block hover:opacity-80 transition-opacity w-full">
+                        <Image
+                          src="/images/search/google.png"
+                          alt="google play download"
+                          width={140}
+                          height={48}
+                          className="dark:contrast-125 dark:opacity-90 object-contain mx-auto sm:mx-0 w-auto"
+                        />
+                      </Link>
                     </div>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </motion.div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

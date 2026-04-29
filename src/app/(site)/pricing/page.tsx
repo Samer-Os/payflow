@@ -3,7 +3,7 @@ import HeroSub from "@/components/SharedComponents/HeroSub";
 import React from "react";
 import { Metadata } from "next";
 export const metadata: Metadata = {
-  title: "Pricing | Nicktio",
+  title: "Pricing | Payflow",
 };
 
 const page = () => {
@@ -15,7 +15,7 @@ const page = () => {
     <>
       <HeroSub
         title="Pricing"
-        description="Whether you're an individual, a small team, or a growing enterprise, we have a plan that aligns perfectly with your goals."
+        description="Transparent pricing built for startups and enterprises alike."
         breadcrumbLinks={breadcrumbLinks}
       />
       <Pricing />

@@ -4,7 +4,7 @@ import Benefit from "@/components/Home/Benefit";
 import Spend from "@/components/Home/Spend";
 import { Metadata } from "next";
 export const metadata: Metadata = {
-  title: "Services | Nicktio",
+  title: "Services | Payflow",
 };
 
 const Services = () => {
@@ -16,7 +16,7 @@ const Services = () => {
     <>
       <HeroSub
         title="Services"
-        description="Discover a wealth of insightful materials meticulously crafted to provide you with a comprehensive understanding of the latest trends."
+        description="Explore the full suite of payment tools that power modern fintech products."
         breadcrumbLinks={breadcrumbLinks}
       />
       <Payment />

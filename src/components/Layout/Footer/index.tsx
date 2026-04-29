@@ -12,14 +12,14 @@ const Footer = () => {
             <div className="flex items-center text-foottext text-16">
               <Icon icon="weui:location-outlined" className="w-7 h-7 mr-3" />
               <div className="flex flex-col">
-                <span>221b Baker St, London NW1 6XE,</span>
+                <span>1 Fintech Plaza, London EC2V 8RT,</span>
                 <span>United Kingdom</span>
               </div>
             </div>
             <div className="flex items-center gap-2 text-foottext">
               <Icon icon="majesticons:phone-retro-line" className="w-7 h-7" />
               <Link href="#" className="text-16 hover:text-primary">
-                <span> +1 (123) 123 1234</span>
+                <span> +44 20 7946 0958</span>
               </Link>
             </div>
             <div className="flex items-center text-foottext gap-2">
@@ -28,7 +28,7 @@ const Footer = () => {
                 href="#"
                 className="inline-flex items-center text-16 hover:text-primary"
               >
-                <span>info@mobileapp.com</span>
+                <span>hello@payflow.io</span>
               </Link>
             </div>
           </div>
@@ -141,13 +141,7 @@ const Footer = () => {
         </div>
         <div className="flex items-center sm:flex-row flex-col justify-between py-10 mt-8">
           <p className="text-16 text-foottext sm:mb-0 mb-4">
-            © Copyright 2025. All rights reserved by <Link
-              href="https://getnextjstemplates.com/"
-              target="_blank"
-              className="hover:text-primary"
-            >
-              GetNextJs Templates.
-            </Link>
+            © Copyright 2025. All rights reserved by Payflow.
           </p>
           <div className="flex gap-4">
             {footerLinks.slice(14, 17).map((item, index) => (

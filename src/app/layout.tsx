@@ -8,6 +8,11 @@ import { AuthDialogProvider } from "./context/AuthDialogContext";
 import ScrollToTop from "@/components/ScrollToTop";
 const dmsans = DM_Sans({ subsets: ["latin"] });
 
+export const metadata = {
+  title: "Payflow — Payment Infrastructure for Developers",
+  description: "Embed powerful payment APIs into your product. Build in days, launch in weeks.",
+};
+
 export default function RootLayout({
   children,
   session,

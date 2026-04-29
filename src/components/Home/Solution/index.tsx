@@ -1,44 +1,72 @@
+"use client";
 import Link from "next/link";
 import { Icon } from "@iconify/react";
 import Image from "next/image";
+import { motion } from "motion/react";
+
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.1,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { y: 20, opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: { duration: 0.6 },
+  },
+};
 
 const Solution = () => {
   return (
     <section className="dark:bg-darkmode overflow-x-hidden py-14">
       <div className="container mx-auto lg:max-w-(--breakpoint-xl) md:max-w-(--breakpoint-md) px-4">
-        <div className="bg-heroBg dark:bg-midnight_text rounded-3xl lg:px-16 px-4 py-12">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+          variants={containerVariants}
+          className="bg-heroBg dark:bg-midnight_text rounded-3xl lg:px-16 px-4 py-12"
+        >
           <div className="grid lg:grid-cols-2 items-center gap-12">
-            <div>
+            <motion.div variants={itemVariants}>
               <h2 className="md:text-35 sm:text-28 text-24 font-semibold text-midnight_text dark:text-white">
                 Enterprise
-                <span className="text-primary max-w-max ml-2">Solution</span>
+                <span className="text-primary max-w-max ml-2">Grade</span>
               </h2>
-              <p className="mt-6 text-base text-muted dark:text-white dark:text-opacity-70 lg:max-w-full sm:max-w-75%">
-                Fully programmable, debit - credit physical & virtual cards for
-                individuals and businesses.
+              <p className="mt-6 text-base text-muted dark:text-white/70 lg:max-w-full sm:max-w-[75%]">
+                Custom contracts, dedicated support, and SLA guarantees for
+                teams processing high volumes.
               </p>
               <Link
                 href="/contact"
-                className="lg:text-17 flex gap-4 w-fit items-center bg-primary text-white py-2 px-4 lg:py-3 lg:px-8 rounded-lg mt-12 border border-primary hover:text-primary hover:bg-transparent"
+                className="lg:text-17 flex gap-4 w-fit items-center bg-primary text-white py-2 px-4 lg:py-3 lg:px-8 rounded-lg mt-12 border border-primary hover:text-primary hover:bg-transparent duration-300 transition-colors"
               >
                 Get Started
                 <Icon
                   icon="solar:alt-arrow-right-linear"
-                  width="13"
-                  height="13"
+                  width="20"
+                  height="20"
                 />
               </Link>
-            </div>
-            <div className="flex justify-center">
+            </motion.div>
+            <motion.div variants={itemVariants} className="flex justify-center">
               <Image
                 src="/images/solution/solution.png"
-                alt="image"
+                alt="Enterprise Grade Solutions"
                 width={531}
                 height={200}
+                className="hover:scale-105 transition-transform duration-500"
               />
-            </div>
+            </motion.div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
