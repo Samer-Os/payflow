@@ -222,5 +222,54 @@
       "15": "Çerezler",
       "16": "Sorumluluk Reddi"
     }
+  },
+  "auth": {
+    "signin": {
+      "title": "Tekrar hoş geldiniz",
+      "subtitle": "Payflow hesabınıza giriş yapın",
+      "usernameLabel": "Kullanıcı adı veya e-posta",
+      "usernamePlaceholder": "siz@ornek.com",
+      "passwordLabel": "Şifre",
+      "passwordPlaceholder": "••••••••",
+      "forgotPassword": "Şifrenizi mi unuttunuz?",
+      "submit": "Giriş yap",
+      "submitting": "Giriş yapılıyor…",
+      "noAccount": "Hesabınız yok mu?",
+      "signUpLink": "Kayıt olun"
+    },
+    "signup": {
+      "title": "Hesabınızı oluşturun",
+      "subtitle": "Haftalar değil, günler içinde başlayın.",
+      "nameLabel": "Ad soyad",
+      "namePlaceholder": "Ayşe Yılmaz",
+      "emailLabel": "İş e-postası",
+      "emailPlaceholder": "siz@sirket.com",
+      "passwordLabel": "Şifre",
+      "passwordPlaceholder": "En az 8 karakter",
+      "strengthShort": "Çok kısa",
+      "strengthOkay": "Yeterli",
+      "strengthStrong": "Güçlü",
+      "submit": "Hesap oluştur",
+      "submitting": "Hesap oluşturuluyor…",
+      "termsPrefix": "Kayıt olarak",
+      "termsMiddle": "ve",
+      "termsSuffix": "kabul etmiş olursunuz.",
+      "termsLink": "Şartlar'ı",
+      "privacyLink": "Gizlilik Politikası'nı",
+      "haveAccount": "Zaten hesabınız var mı?",
+      "signInLink": "Giriş yapın",
+      "successToast": "Hesap oluşturuldu — lütfen giriş yapın.",
+      "errorGeneric": "Kayıt başarısız",
+      "errorFallback": "Bir şeyler ters gitti"
+    },
+    "common": {
+      "or": "veya",
+      "showPassword": "Şifreyi göster",
+      "hidePassword": "Şifreyi gizle",
+      "signInWith": "Şununla giriş yap:",
+      "signUpWith": "Şununla kayıt ol:",
+      "google": "Google",
+      "github": "GitHub"
+    }
   }
 }

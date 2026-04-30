@@ -222,5 +222,54 @@
       "15": "Cookies",
       "16": "Disclaimer"
     }
+  },
+  "auth": {
+    "signin": {
+      "title": "Welcome back",
+      "subtitle": "Sign in to your Payflow account",
+      "usernameLabel": "Username or email",
+      "usernamePlaceholder": "you@example.com",
+      "passwordLabel": "Password",
+      "passwordPlaceholder": "••••••••",
+      "forgotPassword": "Forgot password?",
+      "submit": "Sign in",
+      "submitting": "Signing in…",
+      "noAccount": "Don't have an account?",
+      "signUpLink": "Sign up"
+    },
+    "signup": {
+      "title": "Create your account",
+      "subtitle": "Start building in days, not weeks.",
+      "nameLabel": "Full name",
+      "namePlaceholder": "Jane Doe",
+      "emailLabel": "Work email",
+      "emailPlaceholder": "you@company.com",
+      "passwordLabel": "Password",
+      "passwordPlaceholder": "At least 8 characters",
+      "strengthShort": "Too short",
+      "strengthOkay": "Okay",
+      "strengthStrong": "Strong",
+      "submit": "Create account",
+      "submitting": "Creating account…",
+      "termsPrefix": "By signing up you agree to our",
+      "termsMiddle": "and",
+      "termsSuffix": ".",
+      "termsLink": "Terms",
+      "privacyLink": "Privacy Policy",
+      "haveAccount": "Already have an account?",
+      "signInLink": "Sign in",
+      "successToast": "Account created — please sign in.",
+      "errorGeneric": "Registration failed",
+      "errorFallback": "Something went wrong"
+    },
+    "common": {
+      "or": "or",
+      "showPassword": "Show password",
+      "hidePassword": "Hide password",
+      "signInWith": "Sign in with",
+      "signUpWith": "Sign up with",
+      "google": "Google",
+      "github": "GitHub"
+    }
   }
 }

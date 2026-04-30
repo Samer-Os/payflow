@@ -124,10 +124,10 @@ const Header: React.FC = () => {
             onClick={handleDialogBackdropClick}
             className="backdrop:bg-black/50 bg-transparent p-0 m-auto"
           >
-            <div className="relative mx-auto w-full max-w-md overflow-hidden rounded-lg dark:bg-midnight_text bg-white px-8 py-14 text-center">
+            <div className="relative mx-auto w-[28rem] max-w-[calc(100vw-2rem)] overflow-hidden rounded-2xl border border-border/60 dark:border-dark_border/60 bg-white dark:bg-midnight_text shadow-xl shadow-primary/5 p-6 sm:p-8">
               <button
                 onClick={closeSignIn}
-                className="bg-[url('/images/icon/closed.svg')] bg-no-repeat bg-contain w-5 h-5 absolute top-0 right-0 mr-8 mt-8 dark:invert"
+                className="bg-[url('/images/icon/closed.svg')] bg-no-repeat bg-contain w-5 h-5 absolute top-4 right-4 dark:invert focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary rounded"
                 aria-label="Close Sign In Modal"
               ></button>
               <Signin signInOpen={closeSignIn} />
@@ -145,10 +145,10 @@ const Header: React.FC = () => {
             onClick={handleDialogBackdropClick}
             className="backdrop:bg-black/50 bg-transparent p-0 m-auto"
           >
-            <div className="relative mx-auto w-full max-w-md overflow-hidden rounded-lg bg-white px-8 py-14 text-center dark:bg-midnight_text">
+            <div className="relative mx-auto w-[28rem] max-w-[calc(100vw-2rem)] overflow-hidden rounded-2xl border border-border/60 dark:border-dark_border/60 bg-white dark:bg-midnight_text shadow-xl shadow-primary/5 p-6 sm:p-8">
               <button
                 onClick={closeSignUp}
-                className="bg-[url('/images/icon/closed.svg')] bg-no-repeat bg-contain w-5 h-5 absolute top-0 right-0 mr-8 mt-8 dark:invert"
+                className="bg-[url('/images/icon/closed.svg')] bg-no-repeat bg-contain w-5 h-5 absolute top-4 right-4 dark:invert focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary rounded"
                 aria-label="Close Sign Up Modal"
               ></button>
               <SignUp />

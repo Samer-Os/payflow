@@ -1,20 +1,16 @@
-import Signin from "@/components/Auth/SignIn";
-import Breadcrumb from "@/components/Common/Breadcrumb";
+import SignIn from "@/components/Auth/SignIn";
+import AuthLayout from "@/components/Auth/AuthLayout";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title:
-    "Sign In | Payflow",
+  title: "Sign In | Payflow",
+  description: "Sign in to your Payflow account.",
 };
 
-const SigninPage = () => {
-  return (
-    <>
-      <Breadcrumb pageName="Sign In Page" />
-
-      <Signin />
-    </>
-  );
-};
+const SigninPage = () => (
+  <AuthLayout>
+    <SignIn />
+  </AuthLayout>
+);
 
 export default SigninPage;
