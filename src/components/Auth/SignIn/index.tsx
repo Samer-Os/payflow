@@ -68,6 +68,7 @@ const Signin = ({ signInOpen }: { signInOpen?: any }) => {
           <input
             type="text"
             placeholder="Username"
+            aria-label="Username"
             required
             value={username}
             onChange={(e) => setUsername(e.target.value)}
@@ -80,6 +81,7 @@ const Signin = ({ signInOpen }: { signInOpen?: any }) => {
             required
             value={password}
             placeholder="Password"
+            aria-label="Password"
             onChange={(e) => setPassword(e.target.value)}
             className="w-full rounded-md border border-border dark:border-dark_border border-solid bg-transparent px-5 py-3 text-base text-dark outline-hidden transition  focus:border-primary focus-visible:shadow-none dark:border-border_color dark:text-white dark:focus:border-primary"
           />

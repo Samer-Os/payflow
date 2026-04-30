@@ -29,13 +29,13 @@ const BlogCard = ({ blog }: { blog: Blog }) => {
         </div>
       </div>
       <div>
-        <p className="text-14 sm:text-16 md:text-18 font-medium text-muted leading-loose mb-0">
+        <p className="text-body sm:text-body md:text-lead font-medium text-muted leading-loose mb-0">
           {format(new Date(date), "MMMM dd, yyyy")}
         </p>
         <div className="my-4">
           <Link
             href={`/blog/${slug}`}
-            className="text-20 sm:text-22 md:text-24 font-medium text-midnight_text dark:text-white group-hover:text-primary"
+            className="text-lead sm:text-h4 md:text-h4 font-medium text-midnight_text dark:text-white group-hover:text-primary"
           >
             {title}
           </Link>
@@ -43,7 +43,7 @@ const BlogCard = ({ blog }: { blog: Blog }) => {
         <div>
           <Link
             href={`/blog/${slug}`}
-            className="text-20 text-primary hover:text-blue-700"
+            className="text-lead text-primary hover:text-blue-700"
           >
             {type}
           </Link>

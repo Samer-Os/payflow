@@ -1,10 +1,9 @@
 "use client";
-import Image from "next/image";
 import Link from "next/link";
 import { motion } from "motion/react";
 import { Icon } from "@iconify/react";
-import { Heroimage } from "@/app/api/data";
 import { useTranslation } from "@/context/LanguageContext";
+import ProductMockup from "./ProductMockup";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -27,23 +26,22 @@ const itemVariants = {
   },
 };
 
-const imageVariants = {
-  hidden: { x: 30, opacity: 0, scale: 0.96 },
-  visible: {
-    x: 0,
-    opacity: 1,
-    scale: 1,
-    transition: { duration: 0.9, delay: 0.25, ease },
-  },
-};
+const stack = [
+  { icon: "logos:nextjs-icon", label: "Next.js" },
+  { icon: "logos:react", label: "React" },
+  { icon: "logos:typescript-icon", label: "TypeScript" },
+  { icon: "logos:tailwindcss-icon", label: "Tailwind CSS" },
+  { icon: "logos:framer", label: "Framer Motion" },
+];
 
 const Hero = () => {
   const { t } = useTranslation();
+
   return (
     <section className="relative pt-28 sm:pt-36 md:pt-44 mb-10 sm:mb-14 bg-cover bg-center dark:bg-darkmode overflow-hidden">
       <div className="w-full h-full absolute z-0 bg-heroBg rounded-b-[60px] sm:rounded-b-[119px] left-0 top-0 dark:bg-midnight_text" />
       <div className="container mx-auto lg:max-w-(--breakpoint-xl) relative z-1 md:max-w-(--breakpoint-md) px-4">
-        <div className="grid grid-cols-12 items-center">
+        <div className="grid grid-cols-12 items-center gap-y-10">
 
           <motion.div
             variants={containerVariants}
@@ -53,7 +51,7 @@ const Hero = () => {
           >
             <motion.h1
               variants={itemVariants}
-              className="md:text-50 sm:text-40 text-28 text-midnight_text dark:text-white text-center lg:text-start mb-6 sm:mb-9 w-full"
+              className="md:text-display sm:text-h1 text-h2 text-midnight_text dark:text-white text-center lg:text-start mb-6 sm:mb-9 w-full tracking-tight leading-[1.05]"
             >
               {t("hero.title1")}
               <br />
@@ -72,7 +70,7 @@ const Hero = () => {
 
             <motion.p
               variants={itemVariants}
-              className="sm:text-19 text-16 text-muted dark:text-white/70 text-center lg:text-start"
+              className="sm:text-lead text-body text-muted dark:text-white/70 text-center lg:text-start"
             >
               {t("hero.subtitle")}
             </motion.p>
@@ -82,74 +80,45 @@ const Hero = () => {
               className="flex flex-wrap items-center justify-center lg:justify-start mt-8 sm:mt-12 gap-4 sm:gap-8"
             >
               <Link
-                href="#"
-                className="text-17 flex gap-2 items-center bg-primary text-white py-3 px-8 rounded-lg border border-primary hover:text-primary hover:bg-transparent transition-all duration-300 dark:shadow-[0_0_20px_rgba(99,102,241,0.4)] dark:hover:shadow-[0_0_30px_rgba(99,102,241,0.6)] hover:scale-105"
+                href="/signup"
+                className="text-body flex gap-2 items-center bg-primary text-white py-3 px-8 rounded-lg border border-primary hover:text-primary hover:bg-transparent transition-all duration-300 dark:shadow-[0_0_20px_rgba(99,102,241,0.4)] dark:hover:shadow-[0_0_30px_rgba(99,102,241,0.6)] hover:scale-105 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
               >
                 {t("hero.getStarted")}
                 <Icon icon="solar:alt-arrow-right-linear" width="13" height="13" />
               </Link>
               <Link
-                href="#"
-                className="text-17 flex gap-2 items-center text-muted dark:text-white/70 hover:text-primary transition-colors duration-200"
+                href="#benefits"
+                className="text-body flex gap-2 items-center text-muted dark:text-white/70 hover:text-primary transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary rounded"
               >
                 {t("hero.seeFeatures")}
                 <Icon icon="solar:alt-arrow-right-linear" width="13" height="13" />
               </Link>
             </motion.div>
 
-            <motion.div variants={itemVariants} className="lg:my-20 my-8">
-              <p className="text-16 sm:text-20 text-muted dark:text-white/70 text-center lg:text-start mb-5">
-                {t("hero.trustedBy")}
+            <motion.div variants={itemVariants} className="lg:my-20 my-10">
+              <p className="text-body sm:text-body text-muted dark:text-white/60 text-center lg:text-start mb-5 uppercase tracking-widest font-medium">
+                {t("hero.builtWith")}
               </p>
-              <div className="flex flex-wrap gap-4 sm:gap-6 justify-center lg:justify-start w-full">
-                {Heroimage.map((item, index) => (
+              <div className="flex flex-wrap gap-x-6 gap-y-3 sm:gap-x-8 justify-center lg:justify-start w-full">
+                {stack.map((item, index) => (
                   <motion.div
-                    key={index}
+                    key={item.label}
                     initial={{ opacity: 0, y: 14 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.45, delay: 0.55 + index * 0.09, ease }}
+                    className="flex items-center gap-2 text-body font-medium text-muted dark:text-white/70"
                   >
-                    <Link href="/">
-                      <Image
-                        src={item.lightimage}
-                        alt="trusted brand"
-                        width={115}
-                        height={30}
-                        className="block dark:hidden w-20 sm:w-28 h-auto"
-                      />
-                      <Image
-                        src={item.darkimage}
-                        alt="trusted brand"
-                        width={115}
-                        height={30}
-                        className="hidden dark:block w-20 sm:w-28 h-auto"
-                      />
-                    </Link>
+                    <Icon icon={item.icon} width="20" height="20" />
+                    <span>{item.label}</span>
                   </motion.div>
                 ))}
               </div>
             </motion.div>
           </motion.div>
 
-          <motion.div
-            variants={imageVariants}
-            initial="hidden"
-            animate="visible"
-            className="lg:col-span-6 col-span-12 pl-20 lg:block hidden"
-          >
-            <motion.div
-              animate={{ y: [0, -15, 0] }}
-              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-            >
-              <Image
-                src="/images/hero/hero-image.png"
-                alt="Payflow dashboard"
-                width={498}
-                height={651}
-                style={{ width: "100%", height: "100%" }}
-              />
-            </motion.div>
-          </motion.div>
+          <div className="lg:col-span-6 col-span-12 lg:pl-6 xl:pl-12 max-w-md sm:max-w-lg lg:max-w-none mx-auto w-full">
+            <ProductMockup />
+          </div>
 
         </div>
       </div>

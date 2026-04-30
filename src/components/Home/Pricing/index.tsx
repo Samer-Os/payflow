@@ -24,52 +24,50 @@ const itemVariants = {
   },
 };
 
+type PlanType = "Monthly" | "Annually";
+
 interface State {
-  planType: string;
+  planType: PlanType;
   personalPrice: string;
   professionalPrice: string;
   organizationPrice: string;
+  professionalOriginal: string | null;
+  organizationOriginal: string | null;
   duration: string;
 }
 
 interface Action {
-  type: "Monthly" | "Annually";
-  payload: {
-    duration: string;
-    personalPrice: string;
-    professionalPrice: string;
-    organizationPrice: string;
-  };
+  type: PlanType;
 }
+
+const monthlyConfig: State = {
+  planType: "Monthly",
+  personalPrice: "Free",
+  professionalPrice: "9.00",
+  organizationPrice: "18.00",
+  professionalOriginal: null,
+  organizationOriginal: null,
+  duration: "perMonth",
+};
+
+const annuallyConfig: State = {
+  planType: "Annually",
+  personalPrice: "Free",
+  professionalPrice: "86.40",
+  organizationPrice: "172.80",
+  professionalOriginal: "108",
+  organizationOriginal: "216",
+  duration: "perYear",
+};
 
 const Pricing = () => {
   const { t } = useTranslation();
-  const initialTabConfig: State = {
-    planType: "Monthly",
-    personalPrice: "Free",
-    professionalPrice: "9.00",
-    organizationPrice: "18.00",
-    duration: "Monthly",
-  };
 
-  function reducer(state: State, action: Action): State {
-    switch (action.type) {
-      case "Monthly":
-      case "Annually":
-        return {
-          ...state,
-          planType: action.type,
-          personalPrice: action.payload.personalPrice,
-          professionalPrice: action.payload.professionalPrice,
-          organizationPrice: action.payload.organizationPrice,
-          duration: action.payload.duration,
-        };
-      default:
-        return state;
-    }
+  function reducer(_state: State, action: Action): State {
+    return action.type === "Annually" ? annuallyConfig : monthlyConfig;
   }
 
-  const [tabConfig, dispatch] = useReducer(reducer, initialTabConfig);
+  const [tabConfig, dispatch] = useReducer(reducer, monthlyConfig);
 
   return (
     <section className="dark:bg-darkmode overflow-hidden py-14">
@@ -81,56 +79,49 @@ const Pricing = () => {
           variants={containerVariants}
         >
           <motion.div variants={itemVariants} className="text-center mb-12">
-            <h2 className="dark:text-white text-midnight_text md:text-50 sm:text-40 text-28 font-bold leading-tight">
+            <h2 className="dark:text-white text-midnight_text md:text-h1 sm:text-h2 text-h3 font-bold leading-tight">
               {t("pricing.title1")}
               <span className="text-primary ml-2">{t("pricing.highlight")}</span>
             </h2>
-            <p className="text-18 font-medium text-midnight_text/70 dark:text-white/70 mx-auto mt-6 lg:max-w-[50%] sm:max-w-[75%]">
+            <p className="text-lead font-medium text-midnight_text/70 dark:text-white/70 mx-auto mt-6 lg:max-w-[50%] sm:max-w-[75%]">
               {t("pricing.subtitle")}
             </p>
           </motion.div>
 
           <motion.div variants={itemVariants} className="text-center pb-6">
-            <div className="inline-flex items-center bg-heroBg dark:bg-midnight_text rounded-2xl p-2 shadow-sm border border-border/50 dark:border-dark_border/50">
+            <div
+              role="tablist"
+              aria-label="Billing period"
+              className="inline-flex items-center bg-heroBg dark:bg-midnight_text rounded-2xl p-2 shadow-sm border border-border/50 dark:border-dark_border/50"
+            >
               <button
-                className={`text-16 font-semibold py-3 px-8 rounded-xl transition-all duration-300 ${
+                role="tab"
+                aria-pressed={tabConfig.planType === "Monthly"}
+                aria-selected={tabConfig.planType === "Monthly"}
+                className={`text-body font-semibold py-3 px-8 rounded-xl transition-all duration-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary ${
                   tabConfig.planType === "Monthly"
                     ? "bg-white text-midnight_text shadow-md dark:bg-darkmode dark:text-white"
                     : "text-midnight_text/60 dark:text-white/60 hover:text-midnight_text dark:hover:text-white"
                 }`}
-                onClick={() =>
-                  dispatch({
-                    type: "Monthly",
-                    payload: {
-                      duration: "Monthly",
-                      personalPrice: "Free",
-                      professionalPrice: "9.00",
-                      organizationPrice: "18.00",
-                    },
-                  })
-                }
+                onClick={() => dispatch({ type: "Monthly" })}
               >
                 {t("pricing.monthly")}
               </button>
               <button
-                className={`text-16 font-semibold py-3 px-8 rounded-xl transition-all duration-300 ${
+                role="tab"
+                aria-pressed={tabConfig.planType === "Annually"}
+                aria-selected={tabConfig.planType === "Annually"}
+                className={`relative text-body font-semibold py-3 px-8 rounded-xl transition-all duration-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary ${
                   tabConfig.planType === "Annually"
                     ? "bg-white text-midnight_text shadow-md dark:bg-darkmode dark:text-white"
                     : "text-midnight_text/60 dark:text-white/60 hover:text-midnight_text dark:hover:text-white"
                 }`}
-                onClick={() =>
-                  dispatch({
-                    type: "Annually",
-                    payload: {
-                      duration: "Annually",
-                      personalPrice: "Free",
-                      professionalPrice: "90.00",
-                      organizationPrice: "180.00",
-                    },
-                  })
-                }
+                onClick={() => dispatch({ type: "Annually" })}
               >
                 {t("pricing.annually")}
+                <span className="ml-2 inline-flex items-center bg-green/15 text-green text-caption font-bold px-2 py-0.5 rounded-full">
+                  {t("pricing.save20")}
+                </span>
               </button>
             </div>
           </motion.div>
@@ -140,7 +131,7 @@ const Pricing = () => {
             className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-6 items-end mt-8"
           >
             <div className="hidden lg:block pb-4">
-              <div className="space-y-6 text-midnight_text/80 dark:text-white/80 font-medium text-16">
+              <div className="space-y-6 text-midnight_text/80 dark:text-white/80 font-medium text-body">
                 <p className="pb-6 border-b border-border dark:border-dark_border/50">
                   {t("pricing.monthlyServiceFee")}
                 </p>
@@ -170,26 +161,26 @@ const Pricing = () => {
 
             {/* Starter Plan */}
             <div className="bg-white dark:bg-midnight_text pt-10 px-5 sm:px-8 pb-8 rounded-[2rem] border border-border/50 dark:border-dark_border/50 shadow-lg relative transition-transform hover:-translate-y-2 duration-300">
-              <h3 className="text-24 font-bold text-midnight_text text-center dark:text-white">
+              <h3 className="text-h4 font-bold text-midnight_text text-center dark:text-white">
                 {t("pricing.starter")}
               </h3>
               <div className="mt-6 flex flex-col items-center">
-                <p className="text-50 font-bold text-midnight_text dark:text-white leading-none flex items-center justify-center">
+                <p className="text-h1 font-bold text-midnight_text dark:text-white leading-none flex items-center justify-center">
                   <motion.span key={tabConfig.personalPrice} initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3 }}>
                     {tabConfig.personalPrice}
                   </motion.span>
                 </p>
-                <p className="text-15 font-medium text-midnight_text/60 dark:text-white/60 mt-2">
-                  {tabConfig.duration}
+                <p className="text-body font-medium text-midnight_text/60 dark:text-white/60 mt-2">
+                  {t(`pricing.${tabConfig.duration}`)}
                 </p>
               </div>
               <Link
-                href="#"
-                className="mt-8 block text-center py-3.5 text-16 font-semibold bg-transparent border-2 border-primary text-primary hover:bg-primary hover:text-white duration-300 rounded-xl"
+                href="/signup"
+                className="mt-8 block text-center py-3.5 text-body font-semibold bg-transparent border-2 border-primary text-primary hover:bg-primary hover:text-white duration-300 rounded-xl focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
               >
                 {t("pricing.tryFree")}
               </Link>
-              <div className="mt-10 space-y-6 text-center text-15 font-medium text-midnight_text/70 dark:text-white/70">
+              <div className="mt-10 space-y-6 text-center text-body font-medium text-midnight_text/70 dark:text-white/70">
                 <p className="pb-6 border-b border-border dark:border-dark_border/50">
                   <span className="lg:hidden font-bold text-midnight_text dark:text-white">
                     {t("pricing.monthlyServiceFee")}:
@@ -243,30 +234,35 @@ const Pricing = () => {
 
             {/* Growth Plan */}
             <div className="bg-primary/5 dark:bg-primary/10 pt-10 px-5 sm:px-8 pb-8 rounded-[2rem] border-2 border-primary shadow-[0_0_30px_rgba(99,102,241,0.15)] hover:shadow-[0_0_50px_rgba(99,102,241,0.3)] relative transition-all duration-300 hover:-translate-y-2 z-10">
-              <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-white px-4 py-1 rounded-full text-13 font-bold uppercase tracking-wider">
+              <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-white px-4 py-1 rounded-full text-caption font-bold uppercase tracking-wider">
                 {t("pricing.mostPopular")}
               </div>
-              <h3 className="text-24 font-bold text-midnight_text text-center dark:text-white">
+              <h3 className="text-h4 font-bold text-midnight_text text-center dark:text-white">
                 {t("pricing.growth")}
               </h3>
               <div className="mt-6 flex flex-col items-center">
-                <p className="text-50 font-bold text-midnight_text dark:text-white leading-none flex items-center justify-center">
-                  <span className="text-24 align-super">$</span>
+                {tabConfig.professionalOriginal && (
+                  <p className="text-lead font-medium text-midnight_text/40 dark:text-white/40 line-through mb-1">
+                    ${tabConfig.professionalOriginal}
+                  </p>
+                )}
+                <p className="text-h1 font-bold text-midnight_text dark:text-white leading-none flex items-center justify-center">
+                  <span className="text-h4 align-super">$</span>
                   <motion.span key={tabConfig.professionalPrice} initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3 }}>
                     {tabConfig.professionalPrice}
                   </motion.span>
                 </p>
-                <p className="text-15 font-medium text-midnight_text/60 dark:text-white/60 mt-2">
-                  {tabConfig.duration}
+                <p className="text-body font-medium text-midnight_text/60 dark:text-white/60 mt-2">
+                  {t(`pricing.${tabConfig.duration}`)}
                 </p>
               </div>
               <Link
-                href="#"
-                className="mt-8 text-16 font-semibold block text-center bg-primary border-2 border-primary hover:bg-transparent hover:text-primary duration-300 text-white py-3.5 rounded-xl shadow-md hover:shadow-none"
+                href="/signup"
+                className="mt-8 text-body font-semibold block text-center bg-primary border-2 border-primary hover:bg-transparent hover:text-primary duration-300 text-white py-3.5 rounded-xl shadow-md hover:shadow-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
               >
                 {t("pricing.tryFree14")}
               </Link>
-              <div className="mt-10 space-y-6 text-center text-15 font-medium text-midnight_text/70 dark:text-white/70">
+              <div className="mt-10 space-y-6 text-center text-body font-medium text-midnight_text/70 dark:text-white/70">
                 <p className="pb-6 border-b border-border/50 dark:border-dark_border/30">
                   <span className="lg:hidden font-bold text-midnight_text dark:text-white">
                     {t("pricing.monthlyServiceFee")}:
@@ -335,27 +331,32 @@ const Pricing = () => {
 
             {/* Scale Plan */}
             <div className="bg-white dark:bg-midnight_text pt-10 px-5 sm:px-8 pb-8 rounded-[2rem] border border-border/50 dark:border-dark_border/50 shadow-lg relative transition-transform hover:-translate-y-2 duration-300">
-              <h3 className="text-24 text-center font-bold text-midnight_text dark:text-white">
+              <h3 className="text-h4 text-center font-bold text-midnight_text dark:text-white">
                 {t("pricing.scale")}
               </h3>
               <div className="mt-6 flex flex-col items-center">
-                <p className="text-50 font-bold text-midnight_text dark:text-white leading-none flex items-center justify-center">
-                  <span className="text-24 align-super">$</span>
+                {tabConfig.organizationOriginal && (
+                  <p className="text-lead font-medium text-midnight_text/40 dark:text-white/40 line-through mb-1">
+                    ${tabConfig.organizationOriginal}
+                  </p>
+                )}
+                <p className="text-h1 font-bold text-midnight_text dark:text-white leading-none flex items-center justify-center">
+                  <span className="text-h4 align-super">$</span>
                   <motion.span key={tabConfig.organizationPrice} initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3 }}>
                     {tabConfig.organizationPrice}
                   </motion.span>
                 </p>
-                <p className="text-15 font-medium text-midnight_text/60 dark:text-white/60 mt-2">
-                  {tabConfig.duration}
+                <p className="text-body font-medium text-midnight_text/60 dark:text-white/60 mt-2">
+                  {t(`pricing.${tabConfig.duration}`)}
                 </p>
               </div>
               <Link
-                href="#"
-                className="mt-8 text-16 font-semibold block text-center bg-midnight_text dark:bg-white dark:text-midnight_text border-2 border-midnight_text dark:border-white hover:bg-transparent dark:hover:bg-transparent dark:hover:text-white hover:text-midnight_text duration-300 text-white py-3.5 rounded-xl shadow-md hover:shadow-none"
+                href="/signup"
+                className="mt-8 text-body font-semibold block text-center bg-midnight_text dark:bg-white dark:text-midnight_text border-2 border-midnight_text dark:border-white hover:bg-transparent dark:hover:bg-transparent dark:hover:text-white hover:text-midnight_text duration-300 text-white py-3.5 rounded-xl shadow-md hover:shadow-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
               >
                 {t("pricing.tryFree14")}
               </Link>
-              <div className="mt-10 space-y-6 text-center text-15 font-medium text-midnight_text/70 dark:text-white/70">
+              <div className="mt-10 space-y-6 text-center text-body font-medium text-midnight_text/70 dark:text-white/70">
                 <p className="pb-6 border-b border-border dark:border-dark_border/50">
                   <span className="lg:hidden font-bold text-midnight_text dark:text-white">
                     {t("pricing.monthlyServiceFee")}:

@@ -19,17 +19,17 @@ const BlogSmall: React.FC = () => {
       <div className="container mx-auto lg:max-w-(--breakpoint-xl) md:max-w-(--breakpoint-md) px-4">
         <div className="flex sm:flex-row flex-col justify-between sm:items-end sm:gap-0 gap-4 mb-16">
           <div className="">
-            <p className="text-16 text-primary uppercase tracking-widest font-bold">
+            <p className="text-body text-primary uppercase tracking-widest font-bold">
               Our Blog
             </p>
-            <h2 className="sm:text-55 text-40 font-bold text-midnight_text dark:text-white">
+            <h2 className="sm:text-55 text-h2 font-bold text-midnight_text dark:text-white">
               Latest Blog <br /> Articles
             </h2>
           </div>
           <div className="">
             <Link
               href="/blog"
-              className="text-midnight_text border-2 text-16 font-semibold flex gap-2 px-7 py-3 items-center rounded-full border-midnight_text bg-transparent w-fit hover:bg-midnight_text hover:text-white dark:border-white dark:text-white dark:hover:bg-white dark:hover:text-midnight_text"
+              className="text-midnight_text border-2 text-body font-semibold flex gap-2 px-7 py-3 items-center rounded-full border-midnight_text bg-transparent w-fit hover:bg-midnight_text hover:text-white dark:border-white dark:text-white dark:hover:bg-white dark:hover:text-midnight_text"
             >
               Discover All
               <Icon icon="solar:arrow-right-linear" width="24" height="24" />

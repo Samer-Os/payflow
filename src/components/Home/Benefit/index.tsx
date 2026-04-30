@@ -40,7 +40,7 @@ const imageVariants = {
 const Benefit = () => {
   const { t, dictionary } = useTranslation();
   return (
-    <section className="dark:bg-darkmode py-14 overflow-x-hidden">
+    <section id="benefits" className="dark:bg-darkmode py-14 overflow-x-hidden scroll-mt-24">
       <div className="container lg:max-w-(--breakpoint-xl) md:max-w-(--breakpoint-md) px-4 mx-auto">
         <motion.div
           initial="hidden"
@@ -50,7 +50,7 @@ const Benefit = () => {
           className="dark:bg-midnight_text bg-heroBg rounded-3xl md:py-20 py-10 2xl:px-20 sm:px-14 px-6"
         >
           <motion.div variants={itemVariants} className="items-start mb-12">
-            <h2 className="font-bold md:text-35 sm:text-28 text-24 text-midnight_text dark:text-white">
+            <h2 className="font-bold md:text-h2 sm:text-h3 text-h4 text-midnight_text dark:text-white">
               {t("benefit.title1")}
               <span className="bg-border dark:bg-darkHeroBg rounded-lg text-primary max-w-max ml-2 px-2 pb-1">
                 {t("benefit.highlight")}
@@ -71,6 +71,8 @@ const Benefit = () => {
                   alt="Benefit Dashboard"
                   width={435}
                   height={304}
+                  loading="lazy"
+                  sizes="(max-width: 1280px) 100vw, 50vw"
                   style={{ width: "100%", height: "100%" }}
                   className="rounded-xl drop-shadow-xl hover:scale-105 transition-transform duration-700"
                 />
@@ -83,7 +85,7 @@ const Benefit = () => {
             >
               <motion.p
                 variants={itemVariants}
-                className="sm:text-25 text-18 text-midnight_text font-medium dark:text-white/90 mb-8"
+                className="sm:text-h4 text-lead text-midnight_text font-medium dark:text-white/90 mb-8"
               >
                 {t("benefit.subtitle")}
               </motion.p>
@@ -104,7 +106,7 @@ const Benefit = () => {
                         className="w-6 h-6"
                       />
                     </div>
-                    <p className="text-17 text-muted dark:text-white/70 pt-1 leading-snug">
+                    <p className="text-body text-muted dark:text-white/70 pt-1 leading-snug">
                       {(dictionary.benefit.items as any)[index]}
                     </p>
                   </motion.div>
@@ -116,8 +118,8 @@ const Benefit = () => {
                 className="flex items-center lg:justify-start justify-center mt-12"
               >
                 <Link
-                  href="#"
-                  className="text-17 flex gap-3 items-center bg-primary text-white py-3 px-8 rounded-lg border border-primary hover:text-primary hover:bg-transparent transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/30"
+                  href="/signup"
+                  className="text-body flex gap-3 items-center bg-primary text-white py-3 px-8 rounded-lg border border-primary hover:text-primary hover:bg-transparent transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/30 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
                 >
                   {t("benefit.getStarted")}
                   <Icon

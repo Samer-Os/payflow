@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { headerData } from "./Navigation/menuData";
 import Logo from "./Logo";
 import HeaderLink from "./Navigation/HeaderLink";
@@ -19,33 +19,27 @@ const Header: React.FC = () => {
 
   const [navbarOpen, setNavbarOpen] = useState(false);
   const [sticky, setSticky] = useState(false);
-  const [isSignInOpen, setIsSignInOpen] = useState(false);
-  const [isSignUpOpen, setIsSignUpOpen] = useState(false);
 
-  const navbarRef = useRef<HTMLDivElement>(null);
-  const signInRef = useRef<HTMLDivElement>(null);
-  const signUpRef = useRef<HTMLDivElement>(null);
+  const signInDialogRef = useRef<HTMLDialogElement>(null);
+  const signUpDialogRef = useRef<HTMLDialogElement>(null);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
 
-  // Function to handle scroll to set sticky class
+  const openSignIn = useCallback(() => signInDialogRef.current?.showModal(), []);
+  const closeSignIn = useCallback(() => signInDialogRef.current?.close(), []);
+  const openSignUp = useCallback(() => signUpDialogRef.current?.showModal(), []);
+  const closeSignUp = useCallback(() => signUpDialogRef.current?.close(), []);
+
+  const handleDialogBackdropClick = (e: React.MouseEvent<HTMLDialogElement>) => {
+    if (e.target === e.currentTarget) {
+      (e.target as HTMLDialogElement).close();
+    }
+  };
+
   const handleScroll = () => {
     setSticky(window.scrollY >= 80);
   };
 
-  // Function to handle click outside
   const handleClickOutside = (event: MouseEvent) => {
-    if (
-      signInRef.current &&
-      !signInRef.current.contains(event.target as Node)
-    ) {
-      setIsSignInOpen(false);
-    }
-    if (
-      signUpRef.current &&
-      !signUpRef.current.contains(event.target as Node)
-    ) {
-      setIsSignUpOpen(false);
-    }
     if (
       mobileMenuRef.current &&
       !mobileMenuRef.current.contains(event.target as Node) &&
@@ -62,16 +56,15 @@ const Header: React.FC = () => {
       window.removeEventListener("scroll", handleScroll);
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [navbarOpen, isSignInOpen, isSignUpOpen]);
+  }, [navbarOpen]);
 
-  // Effect to handle body overflow
   useEffect(() => {
-    if (isSignInOpen || isSignUpOpen || navbarOpen) {
-      document.body.style.overflow = "hidden"; // Prevent scrolling
+    if (navbarOpen) {
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = ""; // Reset scrolling
+      document.body.style.overflow = "";
     }
-  }, [isSignInOpen, isSignUpOpen, navbarOpen]);
+  }, [navbarOpen]);
 
   return (
     <header
@@ -81,15 +74,16 @@ const Header: React.FC = () => {
     >
       <div className="container mx-auto lg:max-w-(--breakpoint-xl) md:max-w-(--breakpoint-md) flex justify-between lg:items-center xl:gap-16 lg:gap-8 px-4 py-6">
         <Logo />
-        <nav className="hidden lg:flex grow items-center xl:justify-start justify-center space-x-10 text-17 text-midnight_text">
+        <nav className="hidden lg:flex grow items-center xl:justify-start justify-center space-x-10 text-body text-midnight_text">
           {headerData.map((item, index) => (
             <HeaderLink key={index} item={item} />
           ))}
         </nav>
         <div className="flex items-center gap-4">
           <button
+            aria-label="Toggle language"
             onClick={() => setLanguage(language === "en" ? "tr" : "en")}
-            className="text-15 font-bold uppercase transition-colors hover:text-primary text-midnight_text dark:text-white"
+            className="text-body font-bold uppercase transition-colors hover:text-primary text-midnight_text dark:text-white"
           >
             {language === "en" ? "TR" : "EN"}
           </button>
@@ -118,56 +112,48 @@ const Header: React.FC = () => {
               <path d="M16.6111 15.855C17.591 15.1394 18.3151 14.1979 18.7723 13.1623C16.4824 13.4065 14.1342 12.4631 12.6795 10.4711C11.2248 8.47905 11.0409 5.95516 11.9705 3.84818C10.8449 3.9685 9.72768 4.37162 8.74781 5.08719C5.7759 7.25747 5.12529 11.4308 7.29558 14.4028C9.46586 17.3747 13.6392 18.0253 16.6111 15.855Z" />
             </svg>
           </button>
-          <Link
-            href="#"
-            className="hidden lg:flex items-center bg-primary border border-primary hover:border-primary dark:text-white text-white px-4 py-2 gap-2 rounded-lg text-16 font-semibold hover:bg-transparent hover:text-primary dark:hover:text-primary transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/30"
-            onClick={() => {
-              setIsSignInOpen(true);
-            }}
+          <button
+            className="hidden lg:flex items-center bg-primary border border-primary hover:border-primary dark:text-white text-white px-4 py-2 gap-2 rounded-lg text-body font-semibold hover:bg-transparent hover:text-primary dark:hover:text-primary transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/30"
+            onClick={openSignIn}
           >
             {t("header.signIn")}
             <Icon icon="solar:arrow-right-linear" width="24" height="24" />
-          </Link>
-          {isSignInOpen && (
-            <div
-              ref={signInRef}
-              className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex items-center justify-center z-50 m-0"
-            >
-              <div className="relative mx-auto w-full max-w-md overflow-hidden rounded-lg dark:bg-midnight_text bg-white px-8 py-14 text-center">
-                <button
-                  onClick={() => setIsSignInOpen(false)}
-                  className="bg-[url('/images/icon/closed.svg')] bg-no-repeat bg-contain w-5 h-5 absolute top-0 right-0 mr-8 mt-8 dark:invert"
-                  aria-label="Close Sign In Modal"
-                ></button>
-                <Signin />
-              </div>
+          </button>
+          <dialog
+            ref={signInDialogRef}
+            onClick={handleDialogBackdropClick}
+            className="backdrop:bg-black/50 bg-transparent p-0 m-auto"
+          >
+            <div className="relative mx-auto w-full max-w-md overflow-hidden rounded-lg dark:bg-midnight_text bg-white px-8 py-14 text-center">
+              <button
+                onClick={closeSignIn}
+                className="bg-[url('/images/icon/closed.svg')] bg-no-repeat bg-contain w-5 h-5 absolute top-0 right-0 mr-8 mt-8 dark:invert"
+                aria-label="Close Sign In Modal"
+              ></button>
+              <Signin signInOpen={closeSignIn} />
             </div>
-          )}
-          <Link
-            href="#"
-            className="hidden lg:flex items-center border border-primary dark:hover:border-primary bg-transparent dark:text-primary text-primary px-4 py-2 gap-2 rounded-lg text-16 font-semibold hover:bg-primary hover:text-white dark:hover:text-white transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/30"
-            onClick={() => {
-              setIsSignUpOpen(true);
-            }}
+          </dialog>
+          <button
+            className="hidden lg:flex items-center border border-primary dark:hover:border-primary bg-transparent dark:text-primary text-primary px-4 py-2 gap-2 rounded-lg text-body font-semibold hover:bg-primary hover:text-white dark:hover:text-white transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/30"
+            onClick={openSignUp}
           >
             {t("header.signUp")}
             <Icon icon="solar:arrow-right-linear" width="24" height="24" />
-          </Link>
-          {isSignUpOpen && (
-            <div
-              ref={signUpRef}
-              className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex items-center justify-center z-50"
-            >
-              <div className="relative mx-auto w-full max-w-md overflow-hidden rounded-lg bg-white px-8 py-14 text-center dark:bg-midnight_text">
-                <button
-                  onClick={() => setIsSignUpOpen(false)}
-                  className="bg-[url('/images/icon/closed.svg')] bg-no-repeat bg-contain w-5 h-5 absolute top-0 right-0 mr-8 mt-8 dark:invert"
-                  aria-label="Close Sign Up Modal"
-                ></button>
-                <SignUp />
-              </div>
+          </button>
+          <dialog
+            ref={signUpDialogRef}
+            onClick={handleDialogBackdropClick}
+            className="backdrop:bg-black/50 bg-transparent p-0 m-auto"
+          >
+            <div className="relative mx-auto w-full max-w-md overflow-hidden rounded-lg bg-white px-8 py-14 text-center dark:bg-midnight_text">
+              <button
+                onClick={closeSignUp}
+                className="bg-[url('/images/icon/closed.svg')] bg-no-repeat bg-contain w-5 h-5 absolute top-0 right-0 mr-8 mt-8 dark:invert"
+                aria-label="Close Sign Up Modal"
+              ></button>
+              <SignUp />
             </div>
-          )}
+          </dialog>
           <button
             onClick={() => setNavbarOpen(!navbarOpen)}
             className="block lg:hidden p-2 rounded-lg"
@@ -186,7 +172,7 @@ const Header: React.FC = () => {
         }`}
       >
         <div className="flex items-center justify-between p-4">
-          <h2 className="text-lg font-bold text-midnight_text dark:text-midnight_text">
+          <h2 className="text-lg font-bold text-midnight_text dark:text-white">
             Menu
           </h2>
           <button
@@ -198,7 +184,7 @@ const Header: React.FC = () => {
               width="24"
               height="24"
               viewBox="0 0 24 24"
-              className="dark:text-midnight_text"
+              className="text-midnight_text dark:text-white"
             >
               <path
                 fill="none"
@@ -216,26 +202,24 @@ const Header: React.FC = () => {
             <MobileHeaderLink key={index} item={item} />
           ))}
           <div className="mt-4 flex flex-col space-y-4 w-full">
-            <Link
-              href="#"
-              className="bg-transparent border border-primary text-primary px-4 py-2 rounded-lg hover:bg-blue-600 hover:text-white"
+            <button
+              className="bg-transparent border border-primary text-primary px-4 py-2 rounded-lg hover:bg-blue-600 hover:text-white text-left"
               onClick={() => {
-                setIsSignInOpen(true);
-                setNavbarOpen(false); // Close the mobile menu
+                openSignIn();
+                setNavbarOpen(false);
               }}
             >
               {t("header.signIn")}
-            </Link>
-            <Link
-              href="#"
-              className="bg-primary text-white px-4 py-2 rounded-lg hover:bg-blue-700"
+            </button>
+            <button
+              className="bg-primary text-white px-4 py-2 rounded-lg hover:bg-blue-700 text-left"
               onClick={() => {
-                setIsSignUpOpen(true);
-                setNavbarOpen(false); // Close the mobile menu
+                openSignUp();
+                setNavbarOpen(false);
               }}
             >
               {t("header.signUp")}
-            </Link>
+            </button>
           </div>
         </nav>
       </div>

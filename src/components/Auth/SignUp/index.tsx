@@ -57,6 +57,7 @@ const SignUp = () => {
           <input
             type="text"
             placeholder="Name"
+            aria-label="Name"
             name="name"
             required
             className="w-full rounded-md border border-border dark:border-dark_border border-solid bg-transparent px-5 py-3 text-base text-dark outline-hidden transition placeholder:text-grey focus:border-primary focus-visible:shadow-none dark:text-white dark:focus:border-primary"
@@ -66,6 +67,7 @@ const SignUp = () => {
           <input
             type="email"
             placeholder="Email"
+            aria-label="Email"
             name="email"
             required
             className="w-full rounded-md border border-border dark:border-dark_border border-solid bg-transparent px-5 py-3 text-base text-dark outline-hidden transition placeholder:text-grey focus:border-primary focus-visible:shadow-none dark:text-white dark:focus:border-primary"
@@ -75,6 +77,7 @@ const SignUp = () => {
           <input
             type="password"
             placeholder="Password"
+            aria-label="Password"
             name="password"
             required
             className="w-full rounded-md border border-border dark:border-dark_border border-solid bg-transparent px-5 py-3 text-base text-dark outline-hidden transition placeholder:text-grey focus:border-primary focus-visible:shadow-none dark:text-white dark:focus:border-primary"

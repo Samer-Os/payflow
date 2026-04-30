@@ -40,14 +40,14 @@ const Method = () => {
           className="dark:bg-midnight_text bg-heroBg rounded-3xl py-16 lg:px-20 sm:px-10 px-5"
         >
           <motion.div variants={itemVariants} className="text-center">
-            <h2 className="md:text-35 sm:text-28 text-24 text-midnight_text font-bold mb-5 dark:text-white lg:max-w-full sm:max-w-[75%] mx-auto leading-tight">
+            <h2 className="md:text-h2 sm:text-h3 text-h4 text-midnight_text font-bold mb-5 dark:text-white lg:max-w-full sm:max-w-[75%] mx-auto leading-tight">
               {t("method.title1")}
               <span className="text-primary max-w-max ml-2 mr-2">
                 {t("method.highlight")}
               </span>
               {t("method.title2")}
             </h2>
-            <p className="font-medium xl:max-w-[45%] lg:max-w-[50%] md:max-w-[75%] text-17 mx-auto text-muted dark:text-white/70">
+            <p className="font-medium xl:max-w-[45%] lg:max-w-[50%] md:max-w-[75%] text-body mx-auto text-muted dark:text-white/70">
               {t("method.subtitle")}
             </p>
           </motion.div>
@@ -70,19 +70,21 @@ const Method = () => {
                     alt={card.alt}
                     width={500}
                     height={375}
+                    loading="lazy"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                 </div>
                 <div className="flex flex-col flex-1 p-8">
-                  <h3 className="md:text-25 text-22 font-bold mb-4 dark:text-white text-midnight_text">
+                  <h3 className="md:text-h4 text-h4 font-bold mb-4 dark:text-white text-midnight_text">
                     {(dictionary.method.cards as any)[index]?.title}
                   </h3>
-                  <p className="text-muted dark:text-white/70 text-16 mb-8 leading-relaxed flex-1">
+                  <p className="text-muted dark:text-white/70 text-body mb-8 leading-relaxed flex-1">
                     {(dictionary.method.cards as any)[index]?.details}
                   </p>
                   <Link
-                    href="#"
-                    className="text-17 flex w-fit gap-2 items-center hover:text-primary/80 transition-colors font-medium text-primary mt-auto"
+                    href="/signup"
+                    className="text-body flex w-fit gap-2 items-center hover:text-primary/80 transition-colors font-medium text-primary mt-auto focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary rounded"
                   >
                     {t("method.getStarted")}
                     <Icon

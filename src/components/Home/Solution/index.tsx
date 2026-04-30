@@ -39,7 +39,7 @@ const Solution = () => {
         >
           <div className="grid lg:grid-cols-2 items-center gap-12">
             <motion.div variants={itemVariants} className="order-2 lg:order-1">
-              <h2 className="md:text-35 sm:text-28 text-24 font-semibold text-midnight_text dark:text-white">
+              <h2 className="md:text-h2 sm:text-h3 text-h4 font-semibold text-midnight_text dark:text-white">
                 {t("solution.title1")}
                 <span className="text-primary max-w-max ml-2">{t("solution.highlight")}</span>
               </h2>
@@ -48,7 +48,7 @@ const Solution = () => {
               </p>
               <Link
                 href="/contact"
-                className="lg:text-17 flex gap-4 w-fit items-center bg-primary text-white py-2 px-4 lg:py-3 lg:px-8 rounded-lg mt-12 border border-primary hover:text-primary hover:bg-transparent duration-300 transition-colors"
+                className="lg:text-body flex gap-4 w-fit items-center bg-primary text-white py-2 px-4 lg:py-3 lg:px-8 rounded-lg mt-12 border border-primary hover:text-primary hover:bg-transparent duration-300 transition-colors"
               >
                 {t("solution.getStarted")}
                 <Icon
@@ -64,6 +64,8 @@ const Solution = () => {
                 alt="Enterprise Grade Solutions"
                 width={531}
                 height={200}
+                loading="lazy"
+                sizes="(max-width: 1024px) 100vw, 50vw"
                 className="w-full max-w-xs sm:max-w-md lg:max-w-full h-auto hover:scale-105 transition-transform duration-500"
               />
             </motion.div>

@@ -17,7 +17,8 @@
     "subtitle": "Geliştiriciler için oluşturulmuş güçlü ödeme API'leri. Aylar değil, günler içinde canlıya alın.",
     "getStarted": "Hemen Başla",
     "seeFeatures": "Özellikleri Gör",
-    "trustedBy": "Güvenenler:"
+    "trustedBy": "Güvenenler:",
+    "builtWith": "Modern, üretim sınıfı araçlarla geliştirildi."
   },
   "payment": {
     "title1": "Kişisel ve",
@@ -90,6 +91,9 @@
     "subtitle": "Gizli ücret yok. Sürpriz yok. Hacminize uyan planı seçin ve büyüdükçe ölçeklendirin.",
     "monthly": "Aylık",
     "annually": "Yıllık",
+    "save20": "%20 İndirim",
+    "perMonth": "aylık",
+    "perYear": "yıllık",
     "free": "Ücretsiz",
     "monthlyServiceFee": "Aylık hizmet ücreti",
     "directDebits": "Otomatik ödemeler",
@@ -133,6 +137,60 @@
     "highlight": "Düzeyde",
     "subtitle": "Yüksek hacimli işlemler gerçekleştiren ekipler için özel sözleşmeler, özel destek ve SLA garantileri.",
     "getStarted": "Hemen Başla"
+  },
+  "testimonials": {
+    "title1": "Üretimde geliştirenlerin",
+    "highlight": "tercihi",
+    "title2": "",
+    "subtitle": "Gerçek geliri yöneten gerçek ekiplerden.",
+    "items": {
+      "0": {
+        "quote": "Payflow entegrasyon süremizi haftalardan günlere indirdi. API temiz, dokümanlar mükemmel ve destek ekibi gerçekten yanıt veriyor.",
+        "name": "Sarah K. Mitchell",
+        "role": "Finbridge Labs CTO"
+      },
+      "1": {
+        "quote": "Üç ayrı sağlayıcıyı Payflow ile değiştirdik. Finans ekibimiz nihayet rahat uyuyor, mühendislerimiz daha hızlı geliştiriyor.",
+        "name": "Marcus Chen",
+        "role": "Notable Mühendislik Müdürü"
+      },
+      "2": {
+        "quote": "Önceki sağlayıcımızın söz verip de sunamadığı her şey burada. Gerçek zamanlı, doğru ve harika tasarlanmış.",
+        "name": "Priya Anand",
+        "role": "Stackpay Kurucusu"
+      }
+    }
+  },
+  "faq": {
+    "title1": "Sıkça sorulan",
+    "highlight": "sorular",
+    "subtitle": "Başlamadan önce bilmeniz gereken her şey.",
+    "items": {
+      "0": {
+        "q": "Payflow fiyatlandırması nasıl çalışır?",
+        "a": "Yalnızca işlem yaptığınızda ödersiniz. Starter planı sonsuza kadar ücretsizdir, kurulum ücreti yoktur. Growth ve Scale planları daha yüksek limitler, premium destek ve daha düşük uluslararası ücretler sunar."
+      },
+      "1": {
+        "q": "Payflow güvenli ve uyumlu mu?",
+        "a": "Evet. PCI-DSS Seviye 1 sertifikalıyız, SOC 2 Type II uyumluyuz; verileri AES-256 ile şifreliyor ve TLS 1.3 üzerinden iletiyoruz. Verileriniz denetlenmiş bölgelerden çıkmaz."
+      },
+      "2": {
+        "q": "Kutudan çıkar çıkmaz hangi entegrasyonlar destekleniyor?",
+        "a": "Stripe, Plaid, Wise, Apple Pay, Google Pay ve birleşik API'mizle 40+ banka. Özel entegrasyonlar Scale planında sunulur."
+      },
+      "3": {
+        "q": "İstediğim zaman iptal edebilir veya plan düşürebilir miyim?",
+        "a": "Evet. Tek tıkla panelden iptal edin, soru sorulmaz. Kullanılmayan yıllık süre için orantılı iadeler otomatik olarak yapılır."
+      },
+      "4": {
+        "q": "Ne tür destek alıyorum?",
+        "a": "Starter topluluk + e-posta desteği alır. Growth, 24 saatlik SLA ile öncelikli e-posta alır. Scale, özel bir Slack kanalı ve atanmış bir hesap mühendisi alır."
+      },
+      "5": {
+        "q": "Ücretsiz deneme sunuyor musunuz?",
+        "a": "Evet. Growth ve Scale 14 gün ücretsiz denemeyle gelir — kredi kartı gerekmez. Starter, ayda 1.000 işlemin altındaki projeler için sonsuza kadar ücretsizdir."
+      }
+    }
   },
   "footer": {
     "address": "1 Fintech Plaza, London EC2V 8RT,",

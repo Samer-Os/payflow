@@ -17,7 +17,8 @@
     "subtitle": "Powerful payment APIs built for developers. Go live in days, not months.",
     "getStarted": "Get Started",
     "seeFeatures": "See Features",
-    "trustedBy": "Trusted by"
+    "trustedBy": "Trusted by",
+    "builtWith": "Built with modern, production-grade tooling."
   },
   "payment": {
     "title1": "Easy and affordable for your personal and",
@@ -90,6 +91,9 @@
     "subtitle": "No hidden fees. No surprises. Pick the plan that fits your volume and scale as you grow.",
     "monthly": "Monthly",
     "annually": "Annually",
+    "save20": "Save 20%",
+    "perMonth": "per month",
+    "perYear": "per year",
     "free": "Free",
     "monthlyServiceFee": "Monthly service fee",
     "directDebits": "Direct debits",
@@ -133,6 +137,60 @@
     "highlight": "Grade",
     "subtitle": "Custom contracts, dedicated support, and SLA guarantees for teams processing high volumes.",
     "getStarted": "Get Started"
+  },
+  "testimonials": {
+    "title1": "Loved by",
+    "highlight": "developers",
+    "title2": "shipping in production.",
+    "subtitle": "Real teams using Payflow to power real revenue.",
+    "items": {
+      "0": {
+        "quote": "Payflow cut our integration time from weeks to days. The API is clean, the docs are excellent, and the support team actually responds.",
+        "name": "Sarah K. Mitchell",
+        "role": "CTO at Finbridge Labs"
+      },
+      "1": {
+        "quote": "We replaced three separate vendors with Payflow. Our finance team finally sleeps at night and our engineers ship faster.",
+        "name": "Marcus Chen",
+        "role": "Head of Engineering, Notable"
+      },
+      "2": {
+        "quote": "The dashboard is everything our previous provider promised but never delivered. Real-time, accurate, and beautifully designed.",
+        "name": "Priya Anand",
+        "role": "Founder, Stackpay"
+      }
+    }
+  },
+  "faq": {
+    "title1": "Frequently asked",
+    "highlight": "questions",
+    "subtitle": "Everything you need to know before getting started.",
+    "items": {
+      "0": {
+        "q": "How does Payflow's pricing work?",
+        "a": "You only pay when you transact. The Starter plan is free forever with no setup fees. Growth and Scale plans unlock higher limits, premium support, and lower international fees."
+      },
+      "1": {
+        "q": "Is Payflow secure and compliant?",
+        "a": "Yes. We're PCI-DSS Level 1 certified, SOC 2 Type II compliant, and use AES-256 encryption at rest with TLS 1.3 in transit. Your data never leaves audited regions."
+      },
+      "2": {
+        "q": "Which integrations are supported out of the box?",
+        "a": "Stripe, Plaid, Wise, Apple Pay, Google Pay, and 40+ banks via our unified API. Custom integrations are available on the Scale plan."
+      },
+      "3": {
+        "q": "Can I cancel or downgrade at any time?",
+        "a": "Yes. Cancel from your dashboard in one click, no questions asked. Pro-rated refunds are issued automatically for unused annual time."
+      },
+      "4": {
+        "q": "What kind of support do I get?",
+        "a": "Starter gets community + email support. Growth gets priority email with a 24-hour SLA. Scale gets a dedicated Slack channel and a named account engineer."
+      },
+      "5": {
+        "q": "Do you offer a free trial?",
+        "a": "Yes. Growth and Scale come with a 14-day free trial — no credit card required. Starter is free forever for projects under 1,000 transactions/month."
+      }
+    }
   },
   "footer": {
     "address": "1 Fintech Plaza, London EC2V 8RT,",

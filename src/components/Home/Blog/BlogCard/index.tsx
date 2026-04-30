@@ -19,13 +19,13 @@ const BlogCard: FC<{ blog: Blog }> = ({ blog }) => {
         />
       </div>
       <div className="-mb-10">
-        <p className="text-20 text-midnight_text dark:text-white">{type}</p>
+        <p className="text-lead text-midnight_text dark:text-white">{type}</p>
         <div className="my-4">
-          <p className="text-24 font-medium text-midnight_text dark:text-white group-hover:text-primary">
+          <p className="text-h4 font-medium text-midnight_text dark:text-white group-hover:text-primary">
             {title}
           </p>
         </div>
-        <p className="text-17 font-medium text-muted leading-loose mb-0">
+        <p className="text-body font-medium text-muted leading-loose mb-0">
           {format(new Date(date), "MMM dd, yyyy")}
         </p>
       </div>

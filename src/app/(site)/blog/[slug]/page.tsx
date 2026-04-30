@@ -147,7 +147,7 @@ export default async function Post({ params }: any) {
                         <div className="flex gap-4 flex-col">
                           <Link
                             href="#"
-                            className="bg-[#526fa3] py-4 px-6 text-20 rounded-lg flex items-center text-white"
+                            className="bg-[#526fa3] py-4 px-6 text-lead rounded-lg flex items-center text-white"
                           >
                             <svg
                               className="svg-inline--fa fa-facebook-f me-3"
@@ -170,7 +170,7 @@ export default async function Post({ params }: any) {
                           </Link>
                           <Link
                             href="#"
-                            className="bg-[#46C4FF] py-4 px-6 text-20 rounded-lg flex items-center text-white"
+                            className="bg-[#46C4FF] py-4 px-6 text-lead rounded-lg flex items-center text-white"
                           >
                             <svg
                               className="svg-inline--fa fa-twitter me-3"
@@ -193,7 +193,7 @@ export default async function Post({ params }: any) {
                           </Link>
                           <Link
                             href="#"
-                            className="bg-[#3C86AD] py-4 px-6 flex items-center text-20 rounded-lg text-white"
+                            className="bg-[#3C86AD] py-4 px-6 flex items-center text-lead rounded-lg text-white"
                           >
                             <svg
                               className="svg-inline--fa fa-linkedin-in me-3"
@@ -217,7 +217,7 @@ export default async function Post({ params }: any) {
                         </div>
                       </div>
                       <div className="w-full py-12 px-11 bg-white dark:bg-dark_b shadow-lg rounded-b-lg">
-                        <p className="text-24 mb-4">Join our Newsletter</p>
+                        <p className="text-h4 mb-4">Join our Newsletter</p>
                         <input
                           placeholder="Email address"
                           className="p-3 dark:bg-search border border-border dark:border-dark_border rounded-lg mb-2 w-full focus:outline-0 focus:border-primary dark:focus:border-primary"

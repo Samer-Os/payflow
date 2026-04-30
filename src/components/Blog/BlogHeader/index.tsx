@@ -79,12 +79,12 @@ export default async function BlogHead({ params }: Props) {
                     <div className="grid md:grid-cols-12 grid-cols-1 items-center">
                         <div className="col-span-8">
                             <div className="flex flex-col sm:flex-row">
-                                <span className="text-16 text-midnight_text pr-7 border-r border-solid border-white w-fit">
+                                <span className="text-body text-midnight_text pr-7 border-r border-solid border-white w-fit">
                                     {format(new Date(post.date), "dd MMM yyyy")}
                                 </span>
-                                <span className="text-16 text-midnight_text sm:pl-7 pl-0 w-fit">13 Comments</span>
+                                <span className="text-body text-midnight_text sm:pl-7 pl-0 w-fit">13 Comments</span>
                             </div>
-                            <h2 className="text-midnight_text pt-7 text-40 font-bold">
+                            <h2 className="text-midnight_text pt-7 text-h2 font-bold">
                                 {post.title}
                             </h2>
                         </div>
@@ -99,7 +99,7 @@ export default async function BlogHead({ params }: Props) {
                                 style={{ width: 'auto', height: 'auto' }}
                             />
                             <div>
-                                <span className="text-22 text-midnight_text">Silicaman</span>
+                                <span className="text-h4 text-midnight_text">Silicaman</span>
                                 <p className="text-xl text-midnight_text">Author</p>
                             </div>
                         </div>

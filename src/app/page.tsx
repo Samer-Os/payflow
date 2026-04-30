@@ -1,32 +1,27 @@
 import React from "react";
 import { Metadata } from "next";
 import Hero from "@/components/Home/Hero";
-import Payment from "@/components/Home/Payment";
-import Benefit  from "@/components/Home/Benefit";
-import Spend from "@/components/Home/Spend";
+import Benefit from "@/components/Home/Benefit";
 import Method from "@/components/Home/Method";
-import Mobile from "@/components/Home/Mobile";
-import Search from "@/components/Home/Search";
+import Testimonials from "@/components/Home/Testimonials";
 import Pricing from "@/components/Home/Pricing";
-import Solution from "@/components/Home/Solution";
+import FAQ from "@/components/Home/FAQ";
 
 export const metadata: Metadata = {
-  title: "Payflow",
+  title: "Payflow — Payment Infrastructure for Developers",
+  description:
+    "Embed powerful payment APIs into your product. Build in days, launch in weeks.",
 };
 
 export default function Home() {
   return (
-    <main>
+    <>
       <Hero />
-      <Payment />
       <Benefit />
-      <Spend />
       <Method />
-      <Mobile />
-      <Search />
+      <Testimonials />
       <Pricing />
-      <Solution />
-      
-    </main>
+      <FAQ />
+    </>
   );
 }

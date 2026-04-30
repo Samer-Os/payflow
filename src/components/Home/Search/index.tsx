@@ -87,7 +87,7 @@ const Search = () => {
                 <Icon icon="solar:rocket-bold-duotone" className="w-10 h-10 text-primary" />
               </div>
             </div>
-            <h2 className="text-midnight_text font-bold dark:text-white md:text-50 sm:text-40 text-28 leading-tight mb-8">
+            <h2 className="text-midnight_text font-bold dark:text-white md:text-h1 sm:text-h2 text-h3 leading-tight mb-8">
               {t("search.title1")}
               <br />
               <span className="text-primary mt-2 mr-2 inline-block">
@@ -103,11 +103,12 @@ const Search = () => {
                 </div>
                 <input
                   type="email"
+                  aria-label="Email address"
                   placeholder={t("search.placeholder")}
-                  className="grow min-w-0 px-3 sm:px-4 py-3 sm:py-4 font-medium text-midnight_text dark:text-white bg-transparent border-none focus:ring-0 w-full placeholder:text-muted/60 dark:placeholder:text-white/40 outline-none text-14 sm:text-16"
+                  className="grow min-w-0 px-3 sm:px-4 py-3 sm:py-4 font-medium text-midnight_text dark:text-white bg-transparent border-none focus:ring-0 w-full placeholder:text-muted/60 dark:placeholder:text-white/40 outline-none text-body sm:text-body"
                 />
                 <button
-                  className="text-14 sm:text-17 flex items-center justify-center bg-primary text-white py-2.5 sm:py-3.5 px-4 sm:px-8 rounded-xl border border-primary hover:text-primary hover:bg-transparent transition-colors font-medium whitespace-nowrap shrink-0"
+                  className="text-body sm:text-body flex items-center justify-center bg-primary text-white py-2.5 sm:py-3.5 px-4 sm:px-8 rounded-xl border border-primary hover:text-primary hover:bg-transparent transition-colors font-medium whitespace-nowrap shrink-0"
                 >
                   {t("search.getDemo")}
                 </button>
@@ -121,7 +122,7 @@ const Search = () => {
                     className="text-primary dark:text-white"
                   />
                 </div>
-                <p className="ml-3 text-16 text-midnight_text/70 dark:text-white/70 font-medium text-left">
+                <p className="ml-3 text-body text-midnight_text/70 dark:text-white/70 font-medium text-left">
                   {t("search.noFees")}
                 </p>
               </div>
@@ -136,7 +137,7 @@ const Search = () => {
               >
                 <div className="grid lg:grid-cols-2 lg:gap-14 gap-10 relative z-10 w-full">
                   <div className="flex flex-col h-full justify-between pr-0 lg:pr-6">
-                    <p className="text-midnight_text/90 dark:text-white/90 text-18 lg:text-20 leading-relaxed font-medium mb-10 italic">
+                    <p className="text-midnight_text/90 dark:text-white/90 text-lead lg:text-lead leading-relaxed font-medium mb-10 italic">
                       "{t("search.review")}"
                     </p>
                     <div className="flex items-center gap-5 p-4 rounded-2xl w-full sm:w-max">
@@ -148,10 +149,10 @@ const Search = () => {
                         className="rounded-full shadow-sm"
                       />
                       <div className="flex flex-col justify-center">
-                        <h3 className="font-bold text-18 text-midnight_text dark:text-white leading-tight">
+                        <h3 className="font-bold text-lead text-midnight_text dark:text-white leading-tight">
                           {item.name}
                         </h3>
-                        <h5 className="text-primary text-15 mt-1.5 font-medium">
+                        <h5 className="text-primary text-body mt-1.5 font-medium">
                           {item.post}
                         </h5>
                       </div>
@@ -164,8 +165,8 @@ const Search = () => {
                         <div className="flex gap-1.5 mb-3">
                           {renderStars(parseFloat(item.appstorerating))}
                         </div>
-                        <p className="text-midnight_text/70 dark:text-white/70 text-14 mt-1 font-medium">
-                          <span className="text-midnight_text dark:text-white font-bold text-24 mr-2">
+                        <p className="text-midnight_text/70 dark:text-white/70 text-body mt-1 font-medium">
+                          <span className="text-midnight_text dark:text-white font-bold text-h4 mr-2">
                             {item.appstorerating}
                           </span>
                           {t("search.ratings")}
@@ -187,8 +188,8 @@ const Search = () => {
                         <div className="flex gap-1.5 mb-3">
                           {renderStars(parseFloat(item.gplayrating))}
                         </div>
-                        <p className="text-midnight_text/70 dark:text-white/70 text-14 mt-1 font-medium">
-                          <span className="text-midnight_text dark:text-white font-bold text-24 mr-2">
+                        <p className="text-midnight_text/70 dark:text-white/70 text-body mt-1 font-medium">
+                          <span className="text-midnight_text dark:text-white font-bold text-h4 mr-2">
                             {item.gplayrating}
                           </span>
                           {t("search.ratings")}

@@ -52,7 +52,7 @@ const Mobile = () => {
           >
             <motion.h2
               variants={itemVariants}
-              className="lg:text-40 text-28 text-midnight_text font-bold dark:text-white leading-tight"
+              className="lg:text-h2 text-h3 text-midnight_text font-bold dark:text-white leading-tight"
             >
               {t("mobile.title1")}
               <br />
@@ -62,7 +62,7 @@ const Mobile = () => {
             </motion.h2>
             <motion.p
               variants={itemVariants}
-              className="mt-6 text-muted dark:text-white/70 lg:text-18 text-16 lg:max-w-[90%] leading-relaxed"
+              className="mt-6 text-muted dark:text-white/70 lg:text-lead text-body lg:max-w-[90%] leading-relaxed"
             >
               {t("mobile.subtitle")}
             </motion.p>
@@ -82,7 +82,7 @@ const Mobile = () => {
                       className="text-primary group-hover:text-white transition-colors duration-300"
                     />
                   </div>
-                  <p className="text-16 pt-1 text-midnight_text/80 dark:text-white/80 leading-snug">
+                  <p className="text-body pt-1 text-midnight_text/80 dark:text-white/80 leading-snug">
                     {t(`mobile.perks.${index}`)}
                   </p>
                 </motion.div>
@@ -92,7 +92,7 @@ const Mobile = () => {
             <motion.div variants={itemVariants} className="flex items-center justify-start">
               <Link
                 href="#"
-                className="lg:text-17 flex gap-3 items-center bg-primary text-white py-3 px-8 rounded-lg mt-12 border border-primary hover:text-primary hover:bg-transparent transition-colors duration-200"
+                className="lg:text-body flex gap-3 items-center bg-primary text-white py-3 px-8 rounded-lg mt-12 border border-primary hover:text-primary hover:bg-transparent transition-colors duration-200"
               >
                 {t("mobile.getStarted")}
                 <Icon
@@ -117,6 +117,8 @@ const Mobile = () => {
                 alt="Mobile wallets display"
                 width={555}
                 height={634}
+                loading="lazy"
+                sizes="(max-width: 1024px) 60vw, 40vw"
                 className="w-full h-auto rounded-3xl"
               />
             </div>

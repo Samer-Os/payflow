@@ -25,7 +25,7 @@ const Blog: React.FC = () => {
           </h2>
           <Link
             href="/blog"
-            className="flex items-center gap-3 text-17 text-secondary dark:text-white dark:hover:text-primary font-medium hover:text-primary sm:pb-0 pb-3"
+            className="flex items-center gap-3 text-body text-secondary dark:text-white dark:hover:text-primary font-medium hover:text-primary sm:pb-0 pb-3"
           >
             View More
             <span>

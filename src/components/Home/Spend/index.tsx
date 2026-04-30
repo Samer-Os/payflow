@@ -59,11 +59,11 @@ const Spend: FC = () => {
         className="container mx-auto lg:max-w-(--breakpoint-xl) md:max-w-(--breakpoint-md) px-4"
       >
         <motion.div variants={itemVariants} className="text-center">
-          <h2 className="md:text-35 sm:text-28 text-24 text-midnight_text font-bold mb-5 dark:text-white leading-tight">
+          <h2 className="md:text-h2 sm:text-h3 text-h4 text-midnight_text font-bold mb-5 dark:text-white leading-tight">
             {t("spend.title1")}
             <span className="text-primary ml-2">{t("spend.highlight")}</span>
           </h2>
-          <p className="text-17 text-muted dark:text-white/70 lg:font-medium lg:max-w-[60%] lg:mx-auto mb-3 leading-relaxed">
+          <p className="text-body text-muted dark:text-white/70 lg:font-medium lg:max-w-[60%] lg:mx-auto mb-3 leading-relaxed">
             {t("spend.subtitle")}
           </p>
         </motion.div>
@@ -76,6 +76,8 @@ const Spend: FC = () => {
               alt="spending analytics dashboard"
               width={850}
               height={550}
+              loading="lazy"
+              sizes="(max-width: 768px) 100vw, 850px"
               className="w-full object-cover rounded-3xl group-hover:scale-105 transition-transform duration-700"
             />
             <button
@@ -102,7 +104,7 @@ const Spend: FC = () => {
                 onClick={(e) => e.stopPropagation()}
               >
                 <div className="flex items-center justify-between border-b border-border dark:border-dark_border p-5">
-                  <h3 className="text-18 font-semibold text-midnight_text dark:text-white">
+                  <h3 className="text-lead font-semibold text-midnight_text dark:text-white">
                     {t("spend.productOverview")}
                   </h3>
                   <button
