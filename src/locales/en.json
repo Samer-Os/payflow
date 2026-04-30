@@ -139,10 +139,11 @@
     "getStarted": "Get Started"
   },
   "testimonials": {
-    "title1": "Loved by",
+    "demoBadge": "Sample testimonials",
+    "title1": "Designed for",
     "highlight": "developers",
     "title2": "shipping in production.",
-    "subtitle": "Real teams using Payflow to power real revenue.",
+    "subtitle": "Illustrative quotes showing the kind of feedback Payflow is built to earn.",
     "items": {
       "0": {
         "quote": "Payflow cut our integration time from weeks to days. The API is clean, the docs are excellent, and the support team actually responds.",

@@ -96,7 +96,6 @@ const Pricing = () => {
             >
               <button
                 role="tab"
-                aria-pressed={tabConfig.planType === "Monthly"}
                 aria-selected={tabConfig.planType === "Monthly"}
                 className={`text-body font-semibold py-3 px-8 rounded-xl transition-all duration-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary ${
                   tabConfig.planType === "Monthly"
@@ -109,7 +108,6 @@ const Pricing = () => {
               </button>
               <button
                 role="tab"
-                aria-pressed={tabConfig.planType === "Annually"}
                 aria-selected={tabConfig.planType === "Annually"}
                 className={`relative text-body font-semibold py-3 px-8 rounded-xl transition-all duration-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary ${
                   tabConfig.planType === "Annually"

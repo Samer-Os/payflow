@@ -139,10 +139,11 @@
     "getStarted": "Hemen Başla"
   },
   "testimonials": {
+    "demoBadge": "Örnek referanslar",
     "title1": "Üretimde geliştirenlerin",
     "highlight": "tercihi",
     "title2": "",
-    "subtitle": "Gerçek geliri yöneten gerçek ekiplerden.",
+    "subtitle": "Payflow'un kazanmayı hedeflediği geri bildirim türünü gösteren örnek alıntılar.",
     "items": {
       "0": {
         "quote": "Payflow entegrasyon süremizi haftalardan günlere indirdi. API temiz, dokümanlar mükemmel ve destek ekibi gerçekten yanıt veriyor.",

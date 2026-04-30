@@ -37,6 +37,9 @@ const Testimonials = () => {
           variants={containerVariants}
         >
           <motion.div variants={itemVariants} className="text-center mb-12">
+            <span className="inline-block mb-4 px-3 py-1 rounded-full bg-primary/10 text-primary text-caption font-semibold uppercase tracking-widest">
+              {t("testimonials.demoBadge")}
+            </span>
             <h2 className="dark:text-white text-midnight_text md:text-h1 sm:text-h2 text-h3 font-bold leading-tight">
               {t("testimonials.title1")}
               <span className="text-primary ml-2">{t("testimonials.highlight")}</span>
@@ -64,8 +67,9 @@ const Testimonials = () => {
                     height="40"
                   />
                   <div
-                    className="flex items-center gap-1 mb-5 text-amber-400"
+                    role="img"
                     aria-label="5 out of 5 stars"
+                    className="flex items-center gap-1 mb-5 text-amber-400"
                   >
                     {Array.from({ length: 5 }).map((_, i) => (
                       <Icon key={i} icon="solar:star-bold" width="18" height="18" />

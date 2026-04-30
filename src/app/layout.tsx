@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { DM_Sans } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Layout/Header";
@@ -9,9 +10,50 @@ import { LanguageProvider } from "@/context/LanguageContext";
 import ScrollToTop from "@/components/ScrollToTop";
 const dmsans = DM_Sans({ subsets: ["latin"] });
 
-export const metadata = {
+const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL || "https://payflow.vercel.app";
+
+export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: "Payflow — Payment Infrastructure for Developers",
-  description: "Embed powerful payment APIs into your product. Build in days, launch in weeks.",
+  description:
+    "Embed powerful payment APIs into your product. Build in days, launch in weeks.",
+  keywords: [
+    "payments",
+    "fintech",
+    "payment API",
+    "developer tools",
+    "Next.js",
+    "Stripe alternative",
+  ],
+  authors: [{ name: "Samer" }],
+  openGraph: {
+    type: "website",
+    url: SITE_URL,
+    title: "Payflow — Payment Infrastructure for Developers",
+    description:
+      "Embed powerful payment APIs into your product. Build in days, launch in weeks.",
+    siteName: "Payflow",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Payflow — Payment Infrastructure for Developers",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Payflow — Payment Infrastructure for Developers",
+    description:
+      "Embed powerful payment APIs into your product. Build in days, launch in weeks.",
+    images: ["/og-image.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({

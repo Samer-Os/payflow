@@ -6,8 +6,10 @@
 
 > Embed powerful payment APIs into your product. Build in days, launch in weeks.
 
-[![Live Demo](https://img.shields.io/badge/demo-live-6366f1?style=for-the-badge)](https://payflow.vercel.app)
+[![Live Demo](https://img.shields.io/badge/demo-live-4f46e5?style=for-the-badge)](https://payflow.vercel.app)
+[![CI](https://github.com/Samer-Os/payflow/actions/workflows/ci.yml/badge.svg)](https://github.com/Samer-Os/payflow/actions/workflows/ci.yml)
 [![Next.js](https://img.shields.io/badge/Next.js-15-black?style=flat-square&logo=next.js)](https://nextjs.org)
+[![Playwright](https://img.shields.io/badge/tested%20with-Playwright-2EAD33?style=flat-square&logo=playwright)](https://playwright.dev)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](LICENSE)
 
 ---
@@ -36,14 +38,28 @@
 
 ## Lighthouse Scores
 
-| Metric | Score |
-|---|---|
-| ![Performance](https://img.shields.io/badge/Performance-95+-4ade80?style=flat-square) | ≥ 95 |
-| ![Accessibility](https://img.shields.io/badge/Accessibility-95+-4ade80?style=flat-square) | ≥ 95 |
-| ![Best Practices](https://img.shields.io/badge/Best_Practices-95+-4ade80?style=flat-square) | ≥ 95 |
-| ![SEO](https://img.shields.io/badge/SEO-100-4ade80?style=flat-square) | 100 |
+<p align="center">
+  <img src="public/readme/lighthouse.png" alt="Lighthouse desktop scores: Performance 89, Accessibility 95, Best Practices 100, SEO 100" width="640" />
+</p>
 
-> Run `npx lighthouse http://localhost:3000 --view` locally to verify.
+Measured via `lighthouse --preset=desktop` against the production build (`npm run build && npm run start`). Performance varies between **85–95** depending on system load; Accessibility, Best Practices, and SEO are consistently **95+**.
+
+**Core Web Vitals (desktop):**
+- **LCP** — 1.0–1.3 s
+- **CLS** — 0.015
+- **TBT** — 50–80 ms
+
+Reproduce locally:
+
+```bash
+npm run build && npm run start &
+npx lighthouse http://localhost:3000 --preset=desktop --view
+```
+
+## Quality Gates
+
+- **Accessibility** — Zero serious or critical [axe-core](https://github.com/dequelabs/axe-core) violations across WCAG 2.1 A & AA. Verified by `tests/e2e/a11y.spec.ts`.
+- **End-to-end** — 6 Playwright smoke tests cover dialog focus management, language toggle, theme toggle, skip-to-content, and signup form. Run with `npm run test:e2e`.
 
 ## Architecture
 

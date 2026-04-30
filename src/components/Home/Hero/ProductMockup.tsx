@@ -47,10 +47,7 @@ const ProductMockup = () => {
   const balance = useCountUp(24580, 1600, !reduceMotion);
 
   return (
-    <motion.div
-      initial={reduceMotion ? false : { opacity: 0, scale: 0.95, y: 20 }}
-      animate={{ opacity: 1, scale: 1, y: 0 }}
-      transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
+    <div
       className="relative w-full"
       role="img"
       aria-label="Payflow dashboard preview showing $24,580 total balance, weekly volume chart, and recent transactions"
@@ -67,7 +64,7 @@ const ProductMockup = () => {
             <span className="w-3 h-3 rounded-full bg-green/70" />
           </div>
           <div className="flex-1 flex justify-center">
-            <div className="text-caption text-midnight_text/50 dark:text-white/40 px-3 py-1 rounded-md bg-white/60 dark:bg-darkmode/60 border border-border/40 dark:border-dark_border/40 font-medium">
+            <div className="text-caption text-muted dark:text-white/60 px-3 py-1 rounded-md bg-white/60 dark:bg-darkmode/60 border border-border/40 dark:border-dark_border/40 font-medium">
               payflow.app/dashboard
             </div>
           </div>
@@ -85,8 +82,8 @@ const ProductMockup = () => {
                 ${balance.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
               </p>
               <div className="flex items-center gap-1 mt-1">
-                <Icon icon="solar:arrow-up-bold" className="text-green" width="14" height="14" />
-                <span className="text-caption font-semibold text-green">+12.4%</span>
+                <Icon icon="solar:arrow-up-bold" className="text-emerald-700 dark:text-green" width="14" height="14" />
+                <span className="text-caption font-semibold text-emerald-700 dark:text-green">+12.4%</span>
                 <span className="text-caption text-muted dark:text-white/50">this week</span>
               </div>
             </div>
@@ -170,7 +167,7 @@ const ProductMockup = () => {
           </div>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 };
 
