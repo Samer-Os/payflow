@@ -6,7 +6,7 @@
 
 > Embed powerful payment APIs into your product. Build in days, launch in weeks.
 
-[![Live Demo](https://img.shields.io/badge/demo-live-4f46e5?style=for-the-badge)](https://payflow.vercel.app)
+[![Live Demo](https://img.shields.io/badge/demo-live-4f46e5?style=for-the-badge)](https://samer-os-payflow.netlify.app)
 [![CI](https://github.com/Samer-Os/payflow/actions/workflows/ci.yml/badge.svg)](https://github.com/Samer-Os/payflow/actions/workflows/ci.yml)
 [![Next.js](https://img.shields.io/badge/Next.js-15-black?style=flat-square&logo=next.js)](https://nextjs.org)
 [![Playwright](https://img.shields.io/badge/tested%20with-Playwright-2EAD33?style=flat-square&logo=playwright)](https://playwright.dev)

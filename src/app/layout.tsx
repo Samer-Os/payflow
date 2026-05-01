@@ -11,7 +11,7 @@ import ScrollToTop from "@/components/ScrollToTop";
 const dmsans = DM_Sans({ subsets: ["latin"] });
 
 const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL || "https://payflow.vercel.app";
+  process.env.NEXT_PUBLIC_SITE_URL || "https://samer-os-payflow.netlify.app";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
