@@ -59,7 +59,7 @@ npx lighthouse http://localhost:3000 --preset=desktop --view
 ## Quality Gates
 
 - **Accessibility** — Zero serious or critical [axe-core](https://github.com/dequelabs/axe-core) violations across WCAG 2.1 A & AA. Verified by `tests/e2e/a11y.spec.ts`.
-- **End-to-end** — 6 Playwright smoke tests cover dialog focus management, language toggle, theme toggle, skip-to-content, and signup form. Run with `npm run test:e2e`.
+- **End-to-end** — 9 Playwright tests cover dialog focus management, language toggle, theme toggle, skip-to-content, signup/signin forms, and the 404 route. Run with `npm run test:e2e`.
 
 ## Architecture
 

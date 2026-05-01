@@ -69,11 +69,28 @@ test.describe("Payflow homepage smoke tests", () => {
   });
 
   test("/signup page renders form with required fields", async ({ page }) => {
-    await page.goto("/signup");
+    await page.goto("/signup", { waitUntil: "domcontentloaded" });
 
     const main = page.getByRole("main");
-    await expect(main.getByLabel("Name")).toBeVisible();
-    await expect(main.getByLabel("Email")).toBeVisible();
-    await expect(main.getByLabel("Password")).toBeVisible();
+    // Stable selectors via input[name] — i18n-agnostic and immune to label hydration timing.
+    await expect(main.locator('input[name="name"]')).toBeVisible({ timeout: 10_000 });
+    await expect(main.locator('input[name="email"]')).toBeVisible();
+    await expect(main.locator('input[name="password"]')).toBeVisible();
+    await expect(main.locator('button[type="submit"]')).toBeVisible();
+  });
+
+  test("/signin page renders form and links to /signup", async ({ page }) => {
+    await page.goto("/signin", { waitUntil: "domcontentloaded" });
+
+    const main = page.getByRole("main");
+    await expect(main.locator('input[name="username"]')).toBeVisible({ timeout: 10_000 });
+    await expect(main.locator('input[name="password"]')).toBeVisible();
+    await expect(main.getByRole("link", { name: /sign up|kayıt|hesap/i })).toBeVisible();
+  });
+
+  test("unknown route renders 404 page", async ({ page }) => {
+    const res = await page.goto("/this-route-does-not-exist");
+    expect(res?.status()).toBe(404);
+    await expect(page.getByRole("heading", { name: "404" })).toBeVisible();
   });
 });
