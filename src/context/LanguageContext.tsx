@@ -42,17 +42,17 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
   // Helper to safely access nested object keys
   const t = (keyString: string): string => {
     const keys = keyString.split(".");
-    let current: any = dictionaries[language];
-    
+    let current: unknown = dictionaries[language];
+
     for (const key of keys) {
-      if (current[key] === undefined) {
+      if (typeof current !== "object" || current === null || !(key in current)) {
         console.warn(`Translation key not found: ${keyString}`);
         return keyString;
       }
-      current = current[key];
+      current = (current as Record<string, unknown>)[key];
     }
-    
-    return current as string;
+
+    return typeof current === "string" ? current : keyString;
   };
 
   return (
