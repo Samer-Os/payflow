@@ -17,8 +17,6 @@ const dmsans = DM_Sans({
 const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL || "https://samer-os-payflow.netlify.app";
 
-const ANTI_FOUC_SCRIPT = `(function(){var s=localStorage.getItem('theme');var t=s==='dark'||s==='light'?s:'light';document.documentElement.classList.add(t);document.documentElement.style.colorScheme=t;})();`;
-
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
@@ -80,7 +78,6 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning className={dmsans.variable}>
       <head>
-        <script dangerouslySetInnerHTML={{ __html: ANTI_FOUC_SCRIPT }} />
       </head>
       <body className={dmsans.className}>
         <a
