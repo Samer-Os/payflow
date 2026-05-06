@@ -1,6 +1,6 @@
 import { cookies } from "next/headers";
 import { Quote, Star } from "@/components/icons";
-import { getDictionary, type Language } from "@/context/LanguageContext";
+import { getDictionary, type Language } from "@/context/dictionary";
 import { Reveal, Stagger } from "@/components/Common/Reveal";
 
 const avatars = [

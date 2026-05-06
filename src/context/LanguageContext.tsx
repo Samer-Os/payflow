@@ -1,23 +1,19 @@
 "use client";
 import React, { createContext, useContext, useState, useEffect, useMemo, useCallback, ReactNode } from "react";
-import en from "../locales/en.json";
-import tr from "../locales/tr.json";
+import { dictionaries } from "./dictionary";
 
-export type Language = "en" | "tr";
-type Dictionary = typeof en;
+export type { Language } from "./dictionary";
+export type { Dictionary } from "./dictionary";
+export { getDictionary } from "./dictionary";
+import type { Language } from "./dictionary";
+
 type Params = Record<string, string | number>;
 
 interface LanguageContextProps {
   language: Language;
   setLanguage: (lang: Language) => void;
   t: (key: string, params?: Params) => string;
-  dictionary: Dictionary;
-}
-
-const dictionaries: Record<Language, Dictionary> = { en, tr };
-
-export function getDictionary(lang: Language): Dictionary {
-  return dictionaries[lang];
+  dictionary: typeof dictionaries.en;
 }
 
 function resolveInitialLang(): Language {

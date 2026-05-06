@@ -2,7 +2,7 @@ import { cookies } from "next/headers";
 import Link from "next/link";
 import { ChevronRight } from "@/components/icons";
 import { NextJsIcon, ReactIcon, TypeScriptIcon, TailwindIcon, FramerIcon } from "@/components/icons";
-import { getDictionary, type Language } from "@/context/LanguageContext";
+import { getDictionary, type Language } from "@/context/dictionary";
 import ProductMockup from "./ProductMockup";
 
 const stack = [

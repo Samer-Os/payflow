@@ -2,7 +2,7 @@ import { cookies } from "next/headers";
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronRight } from "@/components/icons";
-import { getDictionary, type Language } from "@/context/LanguageContext";
+import { getDictionary, type Language } from "@/context/dictionary";
 import { Reveal, Stagger } from "@/components/Common/Reveal";
 
 const cards = [

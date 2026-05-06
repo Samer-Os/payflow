@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ChevronRight } from "@/components/icons";
 import { BenefitImage } from "@/data/home";
-import { getDictionary, type Language } from "@/context/LanguageContext";
+import { getDictionary, type Language } from "@/context/dictionary";
 import { Reveal, Stagger } from "@/components/Common/Reveal";
 
 const Benefit = async () => {

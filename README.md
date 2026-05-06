@@ -47,15 +47,15 @@ Navigate to `/dashboard` (or click **Get Started** on the homepage) to see:
 ## Lighthouse Scores
 
 <p align="center">
-  <img src="public/readme/lighthouse.png" alt="Lighthouse desktop scores: Performance 89, Accessibility 95, Best Practices 100, SEO 100" width="640" />
+  <img src="public/readme/lighthouse.png" alt="Lighthouse desktop scores: Performance 99, Accessibility 100, Best Practices 100, SEO 100" width="640" />
 </p>
 
-Measured via `lighthouse --preset=desktop` against the production build. Performance varies **85–95** depending on system load; Accessibility, Best Practices, and SEO are consistently **95+**.
+Measured via `lighthouse --preset=desktop` against the production build. Performance varies **95–99** depending on system load; Accessibility, Best Practices, and SEO are consistently **100**.
 
 **Core Web Vitals (desktop):**
-- **LCP** — 1.0–1.3 s
-- **CLS** — 0.015
-- **TBT** — 50–80 ms
+- **LCP** — 0.9 s
+- **CLS** — 0
+- **TBT** — 30 ms
 
 Reproduce locally:
 

@@ -1,5 +1,5 @@
 import { cookies } from "next/headers";
-import { getDictionary, type Language } from "@/context/LanguageContext";
+import { getDictionary, type Language } from "@/context/dictionary";
 import PricingClient from "./Client";
 
 const Pricing = async () => {
