@@ -1,4 +1,4 @@
-import { Icon } from "@iconify/react/dist/iconify.js";
+import { Folder } from "@/components/icons";
 
 export const PackageStructure = () => {
   const Counts = [
@@ -8,7 +8,7 @@ export const PackageStructure = () => {
   return (
     <div id="structure" className="md:scroll-m-[130px] scroll-m-28">
       <h3 className=" text-black text-2xl font-semibold mt-8 dark:text-white">
-        Pacakge Structure
+        Package Structure
       </h3>
       <div className="rounded-md p-6 pt-3 border border-border dark:border-dark_border mt-6">
         <div className="flex items-center gap-4">
@@ -23,10 +23,7 @@ export const PackageStructure = () => {
                 |—
               </p>
               <span className="font-medium text-midnight_text dark:text-white dark:text-opacity-50">
-                <Icon
-                  icon="tabler:folder"
-                  className="text-primary text-base inline-block me-2"
-                />
+                <Folder className="text-primary text-base inline-block me-2" width={16} height={16} aria-hidden="true" />
                 packages
               </span>
             </div>
@@ -41,10 +38,7 @@ export const PackageStructure = () => {
                             |—
                           </p>
                           <span className="font-medium text-midnight_text dark:text-white dark:text-opacity-50">
-                            <Icon
-                              icon="tabler:folder"
-                              className="text-primary text-base inline-block me-2"
-                            />
+                            <Folder className="text-primary text-base inline-block me-2" width={16} height={16} aria-hidden="true" />
                             markdown
                           </span>
                         </div>
@@ -55,10 +49,7 @@ export const PackageStructure = () => {
                             |—
                           </p>
                           <span className="font-medium text-midnight_text dark:text-white dark:text-opacity-50">
-                            <Icon
-                              icon="tabler:folder"
-                              className="text-primary text-base inline-block me-2"
-                            />
+                            <Folder className="text-primary text-base inline-block me-2" width={16} height={16} aria-hidden="true" />
                             public
                           </span>
                         </div>
@@ -69,10 +60,7 @@ export const PackageStructure = () => {
                             |—
                           </p>
                           <span className="font-medium text-midnight_text dark:text-white dark:text-opacity-50">
-                            <Icon
-                              icon="tabler:folder"
-                              className="text-primary text-base inline-block me-2"
-                            />
+                            <Folder className="text-primary text-base inline-block me-2" width={16} height={16} aria-hidden="true" />
                             src
                           </span>
                         </div>
@@ -80,7 +68,7 @@ export const PackageStructure = () => {
                           <div className="flex flex-col justify-between gap-2 mt-2">
                             {Counts.slice(0, 26).map((item) => {
                               return (
-                                <p className="text-xl text-black dark:text-white dark:text-opacity-50">
+                                <p key={item} className="text-xl text-black dark:text-white dark:text-opacity-50">
                                   |
                                 </p>
                               );
@@ -93,10 +81,7 @@ export const PackageStructure = () => {
                                   |—
                                 </p>
                                 <span className="font-medium text-midnight_text dark:text-white dark:text-opacity-50">
-                                  <Icon
-                                    icon="tabler:folder"
-                                    className="text-primary text-base inline-block me-2"
-                                  />
+                                  <Folder className="text-primary text-base inline-block me-2" width={16} height={16} aria-hidden="true" />
                                   app
                                 </span>
                               </div>
@@ -104,7 +89,7 @@ export const PackageStructure = () => {
                                 <div className="flex flex-col justify-between gap-2 mt-2">
                                   {Counts.slice(0, 20).map((item) => {
                                     return (
-                                      <p className="text-xl text-black dark:text-white dark:text-opacity-50">
+                                      <p key={item} className="text-xl text-black dark:text-white dark:text-opacity-50">
                                         |
                                       </p>
                                     );
@@ -117,10 +102,7 @@ export const PackageStructure = () => {
                                         |—
                                       </p>
                                       <span className="font-medium text-midnight_text dark:text-white dark:text-opacity-50">
-                                        <Icon
-                                          icon="tabler:folder"
-                                          className="text-primary text-base inline-block me-2"
-                                        />
+                                        <Folder className="text-primary text-base inline-block me-2" width={16} height={16} aria-hidden="true" />
                                         (site)
                                       </span>
                                       <span className="fs-9 text-midnight_text dark:text-white dark:text-opacity-50 ms-4">
@@ -150,19 +132,16 @@ export const PackageStructure = () => {
                                               |—
                                             </p>
                                             <span className="font-medium text-midnight_text dark:text-white dark:text-opacity-50">
-                                              <Icon
-                                                icon="tabler:folder"
-                                                className="text-primary text-base inline-block me-2"
-                                              />
+                                              <Folder className="text-primary text-base inline-block me-2" width={16} height={16} aria-hidden="true" />
                                               (auth)
                                             </span>
                                           </div>
                                           <div className="flex">
                                             <div className="flex flex-col justify-between gap-1 mt-2">
                                               {Counts.slice(0, 2).map(
-                                                (item) => {
+                                                (_item, item) => {
                                                   return (
-                                                    <p className="text-xl text-black dark:text-white dark:text-opacity-50">
+                                                    <p key={item} className="text-xl text-black dark:text-white dark:text-opacity-50">
                                                       |
                                                     </p>
                                                   );
@@ -180,10 +159,7 @@ export const PackageStructure = () => {
                                                       |—
                                                     </p>
                                                     <span className="font-medium text-midnight_text dark:text-white dark:text-opacity-50">
-                                                      <Icon
-                                                        icon="tabler:folder"
-                                                        className="text-primary text-base inline-block me-2"
-                                                      />
+                                                      <Folder className="text-primary text-base inline-block me-2" width={16} height={16} aria-hidden="true" />
                                                       signin
                                                     </span>
                                                   </div>
@@ -199,10 +175,7 @@ export const PackageStructure = () => {
                                                       |—
                                                     </p>
                                                     <span className="font-medium text-midnight_text dark:text-white dark:text-opacity-50">
-                                                      <Icon
-                                                        icon="tabler:folder"
-                                                        className="text-primary text-base inline-block me-2"
-                                                      />
+                                                      <Folder className="text-primary text-base inline-block me-2" width={16} height={16} aria-hidden="true" />
                                                       signup
                                                     </span>
                                                   </div>
@@ -217,10 +190,7 @@ export const PackageStructure = () => {
                                               |—
                                             </p>
                                             <span className="font-medium text-midnight_text dark:text-white dark:text-opacity-50">
-                                              <Icon
-                                                icon="tabler:folder"
-                                                className="text-primary text-base inline-block me-2"
-                                              />
+                                              <Folder className="text-primary text-base inline-block me-2" width={16} height={16} aria-hidden="true" />
                                               blog
                                             </span>
                                           </div>
@@ -231,10 +201,7 @@ export const PackageStructure = () => {
                                               |—
                                             </p>
                                             <span className="font-medium text-midnight_text dark:text-white dark:text-opacity-50">
-                                              <Icon
-                                                icon="tabler:folder"
-                                                className="text-primary text-base inline-block me-2"
-                                              />
+                                              <Folder className="text-primary text-base inline-block me-2" width={16} height={16} aria-hidden="true" />
                                               contact
                                             </span>
                                           </div>
@@ -245,10 +212,7 @@ export const PackageStructure = () => {
                                               |—
                                             </p>
                                             <span className="font-medium text-midnight_text dark:text-white dark:text-opacity-50">
-                                              <Icon
-                                                icon="tabler:folder"
-                                                className="text-primary text-base inline-block me-2"
-                                              />
+                                              <Folder className="text-primary text-base inline-block me-2" width={16} height={16} aria-hidden="true" />
                                               documentation
                                             </span>
                                           </div>
@@ -259,10 +223,7 @@ export const PackageStructure = () => {
                                               |—
                                             </p>
                                             <span className="font-medium text-midnight_text dark:text-white dark:text-opacity-50">
-                                              <Icon
-                                                icon="tabler:folder"
-                                                className="text-primary text-base inline-block me-2"
-                                              />
+                                              <Folder className="text-primary text-base inline-block me-2" width={16} height={16} aria-hidden="true" />
                                               pricing
                                             </span>
                                           </div>
@@ -273,10 +234,7 @@ export const PackageStructure = () => {
                                               |—
                                             </p>
                                             <span className="font-medium text-midnight_text dark:text-white dark:text-opacity-50">
-                                              <Icon
-                                                icon="tabler:folder"
-                                                className="text-primary text-base inline-block me-2"
-                                              />
+                                              <Folder className="text-primary text-base inline-block me-2" width={16} height={16} aria-hidden="true" />
                                               services
                                             </span>
                                           </div>
@@ -290,10 +248,7 @@ export const PackageStructure = () => {
                                         |—
                                       </p>
                                       <span className="font-medium text-midnight_text dark:text-white dark:text-opacity-50">
-                                        <Icon
-                                          icon="tabler:folder"
-                                          className="text-primary text-base inline-block me-2"
-                                        />
+                                        <Folder className="text-primary text-base inline-block me-2" width={16} height={16} aria-hidden="true" />
                                         api
                                       </span>
                                     </div>
@@ -301,7 +256,7 @@ export const PackageStructure = () => {
                                       <div className="flex flex-col justify-between gap-2 mt-2">
                                         {Counts.slice(0, 2).map((item) => {
                                           return (
-                                            <p className="text-xl text-black dark:text-white dark:text-opacity-50">
+                                            <p key={item} className="text-xl text-black dark:text-white dark:text-opacity-50">
                                               |
                                             </p>
                                           );
@@ -318,10 +273,7 @@ export const PackageStructure = () => {
                                                 |—
                                               </p>
                                               <span className="font-medium text-midnight_text dark:text-white dark:text-opacity-50">
-                                                <Icon
-                                                  icon="tabler:folder"
-                                                  className="text-primary text-base inline-block me-2"
-                                                />
+                                                <Folder className="text-primary text-base inline-block me-2" width={16} height={16} aria-hidden="true" />
                                                 auth
                                               </span>
                                             </div>
@@ -337,10 +289,7 @@ export const PackageStructure = () => {
                                                 |—
                                               </p>
                                               <span className="font-medium text-midnight_text dark:text-white dark:text-opacity-50">
-                                                <Icon
-                                                  icon="tabler:folder"
-                                                  className="text-primary text-base inline-block me-2"
-                                                />
+                                                <Folder className="text-primary text-base inline-block me-2" width={16} height={16} aria-hidden="true" />
                                                 contex
                                               </span>
                                             </div>
@@ -355,10 +304,7 @@ export const PackageStructure = () => {
                                         |—
                                       </p>
                                       <span className="font-medium text-midnight_text dark:text-white dark:text-opacity-50">
-                                        <Icon
-                                          icon="tabler:folder"
-                                          className="text-primary text-base inline-block me-2"
-                                        />
+                                        <Folder className="text-primary text-base inline-block me-2" width={16} height={16} aria-hidden="true" />
                                         Context
                                       </span>
                                     </div>
@@ -366,7 +312,7 @@ export const PackageStructure = () => {
                                       <div className="flex flex-col justify-between gap-2 mt-2">
                                         {Counts.slice(0, 1).map((item) => {
                                           return (
-                                            <p className="text-xl text-black dark:text-white dark:text-opacity-50">
+                                            <p key={item} className="text-xl text-black dark:text-white dark:text-opacity-50">
                                               |
                                             </p>
                                           );
@@ -383,10 +329,7 @@ export const PackageStructure = () => {
                                                 |—
                                               </p>
                                               <span className="font-medium text-midnight_text dark:text-white dark:text-opacity-50 flex items-center flex-wrap">
-                                                <Icon
-                                                  icon="tabler:folder"
-                                                  className="text-primary text-base inline-block me-2"
-                                                />
+                                                <Folder className="text-primary text-base inline-block me-2" width={16} height={16} aria-hidden="true" />
                                                 <p className="max-w-12 lg:max-w-full truncate">
                                                   authDialogContext.tsx
                                                 </p>
@@ -446,10 +389,7 @@ export const PackageStructure = () => {
                                   |—
                                 </p>
                                 <span className="font-medium text-midnight_text dark:text-white dark:text-opacity-50">
-                                  <Icon
-                                    icon="tabler:folder"
-                                    className="text-primary text-base inline-block me-2"
-                                  />
+                                  <Folder className="text-primary text-base inline-block me-2" width={16} height={16} aria-hidden="true" />
                                   components
                                 </span>
                                 <span className="fs-9 text-midnight_text ms-4 dark:text-white dark:text-opacity-50">
@@ -463,10 +403,7 @@ export const PackageStructure = () => {
                                   |—
                                 </p>
                                 <span className="font-medium text-midnight_text dark:text-white dark:text-opacity-50">
-                                  <Icon
-                                    icon="tabler:folder"
-                                    className="text-primary text-base inline-block me-2"
-                                  />
+                                  <Folder className="text-primary text-base inline-block me-2" width={16} height={16} aria-hidden="true" />
                                   styles
                                 </span>
                               </div>
@@ -477,10 +414,7 @@ export const PackageStructure = () => {
                                   |—
                                 </p>
                                 <span className="font-medium text-midnight_text dark:text-white dark:text-opacity-50">
-                                  <Icon
-                                    icon="tabler:folder"
-                                    className="text-primary text-base inline-block me-2"
-                                  />
+                                  <Folder className="text-primary text-base inline-block me-2" width={16} height={16} aria-hidden="true" />
                                   types
                                 </span>
                               </div>
@@ -491,10 +425,7 @@ export const PackageStructure = () => {
                                   |—
                                 </p>
                                 <span className="font-medium text-midnight_text dark:text-white dark:text-opacity-50">
-                                  <Icon
-                                    icon="tabler:folder"
-                                    className="text-primary text-base inline-block me-2"
-                                  />
+                                  <Folder className="text-primary text-base inline-block me-2" width={16} height={16} aria-hidden="true" />
                                   utils
                                 </span>
                               </div>

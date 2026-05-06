@@ -1,17 +1,17 @@
-import React, { FC } from "react";
+import React from "react";
 import Image from "next/image";
 import { Blog } from "@/types/blog";
 import { format } from "date-fns";
 import Link from "next/link";
 
-const BlogCard: FC<{ blog: Blog }> = ({ blog }) => {
-  const { title, coverImage, type, excerpt, date, slug } = blog;
+const BlogCard = ({ blog }: { blog: Blog }) => {
+  const { title, coverImage, type, date, slug } = blog;
   return (
     <Link href={`/blog/${slug}`} aria-label="blog cover" className="group">
       <div className="overflow-hidden rounded-lg shrink-0 mb-6">
         <Image
           src={coverImage!}
-          alt="image"
+          alt={title ?? "Blog post cover"}
           className="transition group-hover:scale-125"
           width={190}
           height={163}

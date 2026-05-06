@@ -1,65 +1,73 @@
 "use client";
-import React, { createContext, useContext, useState, useEffect, ReactNode } from "react";
+import React, { createContext, useContext, useState, useEffect, useMemo, useCallback, ReactNode } from "react";
 import en from "../locales/en.json";
 import tr from "../locales/tr.json";
 
-type Language = "en" | "tr";
+export type Language = "en" | "tr";
 type Dictionary = typeof en;
+type Params = Record<string, string | number>;
 
 interface LanguageContextProps {
   language: Language;
   setLanguage: (lang: Language) => void;
-  t: (key: string) => string;
+  t: (key: string, params?: Params) => string;
   dictionary: Dictionary;
 }
 
-const dictionaries: Record<Language, Dictionary> = {
-  en,
-  tr,
-};
+const dictionaries: Record<Language, Dictionary> = { en, tr };
+
+export function getDictionary(lang: Language): Dictionary {
+  return dictionaries[lang];
+}
+
+function resolveInitialLang(): Language {
+  if (typeof window === "undefined") return "en";
+  const saved = localStorage.getItem("language") as Language;
+  if (saved === "en" || saved === "tr") return saved;
+  return navigator.language.startsWith("tr") ? "tr" : "en";
+}
 
 const LanguageContext = createContext<LanguageContextProps | undefined>(undefined);
 
 export const LanguageProvider = ({ children }: { children: ReactNode }) => {
-  const [language, setLanguageState] = useState<Language>("en");
-
-  useEffect(() => {
-    const savedLang = localStorage.getItem("language") as Language;
-    if (savedLang && (savedLang === "en" || savedLang === "tr")) {
-      setLanguageState(savedLang);
-    } else {
-      const browserLang = navigator.language.startsWith("tr") ? "tr" : "en";
-      setLanguageState(browserLang);
-    }
-  }, []);
+  const [language, setLanguageState] = useState<Language>(resolveInitialLang);
 
   useEffect(() => {
     document.documentElement.lang = language;
   }, [language]);
 
-  const setLanguage = (lang: Language) => {
+  const setLanguage = useCallback((lang: Language) => {
     setLanguageState(lang);
     localStorage.setItem("language", lang);
-  };
+    document.cookie = `lang=${lang};path=/;max-age=31536000;SameSite=Lax`;
+  }, []);
 
-  // Helper to safely access nested object keys
-  const t = (keyString: string): string => {
+  const t = useCallback((keyString: string, params?: Params): string => {
     const keys = keyString.split(".");
     let current: unknown = dictionaries[language];
 
     for (const key of keys) {
       if (typeof current !== "object" || current === null || !(key in current)) {
-        console.warn(`Translation key not found: ${keyString}`);
         return keyString;
       }
       current = (current as Record<string, unknown>)[key];
     }
 
-    return typeof current === "string" ? current : keyString;
-  };
+    if (typeof current !== "string") return keyString;
+    if (!params) return current;
+
+    return current.replace(/\{\{(\w+)\}\}/g, (_, k) =>
+      k in params ? String(params[k]) : `{{${k}}}`
+    );
+  }, [language]);
+
+  const value = useMemo(
+    () => ({ language, setLanguage, t, dictionary: dictionaries[language] }),
+    [language, setLanguage, t]
+  );
 
   return (
-    <LanguageContext.Provider value={{ language, setLanguage, t, dictionary: dictionaries[language] }}>
+    <LanguageContext.Provider value={value}>
       {children}
     </LanguageContext.Provider>
   );

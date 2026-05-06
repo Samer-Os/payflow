@@ -45,4 +45,6 @@ next-env.d.ts
 # lighthouse
 lighthouse-*.json
 lighthouse-*.html
+lh-*.json
+lh-*.html
 axe-out.txt

@@ -8,7 +8,7 @@
 
 [![Live Demo](https://img.shields.io/badge/demo-live-4f46e5?style=for-the-badge)](https://samer-os-payflow.netlify.app)
 [![CI](https://github.com/Samer-Os/payflow/actions/workflows/ci.yml/badge.svg)](https://github.com/Samer-Os/payflow/actions/workflows/ci.yml)
-[![Next.js](https://img.shields.io/badge/Next.js-15-black?style=flat-square&logo=next.js)](https://nextjs.org)
+[![Next.js](https://img.shields.io/badge/Next.js-16-black?style=flat-square&logo=next.js)](https://nextjs.org)
 [![Playwright](https://img.shields.io/badge/tested%20with-Playwright-2EAD33?style=flat-square&logo=playwright)](https://playwright.dev)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](LICENSE)
 
@@ -18,23 +18,31 @@
 
 | Technology | Rationale |
 |---|---|
-| **Next.js 15** | App Router for streaming, RSC, and file-based routing |
-| **React 19** | Latest concurrent features & server components |
-| **TypeScript** | End-to-end type safety across components and i18n |
+| **Next.js 16** | App Router for RSC streaming, Suspense, and file-based routing |
+| **React 19** | Latest concurrent features, server components, `useDeferredValue` |
+| **TypeScript 6** | End-to-end type safety across components and i18n |
 | **Tailwind CSS v4** | Utility-first styling with CSS-native `@theme` tokens |
-| **Framer Motion** | Declarative animation API with `whileInView` triggers |
+| **lucide-react** | Tree-shakeable icons, no runtime fetching (~1KB per icon) |
+| **Reveal/Stagger** | Custom IntersectionObserver hooks (~90 lines, no heavy animation lib) |
 | **next-themes** | Zero-flash dark mode toggle via class strategy |
-| **Iconify** | 200k+ icons, tree-shaken per use |
-| **NextAuth.js** | Credential + social auth scaffolding |
 
 ## Features
 
 - **i18n** — Full English / Turkish support via a custom React context (`context/LanguageContext`)
-- **Dark mode** — System-aware, toggleable, zero-FOUC
+- **Dark mode** — System-aware, toggleable, zero-FOUC via inline `<head>` script
 - **Responsive** — Mobile-first grid layouts from 320px to 2xl
-- **Animated** — Staggered reveal, count-up, scale & fade transitions on every section
+- **Animated** — Staggered reveal, count-up, scale & fade transitions; respects `prefers-reduced-motion`
 - **Accessible** — Native `<dialog>` modals, skip-to-content, focus-visible rings, WCAG AA contrast
 - **Type-safe** — Strict TypeScript, no `any` leaks in public APIs
+- **Demo dashboard** — `/dashboard` with RSC + Suspense streaming, filterable transactions table
+
+## Dashboard Demo
+
+Navigate to `/dashboard` (or click **Get Started** on the homepage) to see:
+
+- **Stats grid** streamed via `<Suspense>` with an animated skeleton fallback — the async RSC resolves in ~300 ms to demonstrate streaming
+- **Filterable transactions table** built as a client component using `useDeferredValue` for non-blocking search
+- **Status filters** (all / completed / pending / failed) and live search across names, IDs, and amounts
 
 ## Lighthouse Scores
 
@@ -42,7 +50,7 @@
   <img src="public/readme/lighthouse.png" alt="Lighthouse desktop scores: Performance 89, Accessibility 95, Best Practices 100, SEO 100" width="640" />
 </p>
 
-Measured via `lighthouse --preset=desktop` against the production build (`npm run build && npm run start`). Performance varies between **85–95** depending on system load; Accessibility, Best Practices, and SEO are consistently **95+**.
+Measured via `lighthouse --preset=desktop` against the production build. Performance varies **85–95** depending on system load; Accessibility, Best Practices, and SEO are consistently **95+**.
 
 **Core Web Vitals (desktop):**
 - **LCP** — 1.0–1.3 s
@@ -56,10 +64,43 @@ npm run build && npm run start &
 npx lighthouse http://localhost:3000 --preset=desktop --view
 ```
 
+Lighthouse CI also runs automatically in GitHub Actions on every push (`.lighthouserc.json` — performance ≥ 0.85, a11y ≥ 0.95, best-practices = 1.0, SEO = 1.0).
+
+## Scripts
+
+| Script | Description |
+|---|---|
+| `npm run dev` | Start dev server |
+| `npm run build` | Production build |
+| `npm run start` | Serve production build |
+| `npm run lint` | ESLint (flat config, ESLint 9) |
+| `npm test` | Vitest unit tests |
+| `npm run test:e2e` | Playwright e2e tests |
+| `npm run check` | Run tsc + eslint + vitest concurrently |
+| `npm run analyze` | Bundle analyzer (`ANALYZE=true next build`) |
+
+### Bundle analysis
+
+```bash
+npm run analyze
+# Opens an interactive treemap of every JS chunk
+```
+
+## Engineering Decisions
+
+- **RSC split** — Homepage sections (Hero, Benefit, Method, Testimonials, FAQ) are pure async server components. Language is read from a cookie via `cookies()` + `getDictionary()`, so there is no hydration cost for static content. Only interactive sections (Pricing tabs, Header language toggle) ship as client components.
+- **Icons over runtime fetchers** — Replaced `@iconify/react` with `lucide-react` and inline SVGs for brand icons. Eliminates network requests and enables tree-shaking.
+- **IntersectionObserver over Framer Motion** — Built a lightweight `Reveal`/`Stagger` component (~90 lines) using native IntersectionObserver instead of a 200 KB animation library. Animations respect `prefers-reduced-motion` and use GPU-accelerated CSS transforms.
+- **Anti-FOUC script** — Inline script in `<head>` reads `localStorage.theme` before React hydrates, preventing the white flash on dark mode load.
+- **Demo auth** — NextAuth is stubbed out entirely. Sign-in and sign-up simulate an 800 ms server round-trip, show a toast, then redirect. No credentials are stored; no secrets are required to run the project locally.
+- **CSP header** — A `Content-Security-Policy` is set in `next.config.mjs` for every route, restricting scripts, styles, fonts, images, and connections to known-safe origins.
+
 ## Quality Gates
 
-- **Accessibility** — Zero serious or critical [axe-core](https://github.com/dequelabs/axe-core) violations across WCAG 2.1 A & AA. Verified by `tests/e2e/a11y.spec.ts`.
-- **End-to-end** — 9 Playwright tests cover dialog focus management, language toggle, theme toggle, skip-to-content, signup/signin forms, and the 404 route. Run with `npm run test:e2e`.
+- **Unit tests** — 35 Vitest tests across `LanguageContext` (t() interpolation, fallback, language switch), `Reveal` (IntersectionObserver, reduced-motion), `ContactForm` (submit flow, toast), `PricingClient` (tab a11y), and `ProductMockup` (chart + transactions).
+- **Accessibility** — Zero serious or critical axe-core violations across WCAG 2.1 A & AA. Verified by `tests/e2e/a11y.spec.ts`.
+- **End-to-end** — Playwright smoke and a11y tests cover dialog focus, language toggle, theme toggle, skip-to-content, and auth forms.
+- **Lighthouse CI** — Performance, accessibility, best-practices, and SEO thresholds enforced on every CI run.
 
 ## Architecture
 
@@ -67,16 +108,18 @@ npx lighthouse http://localhost:3000 --preset=desktop --view
 src/
 ├── app/                    # Next.js App Router (pages, layout, API routes)
 │   ├── (site)/             # Route group for public pages
-│   ├── api/                # NextAuth + data endpoints
+│   │   └── dashboard/      # Demo dashboard (RSC + Suspense streaming)
+│   ├── api/                # Stubbed auth API route
 │   ├── context/            # AuthDialog context
 │   └── layout.tsx          # Root layout (font, theme, providers)
 ├── components/
-│   ├── Home/               # Section components (Hero, Benefit, Method, Pricing, FAQ…)
+│   ├── Home/               # Section RSCs (Hero, Benefit, Method, Pricing shell, FAQ…)
+│   ├── Dashboard/          # DashboardStats (async RSC) + TransactionsClient
 │   ├── Layout/             # Header, Footer, Logo
-│   ├── Auth/               # SignIn, SignUp, SocialSignIn
-│   └── Common/             # Loader, Breadcrumb, shared UI
+│   ├── Auth/               # SignIn, SignUp, SocialButtons (demo mode)
+│   └── Common/             # Reveal, ScrollToTop, shared UI
 ├── context/
-│   └── LanguageContext.tsx  # i18n provider with EN/TR dictionaries
+│   └── LanguageContext.tsx  # i18n provider — getDictionary() for RSC, useTranslation() for client
 ├── locales/
 │   ├── en.json             # English translations
 │   └── tr.json             # Turkish translations
@@ -98,8 +141,6 @@ src/
 
 **Type scale** — 8 semantic tokens from `caption` (0.8125rem) to `display` (3.5rem), each with a tuned line-height.
 
-**Spacing** — Tailwind's default 4px scale plus custom section tokens (`--spacing-50`, percentage-based widths).
-
 ## Local Development
 
 ```bash
@@ -114,25 +155,12 @@ npm install
 npm run dev
 # → http://localhost:3000
 
+# Run all checks at once
+npm run check
+
 # Production build
 npm run build && npm start
 ```
-
-## Image Optimization
-
-A one-off script converts PNGs over 100 KB to WebP:
-
-```bash
-node scripts/optimize-images.mjs
-```
-
-Originals are kept as fallback. Next.js serves AVIF/WebP automatically via `next.config.mjs`.
-
-## What I'd Build Next
-
-- **Analytics dashboard route** — Real-time charts using Recharts, pulling from a Postgres/Supabase backend
-- **Real auth via Clerk or Supabase** — Replace the NextAuth credential stub with production-grade auth, including MFA
-- **Transaction history page** — Filterable, paginated table with CSV export and date-range picker
 
 ## License
 

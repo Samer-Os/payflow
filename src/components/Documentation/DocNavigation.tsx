@@ -21,7 +21,7 @@ export const DocNavigation = () => {
         },
         {
             id:2,
-            navItem:"Pacakge Structure",
+            navItem:"Package Structure",
             hash:"structure"
         },
         {

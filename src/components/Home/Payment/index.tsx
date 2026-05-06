@@ -1,29 +1,8 @@
 "use client";
-import { motion } from "motion/react";
 import Image from "next/image";
-import { PaymentImage } from "@/app/api/data";
+import { PaymentImage } from "@/data/home";
 import { useTranslation } from "@/context/LanguageContext";
-
-const ease = [0.22, 1, 0.36, 1] as const;
-
-const containerVariants = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.15,
-      delayChildren: 0.1,
-    },
-  },
-};
-
-const itemVariants = {
-  hidden: { y: 20, opacity: 0 },
-  visible: {
-    y: 0,
-    opacity: 1,
-    transition: { duration: 0.6, ease },
-  },
-};
+import { Reveal, Stagger } from "@/components/Common/Reveal";
 
 const Payment = () => {
   const { t, dictionary } = useTranslation();
@@ -31,25 +10,17 @@ const Payment = () => {
 
   return (
     <section className="dark:bg-darkmode py-14">
-      <motion.div
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-50px" }}
-        variants={containerVariants}
-        className="container mx-auto lg:max-w-(--breakpoint-xl) md:max-w-(--breakpoint-md) px-4"
-      >
-        <motion.div variants={itemVariants} className="px-4 lg:px-12 mb-8">
+      <Stagger>
+        <Reveal className="container mx-auto lg:max-w-(--breakpoint-xl) md:max-w-(--breakpoint-md) px-4">
+          <div className="px-4 lg:px-12 mb-8">
           <h2 className="text-center font-semibold md:text-h2 sm:text-h3 text-h4 text-midnight_text dark:text-white lg:mx-44 leading-tight">
             {t("payment.title1")}
             <span className="text-primary"> {t("payment.highlight")} </span>
             {t("payment.title2")}
           </h2>
-        </motion.div>
+        </div>
 
-        <motion.div
-          variants={itemVariants}
-          className="flex flex-wrap justify-center gap-3 sm:gap-8"
-        >
+        <Reveal className="flex flex-wrap justify-center gap-3 sm:gap-8">
           {paymentItems.map((item, index) => (
             <p
               key={index}
@@ -62,19 +33,12 @@ const Payment = () => {
               {item}
             </p>
           ))}
-        </motion.div>
+        </Reveal>
 
-        <motion.div
-          variants={containerVariants}
-          className="flex justify-start sm:mt-24 mt-12"
-        >
+        <Stagger className="flex justify-start sm:mt-24 mt-12">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 sm:gap-14 gap-8">
             {PaymentImage.map((item, index) => (
-              <motion.div
-                key={index}
-                variants={itemVariants}
-                className="group cursor-pointer p-6 rounded-3xl transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:bg-white dark:hover:bg-search/50 border border-transparent hover:border-border dark:hover:border-dark_border"
-              >
+              <Reveal key={index} as="div" className="group cursor-pointer p-6 rounded-3xl transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:bg-white dark:hover:bg-search/50 border border-transparent hover:border-border dark:hover:border-dark_border">
                 <div className="rounded-full inline-block">
                   <Image
                     src={item.image}
@@ -94,11 +58,12 @@ const Payment = () => {
                     {(dictionary.payment.cards as Record<string, { title: string; details: string }>)[index]?.details}
                   </p>
                 </div>
-              </motion.div>
+              </Reveal>
             ))}
           </div>
-        </motion.div>
-      </motion.div>
+        </Stagger>
+        </Reveal>
+      </Stagger>
     </section>
   );
 };

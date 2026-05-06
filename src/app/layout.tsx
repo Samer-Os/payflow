@@ -1,13 +1,13 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { DM_Sans } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Layout/Header";
 import Footer from "@/components/Layout/Footer";
 import { ThemeProvider } from "next-themes";
-import SessionProviderComp from "@/components/nextauth/SessionProvider";
 import { AuthDialogProvider } from "./context/AuthDialogContext";
 import { LanguageProvider } from "@/context/LanguageContext";
 import ScrollToTop from "@/components/ScrollToTop";
+
 const dmsans = DM_Sans({
   subsets: ["latin"],
   display: "swap",
@@ -17,9 +17,14 @@ const dmsans = DM_Sans({
 const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL || "https://samer-os-payflow.netlify.app";
 
+const ANTI_FOUC_SCRIPT = `(function(){var s=localStorage.getItem('theme');var t=s==='dark'||s==='light'?s:'light';document.documentElement.classList.add(t);document.documentElement.style.colorScheme=t;})();`;
+
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: "Payflow — Payment Infrastructure for Developers",
+  title: {
+    template: "%s · Payflow",
+    default: "Payflow — Payment Infrastructure for Developers",
+  },
   description:
     "Embed powerful payment APIs into your product. Build in days, launch in weeks.",
   keywords: [
@@ -60,6 +65,13 @@ export const metadata: Metadata = {
   },
 };
 
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#f5f3ff" },
+    { media: "(prefers-color-scheme: dark)", color: "#0d0b1a" },
+  ],
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -67,6 +79,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning className={dmsans.variable}>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: ANTI_FOUC_SCRIPT }} />
+      </head>
       <body className={dmsans.className}>
         <a
           href="#main"
@@ -76,20 +91,19 @@ export default function RootLayout({
         </a>
         <AuthDialogProvider>
           <LanguageProvider>
-            <SessionProviderComp>
-              <ThemeProvider
-                attribute="class"
-                enableSystem={false}
-                defaultTheme="light"
-              >
-                <Header />
-                <main id="main">
-                  {children}
-                </main>
-                <Footer />
-                <ScrollToTop />
-              </ThemeProvider>
-            </SessionProviderComp>
+            <ThemeProvider
+              attribute="class"
+              enableSystem={false}
+              defaultTheme="light"
+              disableTransitionOnChange
+            >
+              <Header />
+              <main id="main">
+                {children}
+              </main>
+              <Footer />
+              <ScrollToTop />
+            </ThemeProvider>
           </LanguageProvider>
         </AuthDialogProvider>
       </body>

@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { Icon } from "@iconify/react";
+import { ArrowRight } from "@/components/icons";
 import BlogCard from "./blogCard";
 import { getAllPosts } from "@/utils/markdown";
 
@@ -29,7 +29,7 @@ const Blog: React.FC = () => {
           >
             View More
             <span>
-              <Icon icon="solar:arrow-right-outline" width="30" height="30" />
+              <ArrowRight width={30} height={30} />
             </span>
           </Link>
         </div>

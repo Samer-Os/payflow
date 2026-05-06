@@ -11,7 +11,7 @@ const NotFound = () => {
             <div className="relative mx-auto aspect-129/138 max-w-96 text-center">
               <Image
                 src="/images/404.svg"
-                alt="image"
+                alt="Page not found illustration"
                 width={250}
                 height={0}
                 quality={100}

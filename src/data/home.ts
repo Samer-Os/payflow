@@ -1,7 +1,4 @@
-import { text } from "stream/consumers";
-
-//hero
-export const Heroimage = [
+export const HeroImage = [
   {
     lightimage: "/images/hero/google.png",
     darkimage: "/images/hero/google_white.png",
@@ -20,7 +17,6 @@ export const Heroimage = [
   },
 ];
 
-// payment
 export const PaymentImage = [
   {
     image: "/images/payment/user.svg",
@@ -42,93 +38,56 @@ export const PaymentImage = [
   },
 ];
 
-// Beneifit
-export const BeneifitImage = [
+export const BenefitImage = [
   {
     image: "/images/benefit/pic.svg",
-    alt: "Trusted brand",
+    alt: "Developer-grade payment APIs",
     details:
       "Stop wasteful spend and save thousands with unlimited points and insights that maximize savings.",
   },
   {
     image: "/images/benefit/contact.svg",
-    alt: "Trusted brand",
+    alt: "Real-time transaction visibility",
     details: "See where the company money is going in real time.",
   },
   {
     image: "/images/benefit/bank.svg",
-    alt: "Trusted brand",
+    alt: "All-in-one business payments",
     details: "Powered by the free app that helps you run your whole business.",
   },
   {
     image: "/images/benefit/files.svg",
-    alt: "Trusted brand",
+    alt: "Automated reconciliation",
     details: "No more lost receipts and tedious paperwork.",
   },
   {
     image: "/images/benefit/setting.svg",
-    alt: "Trusted brand",
+    alt: "Virtual cards for online and in-store",
     details:
       "It's an all-digital card designed for online, and even in-store shopping.",
   },
 ];
 
-// Footer Links
 export const footerLinks: { link: string }[] = [
-  {
-    link: "Payment APIs",
-  },
-  {
-    link: "Smart Routing",
-  },
-  {
-    link: "Multi-currency",
-  },
-  {
-    link: "Instant Payouts",
-  },
-  {
-    link: "Documentation",
-  },
-  {
-    link: "Integrations",
-  },
-  {
-    link: "API Reference",
-  },
-  {
-    link: "Support",
-  },
-  {
-    link: "Help",
-  },
-  {
-    link: "Infrastructure",
-  },
-  {
-    link: "Compliance",
-  },
-  {
-    link: "Certifications",
-  },
-  {
-    link: "Licenses",
-  },
-  {
-    link: "Terms and conditions",
-  },
-  {
-    link: "Privacy",
-  },
-  {
-    link: "Cookies",
-  },
-  {
-    link: "Disclaimer",
-  },
+  { link: "Payment APIs" },
+  { link: "Smart Routing" },
+  { link: "Multi-currency" },
+  { link: "Instant Payouts" },
+  { link: "Documentation" },
+  { link: "Integrations" },
+  { link: "API Reference" },
+  { link: "Support" },
+  { link: "Help" },
+  { link: "Infrastructure" },
+  { link: "Compliance" },
+  { link: "Certifications" },
+  { link: "Licenses" },
+  { link: "Terms and conditions" },
+  { link: "Privacy" },
+  { link: "Cookies" },
+  { link: "Disclaimer" },
 ];
 
-// Perks
 export const perks = [
   {
     text: "When you pay with a debit or credit card, Mobile App doesn't keep transaction information that can be tied back to you.",
@@ -141,7 +100,6 @@ export const perks = [
   },
 ];
 
-// review
 export const review = [
   {
     text: "Payflow cut our integration time from weeks to days. The API is clean, the docs are excellent, and the support team actually responds. It's the payment layer we always wanted.",

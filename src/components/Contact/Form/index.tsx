@@ -1,130 +1,168 @@
-import React from "react";
-import Link from "next/link";
+"use client";
 import Image from "next/image";
+import { useState } from "react";
+import toast, { Toaster } from "react-hot-toast";
+
+type FormState = {
+  name: string;
+  email: string;
+  company: string;
+  inquiry: string;
+  message: string;
+};
 
 const ContactForm = () => {
+  const [form, setForm] = useState<FormState>({
+    name: "",
+    email: "",
+    company: "",
+    inquiry: "",
+    message: "",
+  });
+  const [loading, setLoading] = useState(false);
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+  ) => setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    await new Promise((r) => setTimeout(r, 900));
+    setLoading(false);
+    toast.success("Message sent! We'll be in touch within 1 business day.");
+    setForm({ name: "", email: "", company: "", inquiry: "", message: "" });
+  };
+
+  const inputClass =
+    "w-full text-body px-4 py-2.5 rounded-lg border border-border dark:border-dark_border dark:text-white dark:bg-transparent transition-all duration-300 focus:border-primary dark:focus:border-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/30";
+
   return (
-    <>
-      <section className="dark:bg-darkmode pb-24">
-        <div className="container mx-auto lg:max-w-(--breakpoint-xl) md:max-w-(--breakpoint-md) px-4">
-          <div className="grid md:grid-cols-12 grid-cols-1 gap-8">
-            <div className="col-span-6">
-              <h2 className="max-w-72 text-h2 font-bold mb-9">
-                Get Online Consultation
-              </h2>
-              <form className="flex flex-wrap w-full m-auto justify-between">
-                <div className="sm:flex gap-3 w-full">
-                  <div className="mx-0 my-2.5 flex-1">
-                    <label
-                      htmlFor="first-name"
-                      className="pb-3 inline-block text-body"
-                    >
-                      First Name*
-                    </label>
-                    <input
-                      id="first-name"
-                      className="w-full text-body px-4 rounded-lg py-2.5 border-border dark:border-dark_border border-solid dark:text-white dark:bg-transparent border transition-all duration-500 focus:border-primary dark:focus:border-primary focus:border-solid focus:outline-0"
-                      type="text"
-                    />
-                  </div>
-                  <div className="mx-0 my-2.5 flex-1">
-                    <label
-                      htmlFor="last-name"
-                      className="pb-3 inline-block text-body"
-                    >
-                      Last Name*
-                    </label>
-                    <input
-                      id="last-name"
-                      className="w-full text-body px-4 py-2.5 rounded-lg border-border dark:border-dark_border border-solid dark:text-white  dark:bg-transparent border transition-all duration-500 focus:border-primary dark:focus:border-primary focus:border-solid focus:outline-0"
-                      type="text"
-                    />
-                  </div>
+    <section className="dark:bg-darkmode pb-24">
+      <Toaster />
+      <div className="container mx-auto lg:max-w-(--breakpoint-xl) md:max-w-(--breakpoint-md) px-4">
+        <div className="grid md:grid-cols-12 grid-cols-1 gap-8 items-start">
+          <div className="col-span-6">
+            <h2 className="text-h2 font-bold mb-3 dark:text-white">
+              Talk to our team
+            </h2>
+            <p className="text-body text-muted dark:text-white/70 mb-9">
+              Tell us about your use case and we&apos;ll get back to you within one
+              business day.
+            </p>
+            <form onSubmit={handleSubmit} className="space-y-4" noValidate>
+              <div className="sm:flex gap-3">
+                <div className="flex-1">
+                  <label htmlFor="contact-name" className="block text-caption font-semibold text-midnight_text dark:text-white mb-1.5">
+                    Full name *
+                  </label>
+                  <input
+                    id="contact-name"
+                    name="name"
+                    type="text"
+                    autoComplete="name"
+                    required
+                    value={form.name}
+                    onChange={handleChange}
+                    placeholder="Jane Smith"
+                    className={inputClass}
+                  />
                 </div>
-                <div className="sm:flex gap-3 w-full">
-                  <div className="mx-0 my-2.5 flex-1">
-                    <label
-                      htmlFor="email"
-                      className="pb-3 inline-block text-body"
-                    >
-                      Email address*
-                    </label>
-                    <input
-                      id="email"
-                      type="email"
-                      className="w-full text-body px-4 py-2.5 rounded-lg border-border dark:border-dark_border border-solid dark:text-white  dark:bg-transparent border transition-all duration-500 focus:border-primary dark:focus:border-primary focus:border-solid focus:outline-0"
-                    />
-                  </div>
-                  <div className="mx-0 my-2.5 flex-1">
-                    <label
-                      htmlFor="Specialist"
-                      className="pb-3 inline-block text-body"
-                    >
-                      Specialist*
-                    </label>
-                    <select id="Specialist" className="w-full text-body px-4 py-2.5 rounded-lg border-border dark:text-white border-solid dark:bg-transparent border transition-all duration-500 focus:border-primary dark:focus:border-primary dark:border-dark_border focus:border-solid focus:outline-0">
-                      <option value="">Choose a specialist</option>
-                      <option value="Baking &amp; Pastry">
-                        Choose a specialist
-                      </option>
-                      <option value="Exotic Cuisine">Exotic Cuisine</option>
-                      <option value="French Desserts">French Desserts</option>
-                      <option value="Seafood &amp; Wine">
-                        Choose a specialist
-                      </option>
-                    </select>
-                  </div>
+                <div className="flex-1 mt-4 sm:mt-0">
+                  <label htmlFor="contact-email" className="block text-caption font-semibold text-midnight_text dark:text-white mb-1.5">
+                    Work email *
+                  </label>
+                  <input
+                    id="contact-email"
+                    name="email"
+                    type="email"
+                    autoComplete="email"
+                    required
+                    value={form.email}
+                    onChange={handleChange}
+                    placeholder="jane@company.com"
+                    className={inputClass}
+                  />
                 </div>
-                <div className="sm:flex gap-3 w-full">
-                  <div className="mx-0 my-2.5 flex-1">
-                    <label htmlFor="date" className="pb-3 inline-block text-body">
-                      Date*
-                    </label>
-                    <input
-                      id="date"
-                      className="w-full text-body px-4 rounded-lg  py-2.5 outline-hidden dark:text-white dark:bg-transparent border-border border-solid border transition-all duration-500 focus:border-primary dark:focus:border-primary dark:border-dark_border focus:border-solid focus:outline-0"
-                      type="date"
-                    />
-                  </div>
-                  <div className="mx-0 my-2.5 flex-1">
-                    <label htmlFor="time" className="pb-3 inline-block text-body">
-                      Time*
-                    </label>
-                    <input
-                      id="time"
-                      className="w-full text-body px-4 rounded-lg py-2.5 border-border outline-hidden dark:text-white dark:bg-transparent border-solid border transition-all duration-500 focus:border-primary dark:focus:border-primary dark:border-dark_border focus:border-solid focus:outline-0"
-                      type="time"
-                    />
-                  </div>
-                </div>
-                <div className="mx-0 my-2.5 w-full">
-                  <Link
-                    href="#"
-                    className="bg-primary rounded-lg text-white py-4 px-8 mt-4 inline-block hover:bg-blue-700"
-                    type="submit"
-                  >
-                    Make an appointment
-                  </Link>
-                </div>
-              </form>
-            </div>
-            <div className="col-span-6">
-              <Image
-                src="/images/contact-page/contact.jpg"
-                alt="Contact"
-                width={1300}
-                height={867}
-                loading="lazy"
-                sizes="(max-width: 768px) 100vw, 50vw"
-                quality={100}
-                style={{ width: "100%", height: "auto" }}
-                className="bg-no-repeat bg-contain"
-              />
-            </div>
+              </div>
+
+              <div>
+                <label htmlFor="contact-company" className="block text-caption font-semibold text-midnight_text dark:text-white mb-1.5">
+                  Company
+                </label>
+                <input
+                  id="contact-company"
+                  name="company"
+                  type="text"
+                  autoComplete="organization"
+                  value={form.company}
+                  onChange={handleChange}
+                  placeholder="Acme Corp"
+                  className={inputClass}
+                />
+              </div>
+
+              <div>
+                <label htmlFor="contact-inquiry" className="block text-caption font-semibold text-midnight_text dark:text-white mb-1.5">
+                  What are you looking for?
+                </label>
+                <select
+                  id="contact-inquiry"
+                  name="inquiry"
+                  required
+                  value={form.inquiry}
+                  onChange={handleChange}
+                  className={inputClass}
+                >
+                  <option value="">Select a topic</option>
+                  <option value="api-demo">API demo / sandbox access</option>
+                  <option value="pricing">Pricing &amp; plans</option>
+                  <option value="integration">Integration support</option>
+                  <option value="enterprise">Enterprise contract</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+
+              <div>
+                <label htmlFor="contact-message" className="block text-caption font-semibold text-midnight_text dark:text-white mb-1.5">
+                  Message
+                </label>
+                <textarea
+                  id="contact-message"
+                  name="message"
+                  rows={4}
+                  value={form.message}
+                  onChange={handleChange}
+                  placeholder="Tell us about your payment volume, stack, or anything else that's helpful…"
+                  className={`${inputClass} resize-none`}
+                />
+              </div>
+
+              <button
+                type="submit"
+                disabled={loading}
+                className="w-full sm:w-auto bg-primary text-white font-semibold text-body px-8 py-3 rounded-lg border border-primary hover:bg-transparent hover:text-primary transition-all duration-300 hover:scale-105 disabled:opacity-60 disabled:cursor-not-allowed focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+              >
+                {loading ? "Sending…" : "Send message"}
+              </button>
+            </form>
+          </div>
+
+          <div className="col-span-6 mt-8 md:mt-0">
+            <Image
+              src="/images/contact-page/contact.jpg"
+              alt="Payflow team working on payment infrastructure"
+              width={1300}
+              height={867}
+              loading="lazy"
+              sizes="(max-width: 768px) 100vw, 50vw"
+              style={{ width: "100%", height: "auto" }}
+              className="rounded-2xl"
+            />
           </div>
         </div>
-      </section>
-    </>
+      </div>
+    </section>
   );
 };
 

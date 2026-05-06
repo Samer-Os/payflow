@@ -93,4 +93,23 @@ test.describe("Payflow homepage smoke tests", () => {
     expect(res?.status()).toBe(404);
     await expect(page.getByRole("heading", { name: "404" })).toBeVisible();
   });
+
+  test("footer is visible at bottom of homepage", async ({ page }) => {
+    await page.goto("/");
+    const footer = page.getByRole("contentinfo");
+    await footer.scrollIntoViewIfNeeded();
+    await expect(footer).toBeVisible();
+  });
+
+  test("every button has an accessible name", async ({ page }) => {
+    await page.goto("/");
+    const buttons = page.getByRole("button");
+    const count = await buttons.count();
+    expect(count).toBeGreaterThan(0);
+    for (let i = 0; i < count; i++) {
+      const name = await buttons.nth(i).getAttribute("aria-label") ??
+        await buttons.nth(i).innerText();
+      expect(name.trim().length).toBeGreaterThan(0);
+    }
+  });
 });

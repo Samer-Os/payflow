@@ -1,6 +1,5 @@
 "use client";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { headerData } from "./Navigation/menuData";
 import Logo from "./Logo";
@@ -8,12 +7,13 @@ import HeaderLink from "./Navigation/HeaderLink";
 import MobileHeaderLink from "./Navigation/MobileHeaderLink";
 import Signin from "@/components/Auth/SignIn";
 import SignUp from "@/components/Auth/SignUp";
-import { Icon } from "@iconify/react";
+import { ArrowRight } from "@/components/icons";
 import { useTheme } from "next-themes";
 import { useTranslation } from "@/context/LanguageContext";
 
 const Header: React.FC = () => {
   const pathUrl = usePathname();
+  const router = useRouter();
   const { theme, setTheme } = useTheme();
   const { t, language, setLanguage } = useTranslation();
 
@@ -23,11 +23,25 @@ const Header: React.FC = () => {
   const signInDialogRef = useRef<HTMLDialogElement>(null);
   const signUpDialogRef = useRef<HTMLDialogElement>(null);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
+  const signInTriggerRef = useRef<HTMLButtonElement>(null);
+  const signUpTriggerRef = useRef<HTMLButtonElement>(null);
 
-  const openSignIn = useCallback(() => signInDialogRef.current?.showModal(), []);
-  const closeSignIn = useCallback(() => signInDialogRef.current?.close(), []);
-  const openSignUp = useCallback(() => signUpDialogRef.current?.showModal(), []);
-  const closeSignUp = useCallback(() => signUpDialogRef.current?.close(), []);
+  const openSignIn = useCallback(() => {
+    signInTriggerRef.current?.focus();
+    signInDialogRef.current?.showModal();
+  }, []);
+  const closeSignIn = useCallback(() => {
+    signInDialogRef.current?.close();
+    signInTriggerRef.current?.focus();
+  }, []);
+  const openSignUp = useCallback(() => {
+    signUpTriggerRef.current?.focus();
+    signUpDialogRef.current?.showModal();
+  }, []);
+  const closeSignUp = useCallback(() => {
+    signUpDialogRef.current?.close();
+    signUpTriggerRef.current?.focus();
+  }, []);
 
   const handleDialogBackdropClick = (e: React.MouseEvent<HTMLDialogElement>) => {
     if (e.target === e.currentTarget) {
@@ -56,6 +70,7 @@ const Header: React.FC = () => {
       window.removeEventListener("scroll", handleScroll);
       document.removeEventListener("mousedown", handleClickOutside);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [navbarOpen]);
 
   useEffect(() => {
@@ -74,7 +89,7 @@ const Header: React.FC = () => {
     >
       <div className="container mx-auto lg:max-w-(--breakpoint-xl) md:max-w-(--breakpoint-md) flex justify-between lg:items-center xl:gap-16 lg:gap-8 px-4 py-6">
         <Logo />
-        <nav className="hidden lg:flex grow items-center xl:justify-start justify-center space-x-10 text-body text-midnight_text">
+        <nav aria-label="Primary" className="hidden lg:flex grow items-center xl:justify-start justify-center space-x-10 text-body text-midnight_text">
           {headerData.map((item, index) => (
             <HeaderLink key={index} item={item} />
           ))}
@@ -86,7 +101,7 @@ const Header: React.FC = () => {
                 ? "TR — toggle language to Turkish"
                 : "EN — toggle language to English"
             }
-            onClick={() => setLanguage(language === "en" ? "tr" : "en")}
+            onClick={() => { setLanguage(language === "en" ? "tr" : "en"); router.refresh(); }}
             className="inline-flex h-11 min-w-11 items-center justify-center text-body font-bold uppercase transition-colors hover:text-primary text-midnight_text dark:text-white"
           >
             {language === "en" ? "TR" : "EN"}
@@ -117,15 +132,18 @@ const Header: React.FC = () => {
             </svg>
           </button>
           <button
+            ref={signInTriggerRef}
             className="hidden lg:flex items-center bg-primary border border-primary hover:border-primary dark:text-white text-white px-4 py-2 gap-2 rounded-lg text-body font-semibold hover:bg-transparent hover:text-primary dark:hover:text-primary transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/30"
             onClick={openSignIn}
           >
             {t("header.signIn")}
-            <Icon icon="solar:arrow-right-linear" width="24" height="24" />
+            <ArrowRight width={24} height={24} />
           </button>
           <dialog
             ref={signInDialogRef}
             onClick={handleDialogBackdropClick}
+            aria-modal="true"
+            aria-label="Sign In"
             className="backdrop:bg-black/50 bg-transparent p-0 m-auto"
           >
             <div className="relative mx-auto w-[28rem] max-w-[calc(100vw-2rem)] overflow-hidden rounded-2xl border border-border/60 dark:border-dark_border/60 bg-white dark:bg-midnight_text shadow-xl shadow-primary/5 p-6 sm:p-8">
@@ -138,15 +156,18 @@ const Header: React.FC = () => {
             </div>
           </dialog>
           <button
+            ref={signUpTriggerRef}
             className="hidden lg:flex items-center border border-primary dark:hover:border-primary bg-transparent dark:text-primary text-primary px-4 py-2 gap-2 rounded-lg text-body font-semibold hover:bg-primary hover:text-white dark:hover:text-white transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/30"
             onClick={openSignUp}
           >
             {t("header.signUp")}
-            <Icon icon="solar:arrow-right-linear" width="24" height="24" />
+            <ArrowRight width={24} height={24} />
           </button>
           <dialog
             ref={signUpDialogRef}
             onClick={handleDialogBackdropClick}
+            aria-modal="true"
+            aria-label="Sign Up"
             className="backdrop:bg-black/50 bg-transparent p-0 m-auto"
           >
             <div className="relative mx-auto w-[28rem] max-w-[calc(100vw-2rem)] overflow-hidden rounded-2xl border border-border/60 dark:border-dark_border/60 bg-white dark:bg-midnight_text shadow-xl shadow-primary/5 p-6 sm:p-8">
@@ -171,6 +192,7 @@ const Header: React.FC = () => {
       </div>
       <div
         ref={mobileMenuRef}
+        inert={!navbarOpen ? true : undefined}
         className={`lg:hidden fixed top-0 right-0 h-full w-full bg-white dark:bg-darkheader shadow-lg transform transition-transform duration-300 max-w-xs ${
           navbarOpen ? "-translate-x-0" : "translate-x-full"
         }`}

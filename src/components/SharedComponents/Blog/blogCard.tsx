@@ -1,11 +1,11 @@
-import React, { FC } from "react";
+import React from "react";
 import Image from "next/image";
 import { Blog } from "@/types/blog";
 import { format } from "date-fns";
 import Link from "next/link";
 
 const BlogCard = ({ blog }: { blog: Blog }) => {
-  const { title, coverImage, type, excerpt, date, slug } = blog;
+  const { title, coverImage, type, date, slug } = blog;
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-9 items-center group">
       <div className="relative">
@@ -18,7 +18,7 @@ const BlogCard = ({ blog }: { blog: Blog }) => {
             <div className="overflow-hidden rounded-lg shrink-0">
               <Image
                 src={coverImage!}
-                alt="image"
+                alt={title ?? "Blog post cover"}
                 className="transition group-hover:scale-125"
                 width={190}
                 height={163}

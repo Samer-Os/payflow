@@ -270,6 +270,19 @@
       "signUpWith": "Sign up with",
       "google": "Google",
       "github": "GitHub"
+    },
+    "dialog": {
+      "loginFailed": "Failed! Logged in failed.",
+      "loginSuccess": "Success! Logged in successfully.",
+      "registerSuccess": "Success! User Registered successfully."
     }
+  },
+  "blog": {
+    "badge": "Our Blog",
+    "title": "Latest Blog",
+    "titleLine2": "Articles",
+    "discoverAll": "Discover All",
+    "viewMore": "View More",
+    "latestTitle": "Latest blog & news"
   }
 }

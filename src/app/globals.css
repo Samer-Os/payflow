@@ -71,12 +71,20 @@
   color utility to any element that depends on these defaults.
 */
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
   *,
   ::after,
   ::before,
   ::backdrop,
   ::file-selector-button {
     border-color: var(--color-gray-200, currentColor);
+  }
+
+  a, button, input, select, textarea, [role="button"], [tabindex] {
+    -webkit-tap-highlight-color: transparent;
   }
 
   a:focus-visible,
@@ -200,6 +208,18 @@
 
     h5 {
         @apply text-lead font-medium text-midnight_text dark:text-white;
+    }
+
+    .btn {
+        @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg text-body font-semibold transition-all duration-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary;
+    }
+
+    .btn-accent {
+        @apply bg-primary text-white border border-primary hover:bg-transparent hover:text-primary dark:hover:text-primary;
+    }
+
+    .container-xl {
+        @apply mx-auto px-4 lg:max-w-(--container-screen-xl);
     }
 }
 

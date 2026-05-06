@@ -270,6 +270,19 @@
       "signUpWith": "Şununla kayıt ol:",
       "google": "Google",
       "github": "GitHub"
+    },
+    "dialog": {
+      "loginFailed": "Başarısız! Giriş yapılamadı.",
+      "loginSuccess": "Başarılı! Giriş yapıldı.",
+      "registerSuccess": "Başarılı! Kullanıcı kaydedildi."
     }
+  },
+  "blog": {
+    "badge": "Blogumuz",
+    "title": "Son Blog",
+    "titleLine2": "Yazıları",
+    "discoverAll": "Tümünü Keşfet",
+    "viewMore": "Daha Fazla",
+    "latestTitle": "Son blog ve haberler"
   }
 }

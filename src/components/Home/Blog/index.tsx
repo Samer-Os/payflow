@@ -2,7 +2,7 @@ import React from "react";
 import BlogCard from "./BlogCard";
 import { getAllPosts } from "@/utils/markdown";
 import Link from "next/link";
-import { Icon } from "@iconify/react";
+import { ArrowRight } from "@/components/icons";
 
 const BlogSmall: React.FC = () => {
   const posts = getAllPosts([
@@ -32,7 +32,7 @@ const BlogSmall: React.FC = () => {
               className="text-midnight_text border-2 text-body font-semibold flex gap-2 px-7 py-3 items-center rounded-full border-midnight_text bg-transparent w-fit hover:bg-midnight_text hover:text-white dark:border-white dark:text-white dark:hover:bg-white dark:hover:text-midnight_text"
             >
               Discover All
-              <Icon icon="solar:arrow-right-linear" width="24" height="24" />
+              <ArrowRight width={24} height={24} />
             </Link>
           </div>
         </div>

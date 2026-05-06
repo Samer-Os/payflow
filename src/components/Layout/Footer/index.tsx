@@ -1,7 +1,8 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { Icon } from "@iconify/react";
+import { MapPin, Phone, Mail, Send } from "@/components/icons";
+import { FacebookIcon, TwitterIcon, LinkedinIcon } from "@/components/icons";
 import { useTranslation } from "@/context/LanguageContext";
 
 const Footer = () => {
@@ -13,20 +14,20 @@ const Footer = () => {
         <div className="flex lg:items-center justify-between lg:flex-row flex-col border-b border-dark_border pb-8 sm:pb-14 mb-8 sm:mb-16 gap-6 lg:gap-0">
           <div className="flex sm:flex-nowrap flex-wrap gap-6">
             <div className="flex items-center text-foottext text-body">
-              <Icon icon="weui:location-outlined" className="w-7 h-7 mr-3" />
+              <MapPin className="w-7 h-7 mr-3" />
               <div className="flex flex-col">
                 <span>{t("footer.address")}</span>
                 <span>{t("footer.country")}</span>
               </div>
             </div>
             <div className="flex items-center gap-2 text-foottext">
-              <Icon icon="majesticons:phone-retro-line" className="w-7 h-7" />
+              <Phone className="w-7 h-7" />
               <Link href="#" className="text-body hover:text-primary">
                 <span> +44 20 7946 0958</span>
               </Link>
             </div>
             <div className="flex items-center text-foottext gap-2">
-              <Icon icon="clarity:email-line" className="w-7 h-7" />
+              <Mail className="w-7 h-7" />
               <Link
                 href="#"
                 className="inline-flex items-center text-body hover:text-primary"
@@ -37,13 +38,13 @@ const Footer = () => {
           </div>
           <div className="flex gap-4 mt-4 lg:mt-0">
             <Link href="#" aria-label="Facebook" className="text-muted hover:text-primary">
-              <Icon icon="fe:facebook" width="32" height="32" />
+              <FacebookIcon width={32} height={32} />
             </Link>
             <Link href="#" aria-label="Twitter" className="text-muted hover:text-primary">
-              <Icon icon="fa6-brands:square-twitter" width="32" height="32" />
+              <TwitterIcon width={32} height={32} />
             </Link>
             <Link href="#" aria-label="LinkedIn" className="text-muted hover:text-primary">
-              <Icon icon="fa6-brands:linkedin" width="32" height="32" />
+              <LinkedinIcon width={32} height={32} />
             </Link>
           </div>
         </div>
@@ -105,10 +106,7 @@ const Footer = () => {
                   placeholder={t("footer.emailPlaceholder")}
                   className="bg-search placeholder:text-foottext text-white! py-3 pl-5"
                 />
-                <Icon
-                  icon="solar:plain-2-linear"
-                  className="text-h4 text-foottext absolute right-5 top-4"
-                />
+                <Send className="text-h4 text-foottext absolute right-5 top-4" />
               </div>
             </form>
             <p className="text-lead text-white font-bold py-12">{t("footer.getApp")}</p>

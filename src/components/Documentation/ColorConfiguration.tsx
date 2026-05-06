@@ -14,22 +14,26 @@ export const ColorConfiguration = () => {
         </p>
         <div className="py-4 px-5 rounded-md bg-black mt-8">
           <p className="text-sm text-gray-400 flex flex-col gap-2">
-            <span>primary: "#2F73F2",</span>
-            <span>danger: "#DC3545",</span>
-            <span>danger_text: "#FF3C78",</span>
-            <span>green: "#3CD278",</span>
-            <span>grey: "#8E8E8E",</span>
-            <span>muted: "#547593",</span>
-            <span>midnight_text: "#102D47",</span>
-            <span>border: "#DFEBFC",</span>
-            <span>darkmode: "#08162B",</span>
-            <span>heroBg: "#F3F9FD",</span>
-            <span>darkHeroBg: "#121C2E",</span>
-            <span>darkheader: "#141D2F",</span>
-            <span>dark_border: "#253C50",</span>
-            <span>foottext: "#668199",</span>
-            <span>search: "#163858",</span>
-            <span>dark_b: "#1B2C44",</span>
+            {[
+              `primary: "#2F73F2",`,
+              `danger: "#DC3545",`,
+              `danger_text: "#FF3C78",`,
+              `green: "#3CD278",`,
+              `grey: "#8E8E8E",`,
+              `muted: "#547593",`,
+              `midnight_text: "#102D47",`,
+              `border: "#DFEBFC",`,
+              `darkmode: "#08162B",`,
+              `heroBg: "#F3F9FD",`,
+              `darkHeroBg: "#121C2E",`,
+              `darkheader: "#141D2F",`,
+              `dark_border: "#253C50",`,
+              `foottext: "#668199",`,
+              `search: "#163858",`,
+              `dark_b: "#1B2C44",`,
+            ].map((line) => (
+              <span key={line}>{line}</span>
+            ))}
           </p>
         </div>
       </div>
@@ -43,8 +47,9 @@ export const ColorConfiguration = () => {
         </p>
         <div className="py-4 px-5 rounded-md bg-black mt-8">
           <p className="text-sm text-gray-400 flex flex-col gap-2">
-            <span>primary: "#2F73F2",</span>
-            <span>darkmode: "#08162B",</span>
+            {[`primary: "#2F73F2",`, `darkmode: "#08162B",`].map((line) => (
+              <span key={line}>{line}</span>
+            ))}
           </p>
         </div>
       </div>

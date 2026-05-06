@@ -5,7 +5,7 @@ const reactImg = "/images/documentation/Categories=React.svg"
 const tailwindImg = "/images/documentation/Categories=Tailwind.svg"
 const nextauthImg = "/images/documentation/nextauth.png"
 const typescriptImg = "/images/documentation/Categories=Typescript.svg"
-import { Icon } from "@iconify/react/dist/iconify.js"
+import { PanelRight } from "@/components/icons";
 import { useState } from "react"
 import { DocNavigation } from "./DocNavigation"
 
@@ -14,33 +14,33 @@ export const Introduction = () => {
     const PackageVersions = [
         {
             id:"1",
-            packageName:"NextJs",
+            packageName:"Next.js",
             img:nextImg,
-            version:"15.1.1"
+            version:"16"
         },
         {
             id:"2",
             packageName:"React",
             img:reactImg,
-            version:"19.0.0"
+            version:"19"
         },
         {
             id:"3",
-            packageName:"Tailwindcss",
+            packageName:"Tailwind CSS",
             img:tailwindImg,
-            version:"3.4.1"
+            version:"4"
         },
         {
             id:"4",
             packageName:"NextAuth",
-            img:nextauthImg ,
-            version:"4.24.11"
+            img:nextauthImg,
+            version:"5 (beta)"
         },
         {
             id:"5",
-            packageName:"Typescript",
-            img:typescriptImg ,
-            version:"5.6.3"
+            packageName:"TypeScript",
+            img:typescriptImg,
+            version:"6"
         }
     ]
     return (
@@ -52,8 +52,8 @@ export const Introduction = () => {
         )}
 
             <div className="flex item-center justify-between">
-            <h3 className=" text-black text-2xl mt-4 font-semibold mb-6 dark:text-white" >Pacakge Versions</h3>
-            <button onClick={() => setDocNavbarOpen(true)} className="p-0"> <Icon icon="gg:menu-right" className="text-3xl lg:hidden block" /></button>
+            <h3 className=" text-black text-2xl mt-4 font-semibold mb-6 dark:text-white" >Package Versions</h3>
+            <button onClick={() => setDocNavbarOpen(true)} className="p-0" aria-label="Open docs menu"> <PanelRight className="text-3xl lg:hidden block" /></button>
             </div>
             
               <div className="w-full flex justify-between lg:gap-0 gap-6 lg:flex-nowrap flex-wrap p-6 rounded-md border border-border dark:border-dark_border">
@@ -70,9 +70,9 @@ export const Introduction = () => {
                 }
               </div>
               <div className="mt-5">
-              <p className="text-base font-medium text-midnight_text dark:text-white dark:text-opacity-50">Payflow NextJs Template is built with Tailwindcss and Nextjs.</p>
-              <p className="text-base font-medium text-midnight_text dark:text-white dark:text-opacity-50">These theme is ready to use and you can totally customize as per your requirement.</p>
-              <p className="text-base font-medium text-midnight_text dark:text-white dark:text-opacity-50">For Customize, You should have knowledge of NextJs, ReactJs, Tailwind and JSX to be able to modify these template.</p>
+              <p className="text-base font-medium text-midnight_text dark:text-white dark:text-opacity-50">Payflow is built with Next.js 16, React 19, and Tailwind CSS v4.</p>
+              <p className="text-base font-medium text-midnight_text dark:text-white dark:text-opacity-50">The project is fully typed with TypeScript 6 and uses the App Router with Server Components by default.</p>
+              <p className="text-base font-medium text-midnight_text dark:text-white dark:text-opacity-50">To customize, familiarity with Next.js App Router, React 19, Tailwind v4 token syntax, and TypeScript is recommended.</p>
               </div>
 
          </div>

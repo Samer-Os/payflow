@@ -1,6 +1,7 @@
 "use client";
-import { useEffect, useState } from "react";
-import { Icon } from "@iconify/react";
+import { useEffect, useState, useSyncExternalStore } from "react";
+import { TrendingUp, MoreHorizontal } from "@/components/icons";
+import { StripeIcon, AwsIcon, NotionIcon } from "@/components/icons";
 
 const bars = [
   { day: "M", height: 38 },
@@ -13,31 +14,34 @@ const bars = [
 ];
 
 const transactions = [
-  { name: "Stripe Payout", icon: "logos:stripe", amount: "+$4,820.00", positive: true },
-  { name: "AWS Subscription", icon: "logos:aws", amount: "-$129.40", positive: false },
-  { name: "Notion Team", icon: "logos:notion-icon", amount: "-$80.00", positive: false },
+  { name: "Stripe Payout", TxIcon: StripeIcon, amount: "+$4,820.00", positive: true },
+  { name: "AWS Subscription", TxIcon: AwsIcon, amount: "-$129.40", positive: false },
+  { name: "Notion Team", TxIcon: NotionIcon, amount: "-$80.00", positive: false },
 ];
 
+const mqQuery = "(prefers-reduced-motion: reduce)";
+const getSnapshot = () => typeof window !== "undefined" && window.matchMedia(mqQuery).matches;
+const getServerSnapshot = () => false;
+function subscribe(cb: () => void) {
+  const mq = window.matchMedia(mqQuery);
+  mq.addEventListener("change", cb);
+  return () => mq.removeEventListener("change", cb);
+}
+
 function useReducedMotionPref() {
-  const [reduce, setReduce] = useState(false);
-  useEffect(() => {
-    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
-    setReduce(mq.matches);
-    const onChange = () => setReduce(mq.matches);
-    mq.addEventListener("change", onChange);
-    return () => mq.removeEventListener("change", onChange);
-  }, []);
-  return reduce;
+  return useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 }
 
 function useCountUp(target: number, durationMs = 1400, enabled = true) {
-  const [value, setValue] = useState(enabled ? 0 : target);
+  const [value, setValue] = useState(target);
 
   useEffect(() => {
     if (!enabled) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setValue(target);
       return;
     }
+    setValue(0);
     let raf = 0;
     const start = performance.now();
     const step = (now: number) => {
@@ -89,7 +93,7 @@ const ProductMockup = () => {
                 ${balance.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
               </p>
               <div className="flex items-center gap-1 mt-1">
-                <Icon icon="solar:arrow-up-bold" className="text-emerald-700 dark:text-green" width="14" height="14" />
+                <TrendingUp className="text-emerald-700 dark:text-green" width={14} height={14} />
                 <span className="text-caption font-semibold text-emerald-700 dark:text-green">+12.4%</span>
                 <span className="text-caption text-muted dark:text-white/50">this week</span>
               </div>
@@ -127,12 +131,7 @@ const ProductMockup = () => {
               <p className="text-caption font-semibold text-midnight_text dark:text-white">
                 Recent
               </p>
-              <Icon
-                icon="solar:menu-dots-bold"
-                className="text-muted dark:text-white/40"
-                width="16"
-                height="16"
-              />
+              <MoreHorizontal className="text-muted dark:text-white/40" width={16} height={16} />
             </div>
             {transactions.map((tx, i) => (
               <div
@@ -141,7 +140,7 @@ const ProductMockup = () => {
                 className="mockup-tx flex items-center gap-2.5 p-2 rounded-lg bg-heroBg/60 dark:bg-darkmode/40 border border-border/40 dark:border-dark_border/40"
               >
                 <div className="w-7 h-7 rounded-md bg-white dark:bg-search shadow-xs border border-border/40 dark:border-dark_border/40 flex items-center justify-center shrink-0">
-                  <Icon icon={tx.icon} width="14" height="14" />
+                  <tx.TxIcon width={14} height={14} />
                 </div>
                 <div className="flex-1 min-w-0">
                   <p className="text-caption font-semibold text-midnight_text dark:text-white truncate">

@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { Icon } from "@iconify/react";
+import { User, Lock, Eye, EyeOff, ArrowRight, Loader2, MailOpen } from "@/components/icons";
 import toast, { Toaster } from "react-hot-toast";
 import SocialButtons from "../SocialButtons";
 import { useTranslation } from "@/context/LanguageContext";
@@ -24,22 +24,10 @@ const SignUp = ({ compact = false }: Props) => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
-
-    try {
-      const res = await fetch("/api/register", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, password }),
-      });
-      if (!res.ok) throw new Error(t("auth.signup.errorGeneric"));
-      toast.success(t("auth.signup.successToast"));
-      setTimeout(() => router.push("/signin"), 800);
-    } catch (err) {
-      const msg = err instanceof Error ? err.message : t("auth.signup.errorFallback");
-      toast.error(msg);
-    } finally {
-      setLoading(false);
-    }
+    await new Promise((r) => setTimeout(r, 800));
+    setLoading(false);
+    toast.success("Demo mode — account created!");
+    setTimeout(() => router.push("/"), 800);
   };
 
   const passwordStrength = (() => {
@@ -53,6 +41,10 @@ const SignUp = ({ compact = false }: Props) => {
 
   return (
     <div className="text-left">
+      <div className="mb-4 px-3 py-2 rounded-lg bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-700/40 text-caption text-amber-700 dark:text-amber-400 font-medium text-center">
+        Demo mode — no real authentication
+      </div>
+
       {!compact && (
         <div className="mb-8 text-center">
           <h2 className="text-h2 font-bold text-midnight_text dark:text-white mb-2">
@@ -85,10 +77,9 @@ const SignUp = ({ compact = false }: Props) => {
             {t("auth.signup.nameLabel")}
           </label>
           <div className="relative">
-            <Icon
-              icon="solar:user-linear"
-              width="20"
-              height="20"
+            <User
+              width={20}
+              height={20}
               className="absolute left-3.5 top-1/2 -translate-y-1/2 text-muted dark:text-white/50 pointer-events-none"
               aria-hidden="true"
             />
@@ -114,10 +105,9 @@ const SignUp = ({ compact = false }: Props) => {
             {t("auth.signup.emailLabel")}
           </label>
           <div className="relative">
-            <Icon
-              icon="solar:letter-linear"
-              width="20"
-              height="20"
+            <MailOpen
+              width={20}
+              height={20}
               className="absolute left-3.5 top-1/2 -translate-y-1/2 text-muted dark:text-white/50 pointer-events-none"
               aria-hidden="true"
             />
@@ -143,10 +133,9 @@ const SignUp = ({ compact = false }: Props) => {
             {t("auth.signup.passwordLabel")}
           </label>
           <div className="relative">
-            <Icon
-              icon="solar:lock-password-linear"
-              width="20"
-              height="20"
+            <Lock
+              width={20}
+              height={20}
               className="absolute left-3.5 top-1/2 -translate-y-1/2 text-muted dark:text-white/50 pointer-events-none"
               aria-hidden="true"
             />
@@ -168,15 +157,15 @@ const SignUp = ({ compact = false }: Props) => {
               aria-label={showPassword ? t("auth.common.hidePassword") : t("auth.common.showPassword")}
               className="absolute right-3 top-1/2 -translate-y-1/2 text-muted dark:text-white/50 hover:text-primary p-1 rounded focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
             >
-              <Icon
-                icon={showPassword ? "solar:eye-closed-linear" : "solar:eye-linear"}
-                width="20"
-                height="20"
-              />
+              {showPassword ? (
+                <EyeOff width={20} height={20} />
+              ) : (
+                <Eye width={20} height={20} />
+              )}
             </button>
           </div>
           {passwordStrength && (
-            <div className="mt-2 flex items-center gap-2">
+            <div className="mt-2 flex items-center gap-2" aria-live="polite">
               <div className="flex-1 h-1 bg-border dark:bg-dark_border rounded-full overflow-hidden">
                 <div
                   className={`h-full ${passwordStrength.color} transition-all`}
@@ -204,24 +193,24 @@ const SignUp = ({ compact = false }: Props) => {
         >
           {loading ? (
             <>
-              <Icon icon="svg-spinners:ring-resize" width="20" height="20" />
+              <Loader2 width={20} height={20} className="animate-spin" />
               <span>{t("auth.signup.submitting")}</span>
             </>
           ) : (
             <>
               <span>{t("auth.signup.submit")}</span>
-              <Icon icon="solar:arrow-right-linear" width="20" height="20" />
+              <ArrowRight width={20} height={20} />
             </>
           )}
         </button>
 
         <p className="text-caption text-muted dark:text-white/60 text-center">
           {t("auth.signup.termsPrefix")}{" "}
-          <Link href="#" className="text-primary hover:underline">
+          <Link href="#" className="text-primary underline hover:text-primary/80">
             {t("auth.signup.termsLink")}
           </Link>{" "}
           {t("auth.signup.termsMiddle")}{" "}
-          <Link href="#" className="text-primary hover:underline">
+          <Link href="#" className="text-primary underline hover:text-primary/80">
             {t("auth.signup.privacyLink")}
           </Link>
           {t("auth.signup.termsSuffix")}
