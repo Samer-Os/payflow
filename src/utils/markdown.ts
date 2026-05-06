@@ -4,58 +4,57 @@ import { join } from "path";
 
 const postsDirectory = join(process.cwd(), "markdown/blogs");
 
+export interface PostFields {
+  slug: string;
+  title: string;
+  date: string;
+  excerpt: string;
+  coverImage: string;
+  author: string;
+  authorImage: string;
+  content: string;
+  metadata: Record<string, unknown> & { coverImage: string | null };
+}
+
+export type Post = Partial<PostFields>;
+
 export function getPostSlugs() {
   return fs.readdirSync(postsDirectory);
 }
 
-export function getPostBySlug(slug: string, fields: string[] = []) {
+export function getPostBySlug(slug: string, fields: string[] = []): Post {
   const realSlug = slug.replace(/\.mdx$/, "");
   const fullPath = join(postsDirectory, `${realSlug}.mdx`);
   const fileContents = fs.readFileSync(fullPath, "utf8");
   const { data, content } = matter(fileContents);
 
-  type Items = {
-    // [key: string]: string;
-    [key: string]: string | object;
-  };
+  const items: Record<string, unknown> = {};
 
-  const items: any = {};
-
-  function processImages(content: string) {
-    // You can modify this function to handle image processing
-    // For example, replace image paths with actual HTML image tags
-    return content.replace(/!\[.*?\]\((.*?)\)/g, '<img src="$1" alt="" />');
+  function processImages(raw: string) {
+    return raw.replace(/!\[.*?\]\((.*?)\)/g, '<img src="$1" alt="" />');
   }
 
-  // Ensure only the minimal needed data is exposed
   fields.forEach((field) => {
     if (field === "slug") {
       items[field] = realSlug;
     }
     if (field === "content") {
-      // You can modify the content here to include images
       items[field] = processImages(content);
     }
-
     if (field === "metadata") {
-      // Include metadata, including the image information
       items[field] = { ...data, coverImage: data.coverImage || null };
     }
-
     if (typeof data[field] !== "undefined") {
       items[field] = data[field];
     }
   });
 
-  return items;
+  return items as Post;
 }
 
-export function getAllPosts(fields: string[] = []) {
+export function getAllPosts(fields: string[] = []): Post[] {
   const slugs = getPostSlugs();
-  const posts = slugs
+  return slugs
     .map((slug) => getPostBySlug(slug, fields))
-    // sort posts by date in descending order
-    .sort((post1, post2) => (post1.date > post2.date ? -1 : 1));
-
-  return posts;
+    .sort((a, b) => ((a.date ?? "") > (b.date ?? "") ? -1 : 1));
 }

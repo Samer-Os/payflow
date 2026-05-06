@@ -19,7 +19,7 @@ const itemVariants = {
 
 const FAQ = () => {
   const { t, dictionary } = useTranslation();
-  const items = (dictionary as any).faq.items;
+  const items = dictionary.faq.items as Record<string, { q: string; a: string }>;
   const itemKeys = Object.keys(items);
 
   return (

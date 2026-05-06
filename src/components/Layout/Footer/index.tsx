@@ -49,9 +49,9 @@ const Footer = () => {
         </div>
         <div className="grid grid-cols-12 sm:mb-16 mb-8 pt-8 gap-4 relative before:content-[''] before:absolute before:w-20 before:h-20 before:bg-[url('/images/footer/bgcir.png')] before:bg-no-repeat before:-left-36 before:bottom-9 lg:before:block before:hidden">
           <div className="md:col-span-2 col-span-6 mb-4 md:mb-0">
-            <h4 className="text-lead text-white dark:text-white mb-3">
+            <h3 className="text-lead text-white dark:text-white mb-3">
               {t("footer.features")}
-            </h4>
+            </h3>
             <ul>
               {[0, 1, 2, 3].map((i) => (
                 <li key={i} className="pb-3">
@@ -64,9 +64,9 @@ const Footer = () => {
           </div>
 
           <div className="md:col-span-2 col-span-6 mb-4 md:mb-0">
-            <h4 className="text-lead text-white dark:text-white mb-3">
+            <h3 className="text-lead text-white dark:text-white mb-3">
               {t("footer.resources")}
-            </h4>
+            </h3>
             <ul>
               {[4, 5, 6, 7, 8].map((i) => (
                 <li key={i} className="pb-3">
@@ -79,9 +79,9 @@ const Footer = () => {
           </div>
 
           <div className="md:col-span-3 col-span-12 sm:col-span-6 mb-4 md:mb-0">
-            <h4 className="text-lead text-white dark:text-white mb-3">
+            <h3 className="text-lead text-white dark:text-white mb-3">
               {t("footer.platform")}
-            </h4>
+            </h3>
             <ul>
               {[9, 10, 11, 12, 13].map((i) => (
                 <li key={i} className="pb-3">

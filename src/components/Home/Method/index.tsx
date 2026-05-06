@@ -77,10 +77,10 @@ const Method = () => {
                 </div>
                 <div className="flex flex-col flex-1 p-8">
                   <h3 className="md:text-h4 text-h4 font-bold mb-4 dark:text-white text-midnight_text">
-                    {(dictionary.method.cards as any)[index]?.title}
+                    {(dictionary.method.cards as Record<string, { title: string; details: string }>)[index]?.title}
                   </h3>
                   <p className="text-muted dark:text-white/70 text-body mb-8 leading-relaxed flex-1">
-                    {(dictionary.method.cards as any)[index]?.details}
+                    {(dictionary.method.cards as Record<string, { title: string; details: string }>)[index]?.details}
                   </p>
                   <Link
                     href="/signup"

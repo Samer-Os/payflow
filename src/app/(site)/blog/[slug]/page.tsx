@@ -4,11 +4,10 @@ import { format } from "date-fns";
 import Image from "next/image";
 import Link from "next/link";
 
-type Props = {
-  params: { slug: string };
-};
+type RouteParams = { slug: string };
+type RouteProps = { params: Promise<RouteParams> };
 
-export async function generateMetadata({ params }: any) {
+export async function generateMetadata({ params }: RouteProps) {
   const data = await params;
   const posts = getAllPosts(["title", "date", "excerpt", "coverImage", "slug"]);
   const post = getPostBySlug(data.slug, [
@@ -61,7 +60,7 @@ export async function generateMetadata({ params }: any) {
   }
 }
 
-export default async function Post({ params }: any) {
+export default async function Post({ params }: RouteProps) {
   const data = await params;
   const posts = getAllPosts(["title", "date", "excerpt", "coverImage", "slug"]);
   const post = getPostBySlug(data.slug, [
@@ -84,7 +83,7 @@ export default async function Post({ params }: any) {
             <div className="col-span-8">
               <div className="flex flex-col sm:flex-row">
                 <span className="text-base text-midnight_text font-medium dark:text-white pr-7 border-r border-solid border-grey dark:border-white w-fit">
-                  {format(new Date(post.date), "dd MMM yyyy")}
+                  {post.date ? format(new Date(post.date), "dd MMM yyyy") : ""}
                 </span>
                 <span className="text-base text-midnight_text font-medium dark:text-white sm:pl-7 pl-0 w-fit">
                   13 Comments
@@ -96,7 +95,7 @@ export default async function Post({ params }: any) {
             </div>
             <div className="flex items-center md:justify-center justify-start gap-6 col-span-4 pt-4 md:pt-0">
               <Image
-                src={post.authorImage}
+                src={post.authorImage ?? ""}
                 alt="image"
                 className="bg-no-repeat bg-contain inline-block rounded-full w-20! h-20!"
                 width={40}
@@ -120,7 +119,7 @@ export default async function Post({ params }: any) {
             <div className="w-full px-4">
               <div className="z-20 mb-16 h-150 overflow-hidden rounded-sm md:h-45">
                 <Image
-                  src={post.coverImage}
+                  src={post.coverImage ?? ""}
                   alt="image"
                   width={1170}
                   height={766}

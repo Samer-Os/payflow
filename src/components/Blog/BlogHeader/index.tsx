@@ -80,7 +80,7 @@ export default async function BlogHead({ params }: Props) {
                         <div className="col-span-8">
                             <div className="flex flex-col sm:flex-row">
                                 <span className="text-body text-midnight_text pr-7 border-r border-solid border-white w-fit">
-                                    {format(new Date(post.date), "dd MMM yyyy")}
+                                    {post.date ? format(new Date(post.date), "dd MMM yyyy") : ""}
                                 </span>
                                 <span className="text-body text-midnight_text sm:pl-7 pl-0 w-fit">13 Comments</span>
                             </div>
@@ -90,7 +90,7 @@ export default async function BlogHead({ params }: Props) {
                         </div>
                         <div className="flex  gap-6 col-span-4 pt-4 md:pt-0">
                             <Image
-                                src={post.authorImage}
+                                src={post.authorImage ?? ""}
                                 alt="image"
                                 className="rounded-full"
                                 width={84}

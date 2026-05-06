@@ -86,12 +86,12 @@ const Payment = () => {
                 </div>
                 <div className="py-5">
                   <h3 className="lg:text-h4 text-h4 font-medium text-midnight_text dark:text-white group-hover:text-primary transition-colors">
-                    {(dictionary.payment.cards as any)[index]?.title}
+                    {(dictionary.payment.cards as Record<string, { title: string; details: string }>)[index]?.title}
                   </h3>
                 </div>
                 <div className="pr-4">
                   <p className="text-body text-muted dark:text-white/70 leading-relaxed">
-                    {(dictionary.payment.cards as any)[index]?.details}
+                    {(dictionary.payment.cards as Record<string, { title: string; details: string }>)[index]?.details}
                   </p>
                 </div>
               </motion.div>

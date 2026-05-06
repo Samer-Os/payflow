@@ -1,5 +1,4 @@
 "use client";
-import { motion, useReducedMotion } from "motion/react";
 import { useEffect, useState } from "react";
 import { Icon } from "@iconify/react";
 
@@ -18,6 +17,18 @@ const transactions = [
   { name: "AWS Subscription", icon: "logos:aws", amount: "-$129.40", positive: false },
   { name: "Notion Team", icon: "logos:notion-icon", amount: "-$80.00", positive: false },
 ];
+
+function useReducedMotionPref() {
+  const [reduce, setReduce] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    setReduce(mq.matches);
+    const onChange = () => setReduce(mq.matches);
+    mq.addEventListener("change", onChange);
+    return () => mq.removeEventListener("change", onChange);
+  }, []);
+  return reduce;
+}
 
 function useCountUp(target: number, durationMs = 1400, enabled = true) {
   const [value, setValue] = useState(enabled ? 0 : target);
@@ -43,7 +54,7 @@ function useCountUp(target: number, durationMs = 1400, enabled = true) {
 }
 
 const ProductMockup = () => {
-  const reduceMotion = useReducedMotion();
+  const reduceMotion = useReducedMotionPref();
   const balance = useCountUp(24580, 1600, !reduceMotion);
 
   return (
@@ -52,10 +63,8 @@ const ProductMockup = () => {
       role="img"
       aria-label="Payflow dashboard preview showing $24,580 total balance, weekly volume chart, and recent transactions"
     >
-      {/* Glow */}
       <div className="absolute -inset-8 bg-gradient-to-tr from-primary/30 via-purple-400/20 to-pink-400/20 rounded-[3rem] blur-3xl -z-10" />
 
-      {/* Browser chrome */}
       <div className="rounded-2xl shadow-2xl border border-border/60 dark:border-dark_border/60 bg-white dark:bg-midnight_text overflow-hidden">
         <div className="flex items-center gap-3 px-4 py-3 bg-heroBg/80 dark:bg-darkheader/80 border-b border-border/60 dark:border-dark_border/60">
           <div className="flex gap-1.5" aria-hidden="true">
@@ -64,15 +73,13 @@ const ProductMockup = () => {
             <span className="w-3 h-3 rounded-full bg-green/70" />
           </div>
           <div className="flex-1 flex justify-center">
-            <div className="text-caption text-muted dark:text-white/60 px-3 py-1 rounded-md bg-white/60 dark:bg-darkmode/60 border border-border/40 dark:border-dark_border/40 font-medium">
+            <div className="text-caption text-midnight_text dark:text-white/80 px-3 py-1 rounded-md bg-white dark:bg-darkmode/80 border border-border/60 dark:border-dark_border/60 font-medium">
               payflow.app/dashboard
             </div>
           </div>
         </div>
 
-        {/* Body */}
         <div className="grid grid-cols-5 gap-4 p-5">
-          {/* Left: balance + chart */}
           <div className="col-span-3 space-y-4">
             <div>
               <p className="text-caption font-medium uppercase tracking-widest text-muted dark:text-white/50">
@@ -91,17 +98,10 @@ const ProductMockup = () => {
             <div>
               <div className="flex items-end justify-between gap-1.5 sm:gap-2 h-28 sm:h-32">
                 {bars.map((bar, i) => (
-                  <motion.div
+                  <div
                     key={i}
-                    initial={reduceMotion ? false : { scaleY: 0, opacity: 0 }}
-                    animate={{ scaleY: 1, opacity: 1 }}
-                    transition={{
-                      duration: 0.7,
-                      delay: 0.5 + i * 0.08,
-                      ease: [0.22, 1, 0.36, 1],
-                    }}
-                    style={{ height: `${bar.height}%`, transformOrigin: "bottom" }}
-                    className={`flex-1 rounded-t-md ${
+                    style={{ height: `${bar.height}%`, animationDelay: `${0.5 + i * 0.08}s` }}
+                    className={`mockup-bar flex-1 rounded-t-md ${
                       i === 5
                         ? "bg-gradient-to-t from-primary to-primary/70"
                         : "bg-primary/20 dark:bg-primary/30"
@@ -122,7 +122,6 @@ const ProductMockup = () => {
             </div>
           </div>
 
-          {/* Right: transactions */}
           <div className="col-span-2 space-y-2.5">
             <div className="flex items-center justify-between">
               <p className="text-caption font-semibold text-midnight_text dark:text-white">
@@ -136,16 +135,10 @@ const ProductMockup = () => {
               />
             </div>
             {transactions.map((tx, i) => (
-              <motion.div
+              <div
                 key={tx.name}
-                initial={reduceMotion ? false : { opacity: 0, x: 12 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{
-                  duration: 0.5,
-                  delay: 0.9 + i * 0.12,
-                  ease: [0.22, 1, 0.36, 1],
-                }}
-                className="flex items-center gap-2.5 p-2 rounded-lg bg-heroBg/60 dark:bg-darkmode/40 border border-border/40 dark:border-dark_border/40"
+                style={{ animationDelay: `${0.9 + i * 0.12}s` }}
+                className="mockup-tx flex items-center gap-2.5 p-2 rounded-lg bg-heroBg/60 dark:bg-darkmode/40 border border-border/40 dark:border-dark_border/40"
               >
                 <div className="w-7 h-7 rounded-md bg-white dark:bg-search shadow-xs border border-border/40 dark:border-dark_border/40 flex items-center justify-center shrink-0">
                   <Icon icon={tx.icon} width="14" height="14" />
@@ -157,12 +150,12 @@ const ProductMockup = () => {
                 </div>
                 <span
                   className={`text-caption font-bold tabular-nums whitespace-nowrap ${
-                    tx.positive ? "text-green" : "text-midnight_text/70 dark:text-white/70"
+                    tx.positive ? "text-emerald-700 dark:text-green" : "text-midnight_text/70 dark:text-white/70"
                   }`}
                 >
                   {tx.amount}
                 </span>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>

@@ -81,16 +81,20 @@ const Header: React.FC = () => {
         </nav>
         <div className="flex items-center gap-4">
           <button
-            aria-label="Toggle language"
+            aria-label={
+              language === "en"
+                ? "TR — toggle language to Turkish"
+                : "EN — toggle language to English"
+            }
             onClick={() => setLanguage(language === "en" ? "tr" : "en")}
-            className="text-body font-bold uppercase transition-colors hover:text-primary text-midnight_text dark:text-white"
+            className="inline-flex h-11 min-w-11 items-center justify-center text-body font-bold uppercase transition-colors hover:text-primary text-midnight_text dark:text-white"
           >
             {language === "en" ? "TR" : "EN"}
           </button>
           <button
             aria-label="Toggle theme"
             onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-            className="flex h-8 w-8 items-center justify-center text-body-color duration-300 dark:text-white"
+            className="flex h-11 w-11 items-center justify-center text-body-color duration-300 dark:text-white"
           >
             <svg
               viewBox="0 0 16 16"

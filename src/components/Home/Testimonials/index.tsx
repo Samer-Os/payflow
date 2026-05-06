@@ -25,7 +25,10 @@ const testimonials = [
 
 const Testimonials = () => {
   const { t, dictionary } = useTranslation();
-  const items = (dictionary as any).testimonials.items;
+  const items = dictionary.testimonials.items as Record<
+    string,
+    { quote: string; name: string; role: string }
+  >;
 
   return (
     <section id="testimonials" className="dark:bg-darkmode py-14 scroll-mt-24">

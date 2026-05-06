@@ -6,10 +6,10 @@ const Logo: React.FC = () => {
     <Link href="/" className="flex items-center gap-2">
       <Image
         src="/images/logo/logo.svg"
-        alt="Logo"
+        alt="Payflow logo"
         width={32}
         height={32}
-        className="h-8 w-auto"
+        priority
       />
       <span className="text-2xl font-bold tracking-tight text-midnight_text dark:text-white">
         Payflow

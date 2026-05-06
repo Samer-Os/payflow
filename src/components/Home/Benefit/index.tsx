@@ -107,7 +107,7 @@ const Benefit = () => {
                       />
                     </div>
                     <p className="text-body text-muted dark:text-white/70 pt-1 leading-snug">
-                      {(dictionary.benefit.items as any)[index]}
+                      {(dictionary.benefit.items as Record<string, string>)[index]}
                     </p>
                   </motion.div>
                 ))}
