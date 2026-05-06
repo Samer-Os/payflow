@@ -177,7 +177,7 @@
 
 @layer components {
     body {
-        @apply text-base overflow-x-hidden font-normal;
+        @apply text-base overflow-x-hidden font-normal bg-white dark:bg-darkmode text-midnight_text dark:text-white;
         -webkit-text-size-adjust: 100%;
     }
 
