@@ -1,7 +1,7 @@
 import { cookies } from "next/headers";
 import Link from "next/link";
 import { ChevronRight } from "@/components/icons";
-import { NextJsIcon, ReactIcon, TypeScriptIcon, TailwindIcon, FramerIcon } from "@/components/icons";
+import { NextJsIcon, ReactIcon, TypeScriptIcon, TailwindIcon } from "@/components/icons";
 import { getDictionary, type Language } from "@/context/dictionary";
 import ProductMockup from "./ProductMockup";
 
@@ -10,7 +10,6 @@ const stack = [
   { Icon: ReactIcon, label: "React" },
   { Icon: TypeScriptIcon, label: "TypeScript" },
   { Icon: TailwindIcon, label: "Tailwind CSS" },
-  { Icon: FramerIcon, label: "Framer Motion" },
 ];
 
 const Hero = async () => {

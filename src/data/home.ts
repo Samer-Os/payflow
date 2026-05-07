@@ -41,30 +41,23 @@ export const PaymentImage = [
 export const BenefitImage = [
   {
     image: "/images/benefit/pic.svg",
-    alt: "Developer-grade payment APIs",
-    details:
-      "Stop wasteful spend and save thousands with unlimited points and insights that maximize savings.",
+    alt: "Drop-in payment SDKs",
   },
   {
     image: "/images/benefit/contact.svg",
-    alt: "Real-time transaction visibility",
-    details: "See where the company money is going in real time.",
+    alt: "Real-time webhook delivery",
   },
   {
     image: "/images/benefit/bank.svg",
-    alt: "All-in-one business payments",
-    details: "Powered by the free app that helps you run your whole business.",
+    alt: "PCI-DSS Level 1 compliance",
   },
   {
     image: "/images/benefit/files.svg",
-    alt: "Automated reconciliation",
-    details: "No more lost receipts and tedious paperwork.",
+    alt: "Smart acquirer routing",
   },
   {
     image: "/images/benefit/setting.svg",
-    alt: "Virtual cards for online and in-store",
-    details:
-      "It's an all-digital card designed for online, and even in-store shopping.",
+    alt: "Live test mode with error injection",
   },
 ];
 

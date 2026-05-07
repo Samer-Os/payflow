@@ -103,9 +103,9 @@ export default function PricingClient({ dict }: { dict: PricingDict }) {
             <div className="hidden lg:block pb-4">
               <div className="space-y-6 text-midnight_text/80 dark:text-white/80 font-medium text-body">
                 {[
-                  dict.monthlyServiceFee, dict.directDebits, dict.onlinePayments,
-                  dict.depositsToSavers, dict.atmWithdrawals, dict.internationalFees,
-                  dict.internationalAtm, dict.overdrawnInterest,
+                  dict.monthlyFee, dict.webhookSubscriptions, dict.apiRequests,
+                  dict.testTransactions, dict.liveEnvironments, dict.routingFee,
+                  dict.customDomain, dict.transactionFee,
                 ].map((label) => (
                   <p key={label} className="pb-6 border-b border-border dark:border-dark_border/50">{label}</p>
                 ))}
@@ -125,14 +125,14 @@ export default function PricingClient({ dict }: { dict: PricingDict }) {
                 {dict.tryFree}
               </Link>
               <div className="mt-10 space-y-6 text-center text-body font-medium text-midnight_text/70 dark:text-white/70">
-                <p className="pb-6 border-b border-border dark:border-dark_border/50"><span className="lg:hidden font-bold text-midnight_text dark:text-white">{dict.monthlyServiceFee}:</span> {dict.free}</p>
-                <div className="pb-6 border-b border-border dark:border-dark_border/50 flex lg:flex-col items-center justify-center gap-3 lg:gap-0"><span className="lg:hidden font-bold text-midnight_text dark:text-white">{dict.directDebits}:</span><span className="text-midnight_text/30 dark:text-white/30">&mdash;</span></div>
-                <p className="pb-6 border-b border-border dark:border-dark_border/50"><span className="lg:hidden font-bold text-midnight_text dark:text-white">{dict.onlinePayments}:</span> *{dict.free}</p>
-                <p className="pb-6 border-b border-border dark:border-dark_border/50"><span className="lg:hidden font-bold text-midnight_text dark:text-white">{dict.depositsToSavers}:</span> *{dict.free}</p>
-                <div className="pb-6 border-b border-border dark:border-dark_border/50 flex lg:flex-col items-center justify-center gap-3 lg:gap-0"><span className="lg:hidden font-bold text-midnight_text dark:text-white">{dict.atmWithdrawals}:</span><span className="text-midnight_text/30 dark:text-white/30">&mdash;</span></div>
-                <div className="pb-6 border-b border-border dark:border-dark_border/50 flex lg:flex-col items-center justify-center gap-3 lg:gap-0"><span className="lg:hidden font-bold text-midnight_text dark:text-white">{dict.internationalFees}:</span><span className="text-midnight_text/30 dark:text-white/30">&mdash;</span></div>
-                <div className="pb-6 border-b border-border dark:border-dark_border/50 flex lg:flex-col items-center justify-center gap-3 lg:gap-0"><span className="lg:hidden font-bold text-midnight_text dark:text-white">{dict.internationalAtm}:</span><span className="text-midnight_text/30 dark:text-white/30">&mdash;</span></div>
-                <p className="pb-6"><span className="lg:hidden font-bold text-midnight_text dark:text-white">{dict.overdrawnInterest}:</span> 9.81% P.A.</p>
+                <p className="pb-6 border-b border-border dark:border-dark_border/50"><span className="lg:hidden font-bold text-midnight_text dark:text-white">{dict.monthlyFee}:</span> {dict.free}</p>
+                <div className="pb-6 border-b border-border dark:border-dark_border/50 flex lg:flex-col items-center justify-center gap-3 lg:gap-0"><span className="lg:hidden font-bold text-midnight_text dark:text-white">{dict.webhookSubscriptions}:</span><span className="text-midnight_text/30 dark:text-white/30">&mdash;</span></div>
+                <p className="pb-6 border-b border-border dark:border-dark_border/50"><span className="lg:hidden font-bold text-midnight_text dark:text-white">{dict.apiRequests}:</span> 1,000/mo</p>
+                <p className="pb-6 border-b border-border dark:border-dark_border/50"><span className="lg:hidden font-bold text-midnight_text dark:text-white">{dict.testTransactions}:</span> {dict.freeUnlimited}</p>
+                <div className="pb-6 border-b border-border dark:border-dark_border/50 flex lg:flex-col items-center justify-center gap-3 lg:gap-0"><span className="lg:hidden font-bold text-midnight_text dark:text-white">{dict.liveEnvironments}:</span><span className="text-midnight_text/30 dark:text-white/30">&mdash;</span></div>
+                <div className="pb-6 border-b border-border dark:border-dark_border/50 flex lg:flex-col items-center justify-center gap-3 lg:gap-0"><span className="lg:hidden font-bold text-midnight_text dark:text-white">{dict.routingFee}:</span><span className="text-midnight_text/30 dark:text-white/30">&mdash;</span></div>
+                <div className="pb-6 border-b border-border dark:border-dark_border/50 flex lg:flex-col items-center justify-center gap-3 lg:gap-0"><span className="lg:hidden font-bold text-midnight_text dark:text-white">{dict.customDomain}:</span><span className="text-midnight_text/30 dark:text-white/30">&mdash;</span></div>
+                <p className="pb-6"><span className="lg:hidden font-bold text-midnight_text dark:text-white">{dict.transactionFee}:</span> 2.9% + 30¢</p>
               </div>
             </div>
 
@@ -150,14 +150,14 @@ export default function PricingClient({ dict }: { dict: PricingDict }) {
               </div>
               <Link href="/signup" className="mt-8 text-body font-semibold block text-center bg-primary border-2 border-primary hover:bg-transparent hover:text-primary duration-300 text-white py-3.5 rounded-xl shadow-md hover:shadow-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">{dict.tryFree14}</Link>
               <div className="mt-10 space-y-6 text-center text-body font-medium text-midnight_text/70 dark:text-white/70">
-                <p className="pb-6 border-b border-border/50 dark:border-dark_border/30"><span className="lg:hidden font-bold text-midnight_text dark:text-white">{dict.monthlyServiceFee}:</span> {dict.free}</p>
-                <div className="pb-6 border-b border-border/50 dark:border-dark_border/30 flex lg:flex-col items-center justify-center gap-3 lg:gap-0"><span className="lg:hidden font-bold text-midnight_text dark:text-white">{dict.directDebits}:</span><div className="w-7 h-7 bg-primary/10 rounded-full flex items-center justify-center"><CheckCircle2 className="text-primary w-5 h-5" /></div></div>
-                <p className="pb-6 border-b border-border/50 dark:border-dark_border/30"><span className="lg:hidden font-bold text-midnight_text dark:text-white">{dict.onlinePayments}:</span> {dict.freeUnlimited}</p>
-                <p className="pb-6 border-b border-border/50 dark:border-dark_border/30"><span className="lg:hidden font-bold text-midnight_text dark:text-white">{dict.depositsToSavers}:</span> {dict.freeUnlimited}</p>
-                <div className="pb-6 border-b border-border/50 dark:border-dark_border/30 flex lg:flex-col items-center justify-center gap-3 lg:gap-0"><span className="lg:hidden font-bold text-midnight_text dark:text-white">{dict.atmWithdrawals}:</span><div className="w-7 h-7 bg-primary/10 rounded-full flex items-center justify-center"><CheckCircle2 className="text-primary w-5 h-5" /></div></div>
-                <p className="pb-6 border-b border-border/50 dark:border-dark_border/30"><span className="lg:hidden font-bold text-midnight_text dark:text-white">{dict.internationalFees}:</span> 0.5%</p>
-                <div className="pb-6 border-b border-border/50 dark:border-dark_border/30 flex lg:flex-col items-center justify-center gap-3 lg:gap-0"><span className="lg:hidden font-bold text-midnight_text dark:text-white">{dict.internationalAtm}:</span><div className="w-7 h-7 bg-primary/10 rounded-full flex items-center justify-center"><CheckCircle2 className="text-primary w-5 h-5" /></div></div>
-                <p className="pb-6"><span className="lg:hidden font-bold text-midnight_text dark:text-white">{dict.overdrawnInterest}:</span> 9.81% P.A.</p>
+                <p className="pb-6 border-b border-border/50 dark:border-dark_border/30"><span className="lg:hidden font-bold text-midnight_text dark:text-white">{dict.monthlyFee}:</span> {dict.free}</p>
+                <div className="pb-6 border-b border-border/50 dark:border-dark_border/30 flex lg:flex-col items-center justify-center gap-3 lg:gap-0"><span className="lg:hidden font-bold text-midnight_text dark:text-white">{dict.webhookSubscriptions}:</span><div className="w-7 h-7 bg-primary/10 rounded-full flex items-center justify-center"><CheckCircle2 className="text-primary w-5 h-5" /></div></div>
+                <p className="pb-6 border-b border-border/50 dark:border-dark_border/30"><span className="lg:hidden font-bold text-midnight_text dark:text-white">{dict.apiRequests}:</span> {dict.freeUnlimited}</p>
+                <p className="pb-6 border-b border-border/50 dark:border-dark_border/30"><span className="lg:hidden font-bold text-midnight_text dark:text-white">{dict.testTransactions}:</span> {dict.freeUnlimited}</p>
+                <div className="pb-6 border-b border-border/50 dark:border-dark_border/30 flex lg:flex-col items-center justify-center gap-3 lg:gap-0"><span className="lg:hidden font-bold text-midnight_text dark:text-white">{dict.liveEnvironments}:</span><div className="w-7 h-7 bg-primary/10 rounded-full flex items-center justify-center"><CheckCircle2 className="text-primary w-5 h-5" /></div></div>
+                <p className="pb-6 border-b border-border/50 dark:border-dark_border/30"><span className="lg:hidden font-bold text-midnight_text dark:text-white">{dict.routingFee}:</span> 0.5%</p>
+                <div className="pb-6 border-b border-border/50 dark:border-dark_border/30 flex lg:flex-col items-center justify-center gap-3 lg:gap-0"><span className="lg:hidden font-bold text-midnight_text dark:text-white">{dict.customDomain}:</span><div className="w-7 h-7 bg-primary/10 rounded-full flex items-center justify-center"><CheckCircle2 className="text-primary w-5 h-5" /></div></div>
+                <p className="pb-6"><span className="lg:hidden font-bold text-midnight_text dark:text-white">{dict.transactionFee}:</span> 2.4% + 25¢</p>
               </div>
             </div>
 
@@ -174,14 +174,14 @@ export default function PricingClient({ dict }: { dict: PricingDict }) {
               </div>
               <Link href="/signup" className="mt-8 text-body font-semibold block text-center bg-midnight_text dark:bg-white dark:text-midnight_text border-2 border-midnight_text dark:border-white hover:bg-transparent dark:hover:bg-transparent dark:hover:text-white hover:text-midnight_text duration-300 text-white py-3.5 rounded-xl shadow-md hover:shadow-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">{dict.tryFree14}</Link>
               <div className="mt-10 space-y-6 text-center text-body font-medium text-midnight_text/70 dark:text-white/70">
-                <p className="pb-6 border-b border-border dark:border-dark_border/50"><span className="lg:hidden font-bold text-midnight_text dark:text-white">{dict.monthlyServiceFee}:</span> {dict.free}</p>
-                <div className="pb-6 border-b border-border dark:border-dark_border/50 flex lg:flex-col items-center justify-center gap-3 lg:gap-0"><span className="lg:hidden font-bold text-midnight_text dark:text-white">{dict.directDebits}:</span><div className="w-7 h-7 bg-primary/10 rounded-full flex items-center justify-center"><CheckCircle2 className="text-primary w-5 h-5" /></div></div>
-                <p className="pb-6 border-b border-border dark:border-dark_border/50"><span className="lg:hidden font-bold text-midnight_text dark:text-white">{dict.onlinePayments}:</span> {dict.freeUnlimited}</p>
-                <p className="pb-6 border-b border-border dark:border-dark_border/50"><span className="lg:hidden font-bold text-midnight_text dark:text-white">{dict.depositsToSavers}:</span> {dict.freeUnlimited}</p>
-                <div className="pb-6 border-b border-border dark:border-dark_border/50 flex lg:flex-col items-center justify-center gap-3 lg:gap-0"><span className="lg:hidden font-bold text-midnight_text dark:text-white">{dict.atmWithdrawals}:</span><div className="w-7 h-7 bg-primary/10 rounded-full flex items-center justify-center"><CheckCircle2 className="text-primary w-5 h-5" /></div></div>
-                <p className="pb-6 border-b border-border dark:border-dark_border/50"><span className="lg:hidden font-bold text-midnight_text dark:text-white">{dict.internationalFees}:</span> 0.5%</p>
-                <div className="pb-6 border-b border-border dark:border-dark_border/50 flex lg:flex-col items-center justify-center gap-3 lg:gap-0"><span className="lg:hidden font-bold text-midnight_text dark:text-white">{dict.internationalAtm}:</span><div className="w-7 h-7 bg-primary/10 rounded-full flex items-center justify-center"><CheckCircle2 className="text-primary w-5 h-5" /></div></div>
-                <p className="pb-6"><span className="lg:hidden font-bold text-midnight_text dark:text-white">{dict.overdrawnInterest}:</span> 6% P.A.</p>
+                <p className="pb-6 border-b border-border dark:border-dark_border/50"><span className="lg:hidden font-bold text-midnight_text dark:text-white">{dict.monthlyFee}:</span> {dict.free}</p>
+                <div className="pb-6 border-b border-border dark:border-dark_border/50 flex lg:flex-col items-center justify-center gap-3 lg:gap-0"><span className="lg:hidden font-bold text-midnight_text dark:text-white">{dict.webhookSubscriptions}:</span><div className="w-7 h-7 bg-primary/10 rounded-full flex items-center justify-center"><CheckCircle2 className="text-primary w-5 h-5" /></div></div>
+                <p className="pb-6 border-b border-border dark:border-dark_border/50"><span className="lg:hidden font-bold text-midnight_text dark:text-white">{dict.apiRequests}:</span> {dict.freeUnlimited}</p>
+                <p className="pb-6 border-b border-border dark:border-dark_border/50"><span className="lg:hidden font-bold text-midnight_text dark:text-white">{dict.testTransactions}:</span> {dict.freeUnlimited}</p>
+                <div className="pb-6 border-b border-border dark:border-dark_border/50 flex lg:flex-col items-center justify-center gap-3 lg:gap-0"><span className="lg:hidden font-bold text-midnight_text dark:text-white">{dict.liveEnvironments}:</span><div className="w-7 h-7 bg-primary/10 rounded-full flex items-center justify-center"><CheckCircle2 className="text-primary w-5 h-5" /></div></div>
+                <p className="pb-6 border-b border-border dark:border-dark_border/50"><span className="lg:hidden font-bold text-midnight_text dark:text-white">{dict.routingFee}:</span> 0.5%</p>
+                <div className="pb-6 border-b border-border dark:border-dark_border/50 flex lg:flex-col items-center justify-center gap-3 lg:gap-0"><span className="lg:hidden font-bold text-midnight_text dark:text-white">{dict.customDomain}:</span><div className="w-7 h-7 bg-primary/10 rounded-full flex items-center justify-center"><CheckCircle2 className="text-primary w-5 h-5" /></div></div>
+                <p className="pb-6"><span className="lg:hidden font-bold text-midnight_text dark:text-white">{dict.transactionFee}:</span> 1.9% + 20¢</p>
               </div>
             </div>
           </Reveal>

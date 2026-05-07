@@ -92,7 +92,7 @@ npm run analyze
 - **Icons over runtime fetchers** — Replaced `@iconify/react` with `lucide-react` and inline SVGs for brand icons. Eliminates network requests and enables tree-shaking.
 - **IntersectionObserver over Framer Motion** — Built a lightweight `Reveal`/`Stagger` component (~90 lines) using native IntersectionObserver instead of a 200 KB animation library. Animations respect `prefers-reduced-motion` and use GPU-accelerated CSS transforms.
 - **Anti-FOUC script** — Inline script in `<head>` reads `localStorage.theme` before React hydrates, preventing the white flash on dark mode load.
-- **Demo auth** — NextAuth is stubbed out entirely. Sign-in and sign-up simulate an 800 ms server round-trip, show a toast, then redirect. No credentials are stored; no secrets are required to run the project locally.
+- **Demo auth** — Sign-in and sign-up simulate an 800 ms server round-trip, show a toast, then redirect. No credentials are stored; no secrets are required to run the project locally.
 - **CSP header** — A `Content-Security-Policy` is set in `next.config.mjs` for every route, restricting scripts, styles, fonts, images, and connections to known-safe origins.
 
 ## Quality Gates
@@ -132,7 +132,7 @@ src/
 
 | Token | Value | Usage |
 |---|---|---|
-| `primary` | `#6366f1` | CTAs, links, accents |
+| `primary` | `#4f46e5` | CTAs, links, accents |
 | `midnight_text` | `#102d47` | Headings, body text (light) |
 | `muted` | `#3d5a73` | Secondary text (WCAG AA compliant) |
 | `heroBg` | `#f5f3ff` | Light hero/section backgrounds |

@@ -86,16 +86,6 @@ export function TailwindIcon({ width = 20, height = 20, className }: IconProps) 
   );
 }
 
-export function FramerIcon({ width = 20, height = 20, className }: IconProps) {
-  return (
-    <svg viewBox="0 0 14 21" width={width} height={height} className={className} aria-hidden="true">
-      <path d="M0 0h14v7H7z" fill="#FF0055" />
-      <path d="M0 7h7l7 7H0z" fill="#FF0055" opacity=".7" />
-      <path d="M0 14h7v7z" fill="#FF0055" opacity=".4" />
-    </svg>
-  );
-}
-
 export function StripeIcon({ width = 20, height = 20, className }: IconProps) {
   return (
     <svg viewBox="0 0 60 60" width={width} height={height} className={className} aria-hidden="true">

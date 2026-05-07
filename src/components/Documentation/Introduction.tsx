@@ -3,7 +3,6 @@ import Image from "next/image"
 const nextImg = "/images/documentation/Categories=Nextjs.svg"
 const reactImg = "/images/documentation/Categories=React.svg"
 const tailwindImg = "/images/documentation/Categories=Tailwind.svg"
-const nextauthImg = "/images/documentation/nextauth.png"
 const typescriptImg = "/images/documentation/Categories=Typescript.svg"
 import { PanelRight } from "@/components/icons";
 import { useState } from "react"
@@ -32,12 +31,6 @@ export const Introduction = () => {
         },
         {
             id:"4",
-            packageName:"NextAuth",
-            img:nextauthImg,
-            version:"5 (beta)"
-        },
-        {
-            id:"5",
             packageName:"TypeScript",
             img:typescriptImg,
             version:"6"

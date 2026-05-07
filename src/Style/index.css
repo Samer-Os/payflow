@@ -48,14 +48,14 @@
 
 @media (min-width: 768px) {
   .estate-summary-bg {
-    background: linear-gradient(to right, #fff 0%, #fff 50%, #6366f1 50%, #6366f1 100%);
+    background: linear-gradient(to right, #fff 0%, #fff 50%, var(--color-primary) 50%, var(--color-primary) 100%);
   }
 }
 
 @media (min-width: 768px) {
   .dark {
     .estate-summary-bg {
-      background: linear-gradient(to right, #0d0b1a 0%, #0d0b1a 50%, #6366f1 50%, #6366f1 100%);
+      background: linear-gradient(to right, #0d0b1a 0%, #0d0b1a 50%, var(--color-primary) 50%, var(--color-primary) 100%);
     }
   }
 }
