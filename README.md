@@ -93,7 +93,7 @@ npm run analyze
 - **IntersectionObserver over Framer Motion** — Built a lightweight `Reveal`/`Stagger` component (~90 lines) using native IntersectionObserver instead of a 200 KB animation library. Animations respect `prefers-reduced-motion` and use GPU-accelerated CSS transforms.
 - **Anti-FOUC script** — Inline script in `<head>` reads `localStorage.theme` before React hydrates, preventing the white flash on dark mode load.
 - **Demo auth** — Sign-in and sign-up simulate an 800 ms server round-trip, show a toast, then redirect. No credentials are stored; no secrets are required to run the project locally.
-- **CSP header** — A `Content-Security-Policy` is set in `next.config.mjs` for every route, restricting scripts, styles, fonts, images, and connections to known-safe origins.
+- **CSP header** — A baseline `Content-Security-Policy` is applied to every route in `next.config.mjs`. It restricts fonts, images, connections, and frame ancestors to known-safe origins; scripts and styles allow `'unsafe-inline'` to support Next.js's runtime injection and Tailwind's class-based styles. Tightening to a nonce-based policy is a reasonable next step.
 
 ## Quality Gates
 
