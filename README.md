@@ -28,13 +28,23 @@
 
 ## Features
 
-- **i18n** — Full English / Turkish support via a custom React context (`context/LanguageContext`)
+- **i18n** — English / Turkish. Server components read the language from a cookie via `getDictionary()` (no hydration cost on static pages); a client context provider handles live language switching from the header.
 - **Dark mode** — System-aware, toggleable, zero-FOUC via inline `<head>` script
 - **Responsive** — Mobile-first grid layouts from 320px to 2xl
 - **Animated** — Staggered reveal, count-up, scale & fade transitions; respects `prefers-reduced-motion`
 - **Accessible** — Native `<dialog>` modals, skip-to-content, focus-visible rings, WCAG AA contrast
 - **Type-safe** — Strict TypeScript, no `any` leaks in public APIs
 - **Demo dashboard** — `/dashboard` with RSC + Suspense streaming, filterable transactions table
+
+## Demo scope
+
+This is a portfolio project, not a live payments product. Specifically:
+
+- **Auth** — Sign-in and sign-up forms simulate an 800 ms server round-trip and show a toast. No credentials are persisted, no sessions are created, and OAuth buttons are demo-only.
+- **Dashboard data** — The 8 transactions and 4 stat cards are static fixtures. The "300 ms RSC fetch" is a `setTimeout` used to demonstrate Suspense streaming.
+- **Backend** — There is no backend, database, or API. Forms accept input and animate a success state.
+
+What *is* real: the rendering pipeline, the RSC/client split, i18n, dark mode, accessibility, performance budgets, security headers, and the test/lint/CI setup.
 
 ## Dashboard Demo
 
