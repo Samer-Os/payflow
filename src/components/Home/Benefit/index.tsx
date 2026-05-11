@@ -33,7 +33,7 @@ const Benefit = async () => {
               <Reveal className="xl:col-span-6 col-span-12 sm:block hidden">
                 <div className="xl:px-0 lg:px-20">
                   <Image
-                    src="/images/benefit/benefit.png"
+                    src="/images/benefit/benefit.webp"
                     alt="Benefit Dashboard"
                     width={435}
                     height={304}

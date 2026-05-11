@@ -9,6 +9,7 @@ const Logo: React.FC = () => {
         alt="Payflow logo"
         width={32}
         height={32}
+        style={{ height: "32px", width: "32px" }}
         priority
       />
       <span className="text-2xl font-bold tracking-tight text-midnight_text dark:text-white">
