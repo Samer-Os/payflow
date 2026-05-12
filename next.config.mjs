@@ -41,7 +41,7 @@ const nextConfig = {
   poweredByHeader: false,
   images: {
     formats: ["image/avif", "image/webp"],
-    qualities: [75, 100],
+    minimumCacheTTL: 60,
   },
   async headers() {
     return [

@@ -15,6 +15,7 @@ const BlogCard = ({ blog }: { blog: Blog }) => {
           className="transition group-hover:scale-125"
           width={190}
           height={163}
+          sizes="(max-width: 640px) 100vw, 50vw"
           style={{ width: "100%", height: "100%" }}
         />
       </div>
