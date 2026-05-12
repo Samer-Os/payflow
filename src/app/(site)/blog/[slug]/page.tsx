@@ -112,8 +112,8 @@ export default async function BlogPost({ params }: RouteProps) {
               <Image
                 src={post.coverImage}
                 alt={`Cover image for: ${post.title}`}
-                width={1170}
-                height={658}
+                width={800}
+                height={600}
                 className="w-full h-full object-cover"
                 priority
               />

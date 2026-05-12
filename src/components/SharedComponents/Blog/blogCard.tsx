@@ -15,14 +15,13 @@ const BlogCard = ({ blog }: { blog: Blog }) => {
             aria-label="blog cover"
             className="block"
           >
-            <div className="overflow-hidden rounded-lg shrink-0">
+            <div className="overflow-hidden rounded-lg shrink-0 aspect-[4/3]">
               <Image
                 src={coverImage!}
                 alt={title ?? "Blog post cover"}
-                className="transition group-hover:scale-125"
-                width={190}
-                height={163}
-                style={{ width: "100%", height: "100%" }}
+                className="transition group-hover:scale-125 w-full h-full object-cover"
+                width={800}
+                height={600}
               />
             </div>
           </Link>
