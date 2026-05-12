@@ -19,16 +19,13 @@ interface LanguageContextProps {
 const LanguageContext = createContext<LanguageContextProps | undefined>(undefined);
 
 export const LanguageProvider = ({ children }: { children: ReactNode }) => {
-  const [language, setLanguageState] = useState<Language>("en");
-
-  useEffect(() => {
+  const [language, setLanguageState] = useState<Language>(() => {
+    if (typeof window === "undefined") return "en";
     const saved = localStorage.getItem("language") as Language;
-    if (saved === "en" || saved === "tr") {
-      setLanguageState(saved);
-    } else if (navigator.language.startsWith("tr")) {
-      setLanguageState("tr");
-    }
-  }, []);
+    if (saved === "en" || saved === "tr") return saved;
+    if (navigator.language.startsWith("tr")) return "tr";
+    return "en";
+  });
 
   useEffect(() => {
     document.documentElement.lang = language;
