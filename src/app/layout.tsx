@@ -79,7 +79,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning className={dmsans.variable}>
       <head>
       </head>
-      <body className={dmsans.className}>
+      <body className={dmsans.className} suppressHydrationWarning>
         <a
           href="#main"
           className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:rounded-lg focus:bg-primary focus:px-4 focus:py-2 focus:text-white focus:outline-2 focus:outline-offset-2 focus:outline-primary"

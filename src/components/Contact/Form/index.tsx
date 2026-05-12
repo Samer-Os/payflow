@@ -22,7 +22,9 @@ const ContactForm = () => {
   const [loading, setLoading] = useState(false);
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+    >,
   ) => setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -47,13 +49,16 @@ const ContactForm = () => {
               Talk to our team
             </h2>
             <p className="text-body text-muted dark:text-white/70 mb-9">
-              Tell us about your use case and we&apos;ll get back to you within one
-              business day.
+              Tell us about your use case and we&apos;ll get back to you within
+              one business day.
             </p>
             <form onSubmit={handleSubmit} className="space-y-4" noValidate>
               <div className="sm:flex gap-3">
                 <div className="flex-1">
-                  <label htmlFor="contact-name" className="block text-caption font-semibold text-midnight_text dark:text-white mb-1.5">
+                  <label
+                    htmlFor="contact-name"
+                    className="block text-caption font-semibold text-midnight_text dark:text-white mb-1.5"
+                  >
                     Full name *
                   </label>
                   <input
@@ -69,7 +74,10 @@ const ContactForm = () => {
                   />
                 </div>
                 <div className="flex-1 mt-4 sm:mt-0">
-                  <label htmlFor="contact-email" className="block text-caption font-semibold text-midnight_text dark:text-white mb-1.5">
+                  <label
+                    htmlFor="contact-email"
+                    className="block text-caption font-semibold text-midnight_text dark:text-white mb-1.5"
+                  >
                     Work email *
                   </label>
                   <input
@@ -87,7 +95,10 @@ const ContactForm = () => {
               </div>
 
               <div>
-                <label htmlFor="contact-company" className="block text-caption font-semibold text-midnight_text dark:text-white mb-1.5">
+                <label
+                  htmlFor="contact-company"
+                  className="block text-caption font-semibold text-midnight_text dark:text-white mb-1.5"
+                >
                   Company
                 </label>
                 <input
@@ -103,7 +114,10 @@ const ContactForm = () => {
               </div>
 
               <div>
-                <label htmlFor="contact-inquiry" className="block text-caption font-semibold text-midnight_text dark:text-white mb-1.5">
+                <label
+                  htmlFor="contact-inquiry"
+                  className="block text-caption font-semibold text-midnight_text dark:text-white mb-1.5"
+                >
                   What are you looking for?
                 </label>
                 <select
@@ -124,7 +138,10 @@ const ContactForm = () => {
               </div>
 
               <div>
-                <label htmlFor="contact-message" className="block text-caption font-semibold text-midnight_text dark:text-white mb-1.5">
+                <label
+                  htmlFor="contact-message"
+                  className="block text-caption font-semibold text-midnight_text dark:text-white mb-1.5"
+                >
                   Message
                 </label>
                 <textarea
@@ -150,7 +167,7 @@ const ContactForm = () => {
 
           <div className="col-span-6 mt-8 md:mt-0">
             <Image
-              src="/images/contact-page/contact.jpg"
+              src="/images/contact-page/contact.webp"
               alt="Payflow team working on payment infrastructure"
               width={1300}
               height={867}

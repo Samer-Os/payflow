@@ -16,17 +16,19 @@ interface LanguageContextProps {
   dictionary: typeof dictionaries.en;
 }
 
-function resolveInitialLang(): Language {
-  if (typeof window === "undefined") return "en";
-  const saved = localStorage.getItem("language") as Language;
-  if (saved === "en" || saved === "tr") return saved;
-  return navigator.language.startsWith("tr") ? "tr" : "en";
-}
-
 const LanguageContext = createContext<LanguageContextProps | undefined>(undefined);
 
 export const LanguageProvider = ({ children }: { children: ReactNode }) => {
-  const [language, setLanguageState] = useState<Language>(resolveInitialLang);
+  const [language, setLanguageState] = useState<Language>("en");
+
+  useEffect(() => {
+    const saved = localStorage.getItem("language") as Language;
+    if (saved === "en" || saved === "tr") {
+      setLanguageState(saved);
+    } else if (navigator.language.startsWith("tr")) {
+      setLanguageState("tr");
+    }
+  }, []);
 
   useEffect(() => {
     document.documentElement.lang = language;

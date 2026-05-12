@@ -6,10 +6,10 @@ import { getDictionary, type Language } from "@/context/dictionary";
 import { Reveal, Stagger } from "@/components/Common/Reveal";
 
 const cards = [
-  { img: "/images/method/card.png", alt: "credit cards" },
-  { img: "/images/method/method1.jpg", alt: "banking app" },
-  { img: "/images/method/method3.jpg", alt: "payments app" },
-  { img: "/images/method/method2.png", alt: "partner rewards dashboard" },
+  { img: "/images/method/card.webp", alt: "credit cards" },
+  { img: "/images/method/method1.webp", alt: "banking app" },
+  { img: "/images/method/method3.webp", alt: "payments app" },
+  { img: "/images/method/method2.webp", alt: "partner rewards dashboard" },
 ];
 
 const Method = async () => {
@@ -17,7 +17,10 @@ const Method = async () => {
   const lang = (cookieStore.get("lang")?.value ?? "en") as Language;
   const dict = getDictionary(lang);
   const m = dict.method;
-  const methodCards = m.cards as Record<string, { title: string; details: string }>;
+  const methodCards = m.cards as Record<
+    string,
+    { title: string; details: string }
+  >;
 
   return (
     <section className="dark:bg-darkmode overflow-hidden py-14">
@@ -39,7 +42,11 @@ const Method = async () => {
 
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-16">
               {cards.map((card, index) => (
-                <Reveal key={index} as="div" className="bg-white dark:bg-search rounded-3xl overflow-hidden shadow-md flex flex-col h-full hover:-translate-y-2 hover:shadow-2xl transition-all duration-300 dark:border dark:border-white/5 dark:hover:border-white/10 group">
+                <Reveal
+                  key={index}
+                  as="div"
+                  className="bg-white dark:bg-search rounded-3xl overflow-hidden shadow-md flex flex-col h-full hover:-translate-y-2 hover:shadow-2xl transition-all duration-300 dark:border dark:border-white/5 dark:hover:border-white/10 group"
+                >
                   <div className="w-full h-56 overflow-hidden">
                     <Image
                       src={card.img}
