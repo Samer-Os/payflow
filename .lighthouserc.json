@@ -21,7 +21,8 @@
         "lcp-lazy-loaded": "off",
         "non-composited-animations": "off",
         "prioritize-lcp-image": "off",
-        "unused-javascript": "warn"
+        "unused-javascript": "warn",
+        "uses-responsive-images": "warn"
       }
     },
     "upload": {

@@ -54,7 +54,7 @@ const Method = async () => {
                       width={500}
                       height={375}
                       loading="lazy"
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                      sizes="(max-width: 640px) calc(100vw - 80px), (max-width: 1024px) calc(50vw - 56px), calc(25vw - 54px)"
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                   </div>
